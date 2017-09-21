@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        customizeUserInterface()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,8 +24,24 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func customizeUserInterface() {
+        let signUpButton = UIButton()
+        signUpButton.setTitle("Registro", for: .normal)
+        signUpButton.frame = CGRect(x: 0, y: 0, width: 80, height: 45)
+        signUpButton.setTitleColor(UIColor.black, for: .normal)
+        signUpButton.addTarget(self, action: #selector(ViewController.pushSignUp), for: .touchUpInside)
+        let signUpBarButton = UIBarButtonItem()
+        signUpBarButton.customView = signUpButton
+        self.navigationItem.rightBarButtonItem = signUpBarButton
+    }
+
+    @objc func pushSignUp() {
+        let signUpViewController = storyboard?.instantiateViewController(withIdentifier: "JUWSignUpViewController") as! JUWSignUpViewController
+        self.navigationController?.pushViewController(signUpViewController, animated: true)
+    }
+
     @IBAction func signIn(_ sender: Any) {
     }
-    
+
 }
 

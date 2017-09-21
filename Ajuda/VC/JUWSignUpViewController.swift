@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JUWSignUpViewController: UIViewController {
+class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var userNameTextField: UITextField!

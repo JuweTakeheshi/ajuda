@@ -100,7 +100,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="Vhv-Pu-HeE">
             <objects>
-                <viewController id="R8Z-m1-hdT" customClass="JUWSignUpViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JUWSignUpViewController" id="R8Z-m1-hdT" customClass="JUWSignUpViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GRs-Zh-Nbo"/>
                         <viewControllerLayoutGuide type="bottom" id="8gH-TB-8X9"/>
