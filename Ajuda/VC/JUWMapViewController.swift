@@ -1,5 +1,5 @@
 //
-//  JUWBikerViewController.swift
+//  JUWMapViewController.swift
 //  Ajuda
 //
 //  Created by Juwe Takeheshi on 9/21/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JUWBikerViewController: UITabBarController {
+class JUWMapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

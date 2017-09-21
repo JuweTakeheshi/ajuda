@@ -30,6 +30,8 @@
 		D13709B81F7460D100F3B216 /* JUWShelterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709B71F7460D100F3B216 /* JUWShelterViewController.swift */; };
 		D13709BA1F7460E300F3B216 /* JUWBikerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709B91F7460E300F3B216 /* JUWBikerViewController.swift */; };
 		D13709BC1F7460FA00F3B216 /* JUWCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709BB1F7460FA00F3B216 /* JUWCarViewController.swift */; };
+		D13709BE1F7464F200F3B216 /* JUWMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709BD1F7464F200F3B216 /* JUWMapViewController.swift */; };
+		D13709C11F74661800F3B216 /* JUWKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709C01F74661800F3B216 /* JUWKeychainService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		D13709B71F7460D100F3B216 /* JUWShelterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWShelterViewController.swift; sourceTree = "<group>"; };
 		D13709B91F7460E300F3B216 /* JUWBikerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWBikerViewController.swift; sourceTree = "<group>"; };
 		D13709BB1F7460FA00F3B216 /* JUWCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWCarViewController.swift; sourceTree = "<group>"; };
+		D13709BD1F7464F200F3B216 /* JUWMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWMapViewController.swift; sourceTree = "<group>"; };
+		D13709C01F74661800F3B216 /* JUWKeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWKeychainService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,7 @@
 		D13709951F74281F00F3B216 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D13709BF1F74660400F3B216 /* keychain */,
 				D13709961F74284A00F3B216 /* JUWCollectionCenter.swift */,
 				D13709981F74286200F3B216 /* JUWDamagedBuilding.swift */,
 				D137099A1F74287A00F3B216 /* JUWShelter.swift */,
@@ -198,6 +203,7 @@
 				D13709B71F7460D100F3B216 /* JUWShelterViewController.swift */,
 				D13709B91F7460E300F3B216 /* JUWBikerViewController.swift */,
 				D13709BB1F7460FA00F3B216 /* JUWCarViewController.swift */,
+				D13709BD1F7464F200F3B216 /* JUWMapViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -209,6 +215,14 @@
 				D13709AF1F744D4700F3B216 /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D13709BF1F74660400F3B216 /* keychain */ = {
+			isa = PBXGroup;
+			children = (
+				D13709C01F74661800F3B216 /* JUWKeychainService.swift */,
+			);
+			path = keychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +368,7 @@
 				D137099F1F7428D800F3B216 /* JUWMotorizedCar.swift in Sources */,
 				D137099B1F74287A00F3B216 /* JUWShelter.swift in Sources */,
 				D137099D1F7428B100F3B216 /* JUWBiker.swift in Sources */,
+				D13709BE1F7464F200F3B216 /* JUWMapViewController.swift in Sources */,
 				D13709B61F7460C300F3B216 /* JUWCollectionCenterViewController.swift in Sources */,
 				D13709BA1F7460E300F3B216 /* JUWBikerViewController.swift in Sources */,
 				D13709A51F74328500F3B216 /* JUWSession.swift in Sources */,
@@ -361,6 +376,7 @@
 				D13709AA1F743A1B00F3B216 /* JUWSignUpViewController.swift in Sources */,
 				D13709971F74284A00F3B216 /* JUWCollectionCenter.swift in Sources */,
 				D13709991F74286200F3B216 /* JUWDamagedBuilding.swift in Sources */,
+				D13709C11F74661800F3B216 /* JUWKeychainService.swift in Sources */,
 				D13709681F74261200F3B216 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

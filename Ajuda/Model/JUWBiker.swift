@@ -13,4 +13,5 @@ class JUWBiker: NSObject {
     var longitude: Double?
     var goingToLatitude: Double?
     var goingToLongitude: Double?
+    var phoneNumber: String?
 }

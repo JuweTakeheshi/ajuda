@@ -14,4 +14,5 @@ class JUWShelter: NSObject {
     var capacity: Int?
     var occupancy: Int?
     var needs: [Any]?
+    var phoneNumber: String?
 }

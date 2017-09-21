@@ -14,4 +14,5 @@ class JUWMotorizedCar: NSObject {
     var goingToLatitude: Double?
     var goingToLongitude: Double?
     var content: [Any]?
+    var phoneNumber: String?
 }

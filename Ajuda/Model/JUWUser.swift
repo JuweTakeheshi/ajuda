@@ -10,4 +10,5 @@ import UIKit
 
 class JUWUser: NSObject {
     var userName: String?
+    var phoneNumber: String?
 }
