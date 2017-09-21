@@ -183,10 +183,24 @@
                                     <constraint firstItem="tnX-bq-wrB" firstAttribute="top" secondItem="chK-uY-KTr" secondAttribute="bottom" constant="19" id="zb4-b9-hRo"/>
                                 </constraints>
                             </view>
-                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTX-zJ-Nnq">
-                                <rect key="frame" x="0.0" y="318" width="320" height="162"/>
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xdv-mg-OzR">
+                                <rect key="frame" x="0.0" y="301" width="320" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="162" id="TjD-yI-bEI"/>
+                                    <constraint firstAttribute="height" constant="44" id="rRb-v1-qaH"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem width="254" style="plain" systemItem="fixedSpace" id="B5r-IU-RtR"/>
+                                    <barButtonItem systemItem="done" id="k1S-Jj-wT3">
+                                        <connections>
+                                            <action selector="selectedUserType:" destination="R8Z-m1-hdT" id="drc-hh-dNU"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTX-zJ-Nnq">
+                                <rect key="frame" x="0.0" y="345" width="320" height="135"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="TjD-yI-bEI"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="R8Z-m1-hdT" id="aTZ-JS-gg4"/>
@@ -197,6 +211,9 @@
                         <color key="backgroundColor" red="1" green="0.92268179350000001" blue="0.85859954620000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="jcf-Fm-yWt" firstAttribute="top" secondItem="7kY-1F-pwH" secondAttribute="top" constant="70" id="4VW-ML-abX"/>
+                            <constraint firstItem="Xdv-mg-OzR" firstAttribute="leading" secondItem="7kY-1F-pwH" secondAttribute="leading" id="72T-9G-2Ka"/>
+                            <constraint firstAttribute="trailing" secondItem="Xdv-mg-OzR" secondAttribute="trailing" id="BGc-Zz-ImJ"/>
+                            <constraint firstItem="mTX-zJ-Nnq" firstAttribute="top" secondItem="Xdv-mg-OzR" secondAttribute="bottom" id="DKA-6q-j41"/>
                             <constraint firstItem="mTX-zJ-Nnq" firstAttribute="leading" secondItem="7kY-1F-pwH" secondAttribute="leading" id="HGk-Xo-WHH"/>
                             <constraint firstItem="jcf-Fm-yWt" firstAttribute="leading" secondItem="7kY-1F-pwH" secondAttribute="leading" id="Jye-Jb-JIe"/>
                             <constraint firstItem="8gH-TB-8X9" firstAttribute="top" secondItem="mTX-zJ-Nnq" secondAttribute="bottom" id="lEl-mr-hHZ"/>
@@ -206,6 +223,7 @@
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="1hP-D0-lCE" id="fr6-DV-Ud3"/>
+                        <outlet property="pickerToolbar" destination="Xdv-mg-OzR" id="qZS-JQ-ghb"/>
                         <outlet property="pickerView" destination="mTX-zJ-Nnq" id="GuK-Px-waK"/>
                         <outlet property="signUpButton" destination="tnX-bq-wrB" id="9g2-JC-g5T"/>
                         <outlet property="userNameTextField" destination="uYl-P7-xfH" id="AE1-m1-xNW"/>

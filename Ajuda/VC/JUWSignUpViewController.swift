@@ -15,7 +15,8 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var userTypeButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
-
+    @IBOutlet weak var pickerToolbar: UIToolbar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,12 +36,25 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             passwordTextField.resignFirstResponder()
         }
 
+        pickerToolbar.isHidden = false
         pickerView.isHidden = false
     }
 
     @IBAction func signUp(_ sender: Any) {
+        
     }
 
+    @IBAction func selectedUserType(_ sender: Any) {
+        signUpButton.alpha = 1
+        signUpButton.isEnabled = true
+        pickerToolbar.isHidden = true
+        pickerView.isHidden = true
+
+        let selectedIndex = pickerView.selectedRow(inComponent: 0)
+        let session = JUWSession.sharedInstance
+        let formattedString = String.localizedStringWithFormat("Soy %@", session.userTypes[selectedIndex].rawValue)
+        userTypeButton.setTitle(formattedString, for: .normal)
+    }
     // MARK: - UIPickerView
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
