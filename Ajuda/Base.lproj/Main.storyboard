@@ -46,7 +46,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="266" id="g8g-9m-jWo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Regístrate aquí">
+                                        <state key="normal" title="Entrar">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -87,6 +87,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="Vhv-Pu-HeE">
+            <objects>
+                <viewController id="R8Z-m1-hdT" customClass="SignUpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GRs-Zh-Nbo"/>
+                        <viewControllerLayoutGuide type="bottom" id="8gH-TB-8X9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7kY-1F-pwH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcf-Fm-yWt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="350"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Crear usuario" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uYl-P7-xfH">
+                                        <rect key="frame" x="27" y="51" width="266" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="20M-Dd-Vtr"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="266" id="GYd-0F-bmu"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="3yS-Nj-pAk"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnX-bq-wrB">
+                                        <rect key="frame" x="27" y="246" width="266" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Regístrate">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Crear contraseña (visible)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1hP-D0-lCE">
+                                        <rect key="frame" x="27" y="115" width="266" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="266" id="TKz-cb-wUf"/>
+                                            <constraint firstAttribute="height" constant="45" id="cV0-hf-CQ0"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="dFM-Kl-53r"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chK-uY-KTr">
+                                        <rect key="frame" x="27" y="182" width="266" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Soy...">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="1hP-D0-lCE" firstAttribute="centerX" secondItem="jcf-Fm-yWt" secondAttribute="centerX" id="0ho-95-poZ"/>
+                                    <constraint firstItem="uYl-P7-xfH" firstAttribute="top" secondItem="jcf-Fm-yWt" secondAttribute="top" constant="51" id="Alb-6S-D7c"/>
+                                    <constraint firstAttribute="height" constant="350" id="UyW-LV-hnd"/>
+                                    <constraint firstItem="1hP-D0-lCE" firstAttribute="top" secondItem="uYl-P7-xfH" secondAttribute="bottom" constant="19" id="Ve3-MH-vYF"/>
+                                    <constraint firstItem="uYl-P7-xfH" firstAttribute="centerX" secondItem="jcf-Fm-yWt" secondAttribute="centerX" id="aNj-se-Eb7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.92268179350000001" blue="0.85859954620000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="jcf-Fm-yWt" firstAttribute="top" secondItem="7kY-1F-pwH" secondAttribute="top" id="4VW-ML-abX"/>
+                            <constraint firstItem="jcf-Fm-yWt" firstAttribute="leading" secondItem="7kY-1F-pwH" secondAttribute="leading" id="Jye-Jb-JIe"/>
+                            <constraint firstAttribute="trailing" secondItem="jcf-Fm-yWt" secondAttribute="trailing" id="ozw-8F-McP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mjQ-J2-twF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773" y="31"/>
         </scene>
     </scenes>
 </document>
