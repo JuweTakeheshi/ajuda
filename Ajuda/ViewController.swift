@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -27,8 +27,13 @@ class ViewController: UIViewController {
 
     func validateSession() {
         let token = JUWKeychainService.loadToken()
-        if token != nil {
-            
+        let userType = JUWKeychainService.loadUserType()
+        
+        if token != nil && userType != nil {
+            if userType! as String == JUWSession.UserType.biker.rawValue {
+                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWBikerViewController
+                navigationController?.pushViewController(bikerViewController, animated: false)
+            }
         }
     }
 
@@ -55,12 +60,23 @@ class ViewController: UIViewController {
         if !(usernameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
             let session = JUWSession.sharedInstance
             session.signInWithUserName(username: usernameTextField.text!, password: passwordTextField.text!, completion: { (result) in
-                
+                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWBikerViewController
+                navigationController?.pushViewController(bikerViewController, animated: true)
             }, failure: { (error) in
                 
             })
         }
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        }
+        else {
+            passwordTextField.resignFirstResponder()
+        }
+
+        return true
+    }
 }
 

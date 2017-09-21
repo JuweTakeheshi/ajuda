@@ -10,7 +10,7 @@ public typealias OnSignUp = ()->()
 
 import UIKit
 
-class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -90,5 +90,18 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                              forComponent component: Int) -> String? {
         let session = JUWSession.sharedInstance
         return session.userTypes[row].rawValue
+    }
+
+    // MARK: - UITextField Delegate
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userNameTextField {
+            passwordTextField.becomeFirstResponder()
+        }
+        else if textField == passwordTextField {
+            passwordTextField.resignFirstResponder()
+        }
+        
+        return true
     }
 }

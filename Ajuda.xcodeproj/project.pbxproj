@@ -32,6 +32,7 @@
 		D13709BC1F7460FA00F3B216 /* JUWCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709BB1F7460FA00F3B216 /* JUWCarViewController.swift */; };
 		D13709BE1F7464F200F3B216 /* JUWMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709BD1F7464F200F3B216 /* JUWMapViewController.swift */; };
 		D13709C11F74661800F3B216 /* JUWKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709C01F74661800F3B216 /* JUWKeychainService.swift */; };
+		D13709C31F746EE100F3B216 /* JUWFoundPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709C21F746EE100F3B216 /* JUWFoundPet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		D13709BB1F7460FA00F3B216 /* JUWCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWCarViewController.swift; sourceTree = "<group>"; };
 		D13709BD1F7464F200F3B216 /* JUWMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWMapViewController.swift; sourceTree = "<group>"; };
 		D13709C01F74661800F3B216 /* JUWKeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWKeychainService.swift; sourceTree = "<group>"; };
+		D13709C21F746EE100F3B216 /* JUWFoundPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWFoundPet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				D13709A21F74325E00F3B216 /* JUWUser.swift */,
 				D13709A41F74328500F3B216 /* JUWSession.swift */,
 				D13709AC1F744A4600F3B216 /* JUWNetworkManager.swift */,
+				D13709C21F746EE100F3B216 /* JUWFoundPet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				D13709AD1F744A4600F3B216 /* JUWNetworkManager.swift in Sources */,
 				D137096A1F74261200F3B216 /* ViewController.swift in Sources */,
 				D13709B81F7460D100F3B216 /* JUWShelterViewController.swift in Sources */,
+				D13709C31F746EE100F3B216 /* JUWFoundPet.swift in Sources */,
 				D137099F1F7428D800F3B216 /* JUWMotorizedCar.swift in Sources */,
 				D137099B1F74287A00F3B216 /* JUWShelter.swift in Sources */,
 				D137099D1F7428B100F3B216 /* JUWBiker.swift in Sources */,

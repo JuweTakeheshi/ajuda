@@ -26,6 +26,7 @@ class JUWSession: NSObject {
 
     func signInWithUserName(username: String, password: String, completion: (_ result: String) -> Void, failure: (_ error: Error) -> Void) {
         JUWKeychainService.saveToken(token: "obtainedTokenFromServer")
+        JUWKeychainService.saveUserType(type: "Ciclista")
         completion("OK")
     }
 
