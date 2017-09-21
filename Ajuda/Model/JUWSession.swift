@@ -11,6 +11,12 @@ import UIKit
 class JUWSession: NSObject {
     static let sharedInstance = JUWSession()
 
+    enum UserType: String {
+        case biker = "biker"
+        case motorizedCar = "motorizedCar"
+        case shelter = "shelter"
+    }
+
     func isValid() -> Bool {
         return true
     }
