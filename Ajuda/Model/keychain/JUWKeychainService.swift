@@ -18,7 +18,8 @@ let accessGroup = "SecuritySerivice"
  *  Note: add new keys for new secure item and use them in load and save methods
  */
 
-let passwordKey = "KeyForPassword"
+let tokenKey = "KeyForToken"
+let userTypeKey = "KeyForUserType"
 
 // Arguments for the keychain queries
 let kSecClassValue = NSString(format: kSecClass)
@@ -35,15 +36,23 @@ public class JUWKeychainService: NSObject {
     /**
      * Exposed methods to perform save and load queries.
      */
-    
-    public class func savePassword(token: NSString) {
-        self.save(service: passwordKey as NSString, data: token)
+
+    public class func saveToken(token: NSString) {
+        self.save(service: tokenKey as NSString, data: token)
+    }
+
+    public class func loadToken() -> NSString? {
+        return self.load(service: tokenKey as NSString)
+    }
+
+    public class func saveUserType(type: NSString) {
+        self.save(service: userTypeKey as NSString, data: type)
     }
     
-    public class func loadPassword() -> NSString? {
-        return self.load(service: passwordKey as NSString)
+    public class func loadUserType() -> NSString? {
+        return self.load(service: userTypeKey as NSString)
     }
-    
+
     /**
      * Internal methods for querying the keychain.
      */

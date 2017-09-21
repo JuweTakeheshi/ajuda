@@ -16,12 +16,20 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        validateSession()
         customizeUserInterface()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func validateSession() {
+        let token = JUWKeychainService.loadToken()
+        if token != nil {
+            
+        }
     }
 
     func customizeUserInterface() {
@@ -37,7 +45,10 @@ class ViewController: UIViewController {
 
     @objc func pushSignUp() {
         let signUpViewController = storyboard?.instantiateViewController(withIdentifier: "JUWSignUpViewController") as! JUWSignUpViewController
-        self.navigationController?.pushViewController(signUpViewController, animated: true)
+        let navigationController = UINavigationController(rootViewController: signUpViewController)
+        present(navigationController, animated: true) {
+            
+        }
     }
 
     @IBAction func signIn(_ sender: Any) {
