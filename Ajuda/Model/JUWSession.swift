@@ -23,8 +23,11 @@ class JUWSession: NSObject {
         return true
     }
 
-    func signInWithUserName(username: String, password: String, completion: (_ result: String) -> Void) {
-        
+    func signInWithUserName(username: String, password: String, completion: (_ result: String) -> Void, failure: (_ error: Error) -> Void) {
             completion("OK")
+    }
+
+    func signUpWithUserName(username: String, password: String, completion: (_ result: String) -> Void, failure: (_ error: Error) -> Void) {
+        completion("OK")
     }
 }

@@ -41,7 +41,14 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
 
     @IBAction func signUp(_ sender: Any) {
-        
+        let session = JUWSession.sharedInstance
+        if !(userNameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
+            session.signUpWithUserName(username: userNameTextField.text!, password: passwordTextField.text!, completion: { (result) in
+                
+            }, failure: { (error) in
+                
+            })
+        }
     }
 
     @IBAction func selectedUserType(_ sender: Any) {
@@ -55,6 +62,7 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         let formattedString = String.localizedStringWithFormat("Soy %@", session.userTypes[selectedIndex].rawValue)
         userTypeButton.setTitle(formattedString, for: .normal)
     }
+
     // MARK: - UIPickerView
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
