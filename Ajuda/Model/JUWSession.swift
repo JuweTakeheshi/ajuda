@@ -20,4 +20,9 @@ class JUWSession: NSObject {
     func isValid() -> Bool {
         return true
     }
+
+    func signInWithUserName(username: String, password: String, completion: (_ result: String) -> Void) {
+        
+            completion("OK")
+    }
 }

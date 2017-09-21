@@ -13,5 +13,4 @@ class JUWFoundPerson: NSObject {
     var lastName: String?
     var location: String?
     var isAlive: Bool?
-    
 }

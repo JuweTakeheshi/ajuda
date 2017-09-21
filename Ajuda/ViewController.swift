@@ -41,6 +41,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func signIn(_ sender: Any) {
+        if !(usernameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
+            let session = JUWSession.sharedInstance
+//            session.signInWith
+        }
     }
 
 }
