@@ -28,6 +28,14 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
 
     @IBAction func showUserTypeSelection(_ sender: Any) {
+        if userNameTextField.isFirstResponder {
+            userNameTextField.resignFirstResponder()
+        }
+        else {
+            passwordTextField.resignFirstResponder()
+        }
+
+        pickerView.isHidden = false
     }
 
     @IBAction func signUp(_ sender: Any) {
@@ -41,12 +49,14 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     func pickerView(_ pickerView: UIPickerView,
                     numberOfRowsInComponent component: Int) -> Int {
-        return 5
+        let session = JUWSession.sharedInstance
+        return session.userTypes.count
     }
 
     func pickerView(_ pickerView: UIPickerView,
                              titleForRow row: Int,
                              forComponent component: Int) -> String? {
-        return "OK"
+        let session = JUWSession.sharedInstance
+        return session.userTypes[row].rawValue
     }
 }
