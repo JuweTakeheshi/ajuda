@@ -20,6 +20,9 @@
 		D137099D1F7428B100F3B216 /* JUWBiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D137099C1F7428B100F3B216 /* JUWBiker.swift */; };
 		D137099F1F7428D800F3B216 /* JUWMotorizedCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D137099E1F7428D800F3B216 /* JUWMotorizedCar.swift */; };
 		D13709A11F742B5A00F3B216 /* JUWFoundPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709A01F742B5A00F3B216 /* JUWFoundPerson.swift */; };
+		D13709A31F74325E00F3B216 /* JUWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709A21F74325E00F3B216 /* JUWUser.swift */; };
+		D13709A51F74328500F3B216 /* JUWSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709A41F74328500F3B216 /* JUWSession.swift */; };
+		D13709A81F74336900F3B216 /* JUWAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709A71F74336900F3B216 /* JUWAuthenticationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		D137099C1F7428B100F3B216 /* JUWBiker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWBiker.swift; sourceTree = "<group>"; };
 		D137099E1F7428D800F3B216 /* JUWMotorizedCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWMotorizedCar.swift; sourceTree = "<group>"; };
 		D13709A01F742B5A00F3B216 /* JUWFoundPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWFoundPerson.swift; sourceTree = "<group>"; };
+		D13709A21F74325E00F3B216 /* JUWUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWUser.swift; sourceTree = "<group>"; };
+		D13709A41F74328500F3B216 /* JUWSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWSession.swift; sourceTree = "<group>"; };
+		D13709A71F74336900F3B216 /* JUWAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWAuthenticationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 		D13709661F74261200F3B216 /* Ajuda */ = {
 			isa = PBXGroup;
 			children = (
+				D13709A61F74334800F3B216 /* VC */,
 				D13709951F74281F00F3B216 /* Model */,
 				D13709671F74261200F3B216 /* AppDelegate.swift */,
 				D13709691F74261200F3B216 /* ViewController.swift */,
@@ -147,8 +154,18 @@
 				D137099C1F7428B100F3B216 /* JUWBiker.swift */,
 				D137099E1F7428D800F3B216 /* JUWMotorizedCar.swift */,
 				D13709A01F742B5A00F3B216 /* JUWFoundPerson.swift */,
+				D13709A21F74325E00F3B216 /* JUWUser.swift */,
+				D13709A41F74328500F3B216 /* JUWSession.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D13709A61F74334800F3B216 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D13709A71F74336900F3B216 /* JUWAuthenticationViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +307,9 @@
 				D137099F1F7428D800F3B216 /* JUWMotorizedCar.swift in Sources */,
 				D137099B1F74287A00F3B216 /* JUWShelter.swift in Sources */,
 				D137099D1F7428B100F3B216 /* JUWBiker.swift in Sources */,
+				D13709A51F74328500F3B216 /* JUWSession.swift in Sources */,
+				D13709A81F74336900F3B216 /* JUWAuthenticationViewController.swift in Sources */,
+				D13709A31F74325E00F3B216 /* JUWUser.swift in Sources */,
 				D13709971F74284A00F3B216 /* JUWCollectionCenter.swift in Sources */,
 				D13709991F74286200F3B216 /* JUWDamagedBuilding.swift in Sources */,
 				D13709681F74261200F3B216 /* AppDelegate.swift in Sources */,

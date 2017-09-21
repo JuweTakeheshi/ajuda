@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,13 +18,75 @@
                         <viewControllerLayoutGuide type="bottom" id="hX0-Gf-0Fw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56C-sT-JqR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="247"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Usuario" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xZ8-Jf-yGG">
+                                        <rect key="frame" x="27" y="51" width="266" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="266" id="cqE-on-1Gb"/>
+                                            <constraint firstAttribute="height" constant="45" id="y8d-IP-uz8"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="lrw-ng-sDD"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3e-Ez-xRo">
+                                        <rect key="frame" x="27" y="176" width="266" height="45"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="Z65-cb-jYt"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="266" id="g8g-9m-jWo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Regístrate aquí">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Contraseña" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u5B-0Z-EqC">
+                                        <rect key="frame" x="27" y="115" width="266" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="llb-Kg-rov"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="266" id="uti-it-q74"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="fsC-dK-Piq"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="u5B-0Z-EqC" firstAttribute="centerX" secondItem="56C-sT-JqR" secondAttribute="centerX" id="3dJ-Ol-Aku"/>
+                                    <constraint firstItem="xZ8-Jf-yGG" firstAttribute="top" secondItem="56C-sT-JqR" secondAttribute="top" constant="51" id="7r9-3s-dwU"/>
+                                    <constraint firstItem="S3e-Ez-xRo" firstAttribute="top" secondItem="u5B-0Z-EqC" secondAttribute="bottom" constant="16" id="AyZ-Ou-C9C"/>
+                                    <constraint firstItem="xZ8-Jf-yGG" firstAttribute="centerX" secondItem="56C-sT-JqR" secondAttribute="centerX" id="IIL-bz-W2B"/>
+                                    <constraint firstAttribute="height" constant="247" id="MJC-ci-3Yt"/>
+                                    <constraint firstItem="S3e-Ez-xRo" firstAttribute="centerX" secondItem="56C-sT-JqR" secondAttribute="centerX" id="Rf6-aN-FdN"/>
+                                    <constraint firstItem="u5B-0Z-EqC" firstAttribute="top" secondItem="xZ8-Jf-yGG" secondAttribute="bottom" constant="19" id="TZq-Z5-y4C"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.92268179345961376" blue="0.85859954616372769" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="56C-sT-JqR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="29E-zO-JC2"/>
+                            <constraint firstAttribute="trailing" secondItem="56C-sT-JqR" secondAttribute="trailing" id="7WI-H3-nQp"/>
+                            <constraint firstItem="56C-sT-JqR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="O0O-Xb-yB0"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
         </scene>
     </scenes>
 </document>
