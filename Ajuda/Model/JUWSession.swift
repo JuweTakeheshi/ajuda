@@ -10,10 +10,11 @@ import UIKit
 
 class JUWSession: NSObject {
     static let sharedInstance = JUWSession()
-    let userTypes = [UserType.biker, UserType.motorizedCar, UserType.shelter, UserType.collectionCenter]
+    let userTypes = [UserType.biker, UserType.motoBiker, UserType.motorizedCar, UserType.shelter, UserType.collectionCenter]
 
     enum UserType: String {
         case biker = "Ciclista"
+        case motoBiker = "Motociclista"
         case motorizedCar = "Conductor"
         case shelter = "Refugio"
         case collectionCenter = "Centro de acopio"
