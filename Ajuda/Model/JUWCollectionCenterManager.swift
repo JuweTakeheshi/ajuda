@@ -46,7 +46,9 @@ class JUWCollectionCenterManager: NSObject {
                             }
                         }
                     }
-                    centers()
+                    DispatchQueue.main.async {
+                        centers()
+                    }
                 }
             }
         }) { (error) in
