@@ -252,24 +252,6 @@
             </objects>
             <point key="canvasLocation" x="1943" y="331"/>
         </scene>
-        <!--Car View Controller-->
-        <scene sceneID="m6W-jc-Ah5">
-            <objects>
-                <viewController id="GQs-9X-zjo" customClass="JUWCarViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6xQ-1t-rOw"/>
-                        <viewControllerLayoutGuide type="bottom" id="e4Z-Ec-kG7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yE3-x8-ATN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FW5-2K-JYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2633" y="330"/>
-        </scene>
         <!--Item 2-->
         <scene sceneID="VSO-kN-G0y">
             <objects>
@@ -289,7 +271,7 @@
             </objects>
             <point key="canvasLocation" x="3821" y="-1255"/>
         </scene>
-        <!--Item 1-->
+        <!--Mapa-->
         <scene sceneID="Y5g-jh-jzr">
             <objects>
                 <viewController id="nsa-SR-3vQ" customClass="JUWMapViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
@@ -313,16 +295,16 @@
                             <constraint firstItem="gr2-ba-HpW" firstAttribute="top" secondItem="rFb-bt-5hC" secondAttribute="bottom" id="sJy-Q3-gWu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Rru-mv-thW"/>
+                    <tabBarItem key="tabBarItem" title="Mapa" id="Rru-mv-thW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXp-aT-7cT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3114.375" y="-1255"/>
         </scene>
-        <!--Biker View Controller-->
+        <!--Courier View Controller-->
         <scene sceneID="nZh-8C-PaP">
             <objects>
-                <tabBarController storyboardIdentifier="JUWBikerViewController" id="7gw-bt-eMa" customClass="JUWBikerViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="JUWBikerViewController" id="7gw-bt-eMa" customClass="JUWCourierViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t6R-xM-SJe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -353,7 +335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0W-7h-zHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4575" y="3"/>
+            <point key="canvasLocation" x="2813" y="330"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dJ2-AE-7z5">

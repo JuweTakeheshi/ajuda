@@ -32,7 +32,6 @@ let kSecReturnDataValue = NSString(format: kSecReturnData)
 let kSecMatchLimitOneValue = NSString(format: kSecMatchLimitOne)
 
 public class JUWKeychainService: NSObject {
-    
     /**
      * Exposed methods to perform save and load queries.
      */
@@ -48,7 +47,7 @@ public class JUWKeychainService: NSObject {
     public class func saveUserType(type: NSString) {
         self.save(service: userTypeKey as NSString, data: type)
     }
-    
+
     public class func loadUserType() -> NSString? {
         return self.load(service: userTypeKey as NSString)
     }

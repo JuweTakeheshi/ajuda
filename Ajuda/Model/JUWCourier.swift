@@ -1,5 +1,5 @@
 //
-//  JUWMotorizedCar.swift
+//  JUWCourier.swift
 //  Ajuda
 //
 //  Created by Juwe Takeheshi on 9/21/17.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class JUWMotorizedCar: NSObject {
-    var currentLatitude: Double?
-    var currentLongitude: Double?
+class JUWCourier: NSObject {
+    var latitude: Double?
+    var longitude: Double?
     var goingToLatitude: Double?
     var goingToLongitude: Double?
-    var content: [Any]?
     var phoneNumber: String?
+    var content: [Any]?
 }

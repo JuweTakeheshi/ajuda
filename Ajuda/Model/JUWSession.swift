@@ -10,12 +10,10 @@ import UIKit
 
 class JUWSession: NSObject {
     static let sharedInstance = JUWSession()
-    let userTypes = [UserType.biker, UserType.motoBiker, UserType.motorizedCar, UserType.shelter, UserType.collectionCenter]
+    let userTypes = [UserType.courier, UserType.shelter, UserType.collectionCenter]
 
     enum UserType: String {
-        case biker = "Ciclista"
-        case motoBiker = "Motociclista"
-        case motorizedCar = "Conductor"
+        case courier = "Llevo ayuda"
         case shelter = "Refugio"
         case collectionCenter = "Centro de acopio"
     }
@@ -26,7 +24,7 @@ class JUWSession: NSObject {
 
     func signInWithUserName(username: String, password: String, completion: (_ result: Any) -> Void, failure: (_ error: Error) -> Void) {
         JUWKeychainService.saveToken(token: "obtainedTokenFromServer")
-        JUWKeychainService.saveUserType(type: "Ciclista")
+        JUWKeychainService.saveUserType(type: "Llevo ayuda")
         completion("OK")
     }
 

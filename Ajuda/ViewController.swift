@@ -30,8 +30,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let userType = JUWKeychainService.loadUserType()
         
         if token != nil && userType != nil {
-            if userType! as String == JUWSession.UserType.biker.rawValue {
-                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWBikerViewController
+            if userType! as String == JUWSession.UserType.courier.rawValue {
+                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWCourierViewController
                 navigationController?.pushViewController(bikerViewController, animated: false)
             }
         }
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if !(usernameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
             let session = JUWSession.sharedInstance
             session.signInWithUserName(username: usernameTextField.text!, password: passwordTextField.text!, completion: { (result) in
-                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWBikerViewController
+                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWCourierViewController
                 navigationController?.pushViewController(bikerViewController, animated: true)
             }, failure: { (error) in
                 

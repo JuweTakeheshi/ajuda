@@ -1,5 +1,5 @@
 //
-//  JUWCarViewController.swift
+//  JUWCourierViewController.swift
 //  Ajuda
 //
 //  Created by Juwe Takeheshi on 9/21/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JUWCarViewController: UIViewController {
+class JUWCourierViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
