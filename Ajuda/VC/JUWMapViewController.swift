@@ -13,9 +13,15 @@ import MapKit
 class JUWMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-
+    @IBOutlet weak var detailCalloutAccessoryView: UIView!
+    @IBOutlet weak var needLabel: UILabel!
+    @IBOutlet weak var contactLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        UINib(nibName: "JUWDetailCalloutAccessoryView", bundle: nil).instantiate(withOwner: self, options: nil)
+        view.addSubview(detailCalloutAccessoryView)
+        detailCalloutAccessoryView.isHidden = true
         loadCollectionCenters()
         // Do any additional setup after loading the view.
     }
@@ -65,19 +71,32 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
 
-        let detailView = UIView()
-        detailView.backgroundColor = UIColor.gray
-        let widthConstraint = NSLayoutConstraint(item: detailView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200)
-        detailView.addConstraint(widthConstraint)
-        
-        let heightConstraint = NSLayoutConstraint(item: detailView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 140)
-        detailView.addConstraint(heightConstraint)
+        if detailCalloutAccessoryView != nil {
+            let widthConstraint = NSLayoutConstraint(item: detailCalloutAccessoryView,
+                                                     attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 280)
+            detailCalloutAccessoryView.addConstraint(widthConstraint)
+
+            let heightConstraint = NSLayoutConstraint(item: detailCalloutAccessoryView,
+                                                      attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+            detailCalloutAccessoryView.addConstraint(heightConstraint)
+        }
         if #available(iOS 9.0, *) {
-            annotationView?.detailCalloutAccessoryView = detailView
+            annotationView?.detailCalloutAccessoryView = detailCalloutAccessoryView
         } else {
             // Fallback on earlier versions
         }
 
         return annotationView
+    }
+
+    func mapView(_ mapView: MKMapView,
+                 didSelect view: MKAnnotationView) {
+        detailCalloutAccessoryView.isHidden = false
+    }
+
+    @IBAction func call(_ sender: Any) {
+    }
+    
+    @IBAction func showDetail(_ sender: Any) {
     }
 }
