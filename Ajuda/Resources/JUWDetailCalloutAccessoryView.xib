@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JUWMapViewController" customModule="Ajuda" customModuleProvider="target">
             <connections>
+                <outlet property="callButton" destination="7aX-mb-O2r" id="NYf-q0-YUE"/>
                 <outlet property="contactLabel" destination="n1e-OZ-8md" id="cmu-Qr-wj6"/>
                 <outlet property="detailCalloutAccessoryView" destination="AAw-CZ-bWg" id="aRW-2t-G7M"/>
                 <outlet property="needLabel" destination="zHH-qR-KUZ" id="eO1-oo-f0K"/>
