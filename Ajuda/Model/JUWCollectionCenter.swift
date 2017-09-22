@@ -36,5 +36,5 @@ final class JUWCollectionCenter: Object {
     @objc dynamic var latitude: Double = 0.0
     @objc dynamic var longitude: Double = 0.0
     @objc dynamic var phoneNumber: String = ""
-    @objc dynamic var centerIdentifier: Int32 = 0
+    @objc dynamic var centerIdentifier: String = ""
 }

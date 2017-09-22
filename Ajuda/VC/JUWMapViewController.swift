@@ -28,13 +28,28 @@ class JUWMapViewController: UIViewController {
     func loadCollectionCenters() {
         let collectionCentersManager = JUWCollectionCenterManager()
         collectionCentersManager.getCollectionCenters(centers: { () in
-            let realm = try! Realm()
-            let centersArray = realm.objects(JUWCollectionCenter.self)
-            print(centersArray.count)
-            
+            self.loadCenters()
         }) { (error) in
             
         }
     }
-    
+
+    func loadCenters() {
+        let realm = try! Realm()
+        let centersArray = realm.objects(JUWCollectionCenter.self)
+
+        for center in centersArray {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude)
+            print(center.latitude, center.longitude)
+            annotation.title = center.name
+
+            mapView.addAnnotation(annotation)
+        }
+//        print(centersArray.count)
+    }
+
+//    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+//
+//    }
 }
