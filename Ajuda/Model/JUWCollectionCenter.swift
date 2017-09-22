@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import RealmSwift
 
-class JUWCollectionCenter: NSObject {
-    
+final class JUWCollectionCenter: Object {
+
     /*
      BACKEND MODEL
      "id": 1,
@@ -30,10 +31,10 @@ class JUWCollectionCenter: NSObject {
      "responsable_id": 1
      }
      }]*/
-    var name: String?
-    var address: String?
-    var latitude: Double?
-    var longitude: Double?
-    var phoneNumber: String?
-    var centerIdentifier: Int32?
+    @objc dynamic var name: String = ""
+    @objc dynamic var address: String = ""
+    @objc dynamic var latitude: Double = 0.0
+    @objc dynamic var longitude: Double = 0.0
+    @objc dynamic var phoneNumber: String = ""
+    @objc dynamic var centerIdentifier: Int32 = 0
 }

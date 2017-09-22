@@ -30,7 +30,7 @@ class JUWNetworkManager: NSObject {
             .responseJSON { response in
                 switch response.result {
                 case .success:
-                    completion(response)
+                    completion(response.result.value)
                 case .failure:
                     failure(response.error)
                 }
