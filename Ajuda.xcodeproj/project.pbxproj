@@ -38,6 +38,7 @@
 		D153A3511F747B5E00541263 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D153A34F1F747B5E00541263 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D153A3521F747B7000541263 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D153A34E1F747B5D00541263 /* Realm.framework */; };
 		D153A3531F747B7000541263 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D153A34F1F747B5E00541263 /* RealmSwift.framework */; };
+		D153A3561F747D3300541263 /* JUWConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D153A3551F747D3300541263 /* JUWConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		D13709C41F74797B00F3B216 /* JUWCollectionCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWCollectionCenterManager.swift; sourceTree = "<group>"; };
 		D153A34E1F747B5D00541263 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = frameworks/Realm.framework; sourceTree = "<group>"; };
 		D153A34F1F747B5E00541263 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = frameworks/RealmSwift.framework; sourceTree = "<group>"; };
+		D153A3551F747D3300541263 /* JUWConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 				D13709AC1F744A4600F3B216 /* JUWNetworkManager.swift */,
 				D13709C21F746EE100F3B216 /* JUWFoundPet.swift */,
 				D13709C41F74797B00F3B216 /* JUWCollectionCenterManager.swift */,
+				D153A3551F747D3300541263 /* JUWConstants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				D13709C51F74797B00F3B216 /* JUWCollectionCenterManager.swift in Sources */,
 				D13709AA1F743A1B00F3B216 /* JUWSignUpViewController.swift in Sources */,
 				D13709971F74284A00F3B216 /* JUWCollectionCenter.swift in Sources */,
+				D153A3561F747D3300541263 /* JUWConstants.swift in Sources */,
 				D13709991F74286200F3B216 /* JUWDamagedBuilding.swift in Sources */,
 				D13709C11F74661800F3B216 /* JUWKeychainService.swift in Sources */,
 				D13709681F74261200F3B216 /* AppDelegate.swift in Sources */,

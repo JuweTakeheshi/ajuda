@@ -24,7 +24,7 @@ class JUWSession: NSObject {
         return true
     }
 
-    func signInWithUserName(username: String, password: String, completion: (_ result: String) -> Void, failure: (_ error: Error) -> Void) {
+    func signInWithUserName(username: String, password: String, completion: (_ result: Any) -> Void, failure: (_ error: Error) -> Void) {
         JUWKeychainService.saveToken(token: "obtainedTokenFromServer")
         JUWKeychainService.saveUserType(type: "Ciclista")
         completion("OK")
@@ -32,7 +32,7 @@ class JUWSession: NSObject {
 
     func signUpWithUserName(username: String, password: String, userType: String, completion: @escaping (_ result: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
-        networkManager.post(parameters: ["username": username, "password": password, "userType": userType], completion: { (result) in
+        networkManager.post(url: "", parameters: ["username": username, "password": password, "userType": userType], completion: { (result) in
             JUWKeychainService.saveToken(token: "obtainedTokenFromServer")
             JUWKeychainService.saveUserType(type: userType as NSString)
             completion("OK")
