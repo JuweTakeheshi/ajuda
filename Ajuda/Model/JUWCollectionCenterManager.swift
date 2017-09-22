@@ -58,21 +58,26 @@ class JUWCollectionCenterManager: NSObject {
                              "id": "59c4c10500220a53359e04d9"
                              },*/
                             try! realm.write {
-                                center?.name = dictionary["nombre"] as! String
-                                center?.address = dictionary["direccion"] as! String
-                                // API is broken
-//                                center?.latitude = dictionary["latitud"] as! Double
-//                                center?.longitude = dictionary["longitud"] as! Double
-                                center?.centerIdentifier = dictionary["id"] as! String
+                                if let name = dictionary["nombre"] as? String {
+                                    center?.name = name
+                                }
+
+                                if let address = dictionary["direccion"] as? String {
+                                    center?.address = address
+                                }
                                 
+                                if let identifier = dictionary["id"] as? String {
+                                    center?.centerIdentifier = identifier
+                                }
+
                                 if let geoPosDictionary = dictionary["geopos"] as? [String: Any] {
                                     if geoPosDictionary.count > 0 {
-                                        center?.latitude = geoPosDictionary["lat"] as! Double
-                                        center?.longitude = geoPosDictionary["lng"] as! Double
-//                                        for value in geoPosArray {}
-//                                        if let peopleInCharge = geoPosArray[0] as? [String: Any] {
-//                                            center?.phoneNumber = peopleInCharge["telefono"] as! String
-//                                        }
+                                        if let latitude = geoPosDictionary["lat"] as? Double {
+                                            center?.latitude = latitude
+                                        }
+                                        if let longitude = geoPosDictionary["lng"] as? Double {
+                                            center?.longitude = longitude
+                                        }
                                     }
                                 }
                             }

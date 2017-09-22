@@ -10,6 +10,7 @@
 
 import UIKit
 import MapKit
+import RealmSwift
 
 class JUWMapCollectionCenter: NSObject, MKAnnotation {
     let title: String?
@@ -37,10 +38,34 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
         return address
     }
 
-    func retrieveContacInfotWith(completion: @escaping (_ result: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
+    func retrieveContacInfotWith(completion: @escaping (_ resultPhone: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
-        networkManager.get(url: kCollectionCenterContactInfoUrl, completion: { (result) in
-            
+        let url = String(format: kCollectionCenterContactInfoUrl, self.centerIdentifier)
+        networkManager.get(url: url, completion: { (result) in
+            DispatchQueue.global().async {
+                if let array = result as? [Any] {
+                    let realm = try! Realm()
+                    
+                    let predicate = NSPredicate(format: "centerIdentifier = %@", self.centerIdentifier)
+                    let center = realm.objects(JUWCollectionCenter.self).filter(predicate).first
+
+                    for value in array {
+                        if let dictionary = value as? [String: Any] {
+                            DispatchQueue.main.async {
+                                completion(dictionary["telefono"] as! String)
+                            }
+                            try! realm.write {
+                                center?.phoneNumber = dictionary["telefono"] as! String
+                                center?.contactName = dictionary["nombre"] as! String
+                                center?.contactEmail = dictionary["email"] as! String
+                                center?.twitterHandle = dictionary["twitter"] as! String
+                                center?.facebookHandle = dictionary["facebook"] as! String
+                            }
+                        }
+                    }
+                }
+                
+            }
         }) { (error) in
             
         }

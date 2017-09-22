@@ -13,7 +13,6 @@ import MapKit
 class JUWMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-//    @IBOutlet weak var detailCalloutAccessoryView: UIView!
     @IBOutlet weak var needLabel: UILabel!
     @IBOutlet weak var contactLabel: UILabel!
     @IBOutlet weak var callButton: UIButton!
@@ -116,6 +115,17 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
             button.backgroundColor = UIColor.darkGray
             detailCalloutAccessoryView.addSubview(button)
             
+            annotation.retrieveContacInfotWith(completion: { (resultPhone) in
+                if resultPhone.isEmpty {
+                    button.setTitle("Sin teléfono registrado", for: .normal)
+                }
+                else {
+                    button.setTitle(resultPhone, for: .normal)
+                }
+                
+            }, failure: { (error) in
+                
+            })
 //                callButton.setTitle(annotation.phoneNumber, for: .normal)
             
 

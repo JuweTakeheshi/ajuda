@@ -37,4 +37,8 @@ final class JUWCollectionCenter: Object {
     @objc dynamic var longitude: Double = 0.0
     @objc dynamic var phoneNumber: String = ""
     @objc dynamic var centerIdentifier: String = ""
+    @objc dynamic var contactName: String = ""
+    @objc dynamic var contactEmail: String = ""
+    @objc dynamic var twitterHandle: String = ""
+    @objc dynamic var facebookHandle: String = ""
 }
