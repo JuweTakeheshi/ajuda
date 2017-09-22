@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class JUWMapViewController: UIViewController {
 
@@ -23,10 +24,12 @@ class JUWMapViewController: UIViewController {
     
     func loadCollectionCenters() {
         let collectionCentersManager = JUWCollectionCenterManager()
-        collectionCentersManager.getCollectionCenters(centers: { (result) in
-            NSLog("")
+        collectionCentersManager.getCollectionCenters(centers: { () in
+            let realm = try! Realm()
+            let centersArray = realm.objects(JUWCollectionCenter.self)
+            print(centersArray.count)
         }) { (error) in
-            NSLog("")
+            
         }
     }
 }

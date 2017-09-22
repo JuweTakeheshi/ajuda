@@ -37,6 +37,7 @@
 		D153A3531F747B7000541263 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D153A34F1F747B5E00541263 /* RealmSwift.framework */; };
 		D153A3561F747D3300541263 /* JUWConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D153A3551F747D3300541263 /* JUWConstants.swift */; };
 		D153A3581F74B26600541263 /* JUWCourier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D153A3571F74B26600541263 /* JUWCourier.swift */; };
+		D1E534841F74D65C0000E2A9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E534831F74D65C0000E2A9 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		D153A34F1F747B5E00541263 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = frameworks/RealmSwift.framework; sourceTree = "<group>"; };
 		D153A3551F747D3300541263 /* JUWConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWConstants.swift; sourceTree = "<group>"; };
 		D153A3571F74B26600541263 /* JUWCourier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWCourier.swift; sourceTree = "<group>"; };
+		D1E534831F74D65C0000E2A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E534841F74D65C0000E2A9 /* MapKit.framework in Frameworks */,
 				D153A3521F747B7000541263 /* Realm.framework in Frameworks */,
 				D153A3531F747B7000541263 /* RealmSwift.framework in Frameworks */,
 				D13709B21F74510B00F3B216 /* Alamofire.framework in Frameworks */,
@@ -196,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				D13709BF1F74660400F3B216 /* keychain */,
-				D13709961F74284A00F3B216 /* JUWCollectionCenter.swift */,
 				D13709981F74286200F3B216 /* JUWDamagedBuilding.swift */,
 				D137099A1F74287A00F3B216 /* JUWShelter.swift */,
 				D13709A01F742B5A00F3B216 /* JUWFoundPerson.swift */,
@@ -204,6 +206,7 @@
 				D13709A41F74328500F3B216 /* JUWSession.swift */,
 				D13709AC1F744A4600F3B216 /* JUWNetworkManager.swift */,
 				D13709C21F746EE100F3B216 /* JUWFoundPet.swift */,
+				D13709961F74284A00F3B216 /* JUWCollectionCenter.swift */,
 				D13709C41F74797B00F3B216 /* JUWCollectionCenterManager.swift */,
 				D153A3551F747D3300541263 /* JUWConstants.swift */,
 				D153A3571F74B26600541263 /* JUWCourier.swift */,
@@ -226,6 +229,7 @@
 		D13709AE1F744D4600F3B216 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1E534831F74D65C0000E2A9 /* MapKit.framework */,
 				D13709B11F74510B00F3B216 /* Alamofire.framework */,
 				D13709AF1F744D4700F3B216 /* Alamofire.framework */,
 			);
