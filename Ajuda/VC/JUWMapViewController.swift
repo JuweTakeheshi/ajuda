@@ -13,16 +13,16 @@ import MapKit
 class JUWMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var detailCalloutAccessoryView: UIView!
+//    @IBOutlet weak var detailCalloutAccessoryView: UIView!
     @IBOutlet weak var needLabel: UILabel!
     @IBOutlet weak var contactLabel: UILabel!
     @IBOutlet weak var callButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UINib(nibName: "JUWDetailCalloutAccessoryView", bundle: nil).instantiate(withOwner: self, options: nil)
-        view.addSubview(detailCalloutAccessoryView)
-        detailCalloutAccessoryView.isHidden = true
+//        UINib(nibName: "JUWDetailCalloutAccessoryView", bundle: nil).instantiate(withOwner: self, options: nil)
+//        view.addSubview(detailCalloutAccessoryView)
+//        detailCalloutAccessoryView.isHidden = true
         loadCollectionCenters()
         // Do any additional setup after loading the view.
     }
@@ -80,9 +80,7 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? JUWMapCollectionCenter {
             print(annotation)
-//            if (annotation is MKUserLocation) {
-//                return nil
-//            }
+
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
             if annotationView == nil {
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "reuseIdentifier")
@@ -93,17 +91,33 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
                 annotationView?.annotation = annotation
             }
 
-            if detailCalloutAccessoryView != nil {
-                let widthConstraint = NSLayoutConstraint(item: detailCalloutAccessoryView,
-                                                         attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 280)
-                detailCalloutAccessoryView.addConstraint(widthConstraint)
+            let detailCalloutAccessoryView = UIView()
 
-                let heightConstraint = NSLayoutConstraint(item: detailCalloutAccessoryView,
-                                                          attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
-                detailCalloutAccessoryView.addConstraint(heightConstraint)
+            let widthConstraint = NSLayoutConstraint(item: detailCalloutAccessoryView,
+                                                     attribute: .width,
+                                                     relatedBy: .equal,
+                                                     toItem: nil,
+                                                     attribute: .notAnAttribute,
+                                                     multiplier: 1,
+                                                     constant: 280)
+            detailCalloutAccessoryView.addConstraint(widthConstraint)
 
-                callButton.setTitle(annotation.phoneNumber, for: .normal)
-            }
+            let heightConstraint = NSLayoutConstraint(item: detailCalloutAccessoryView,
+                                                      attribute: .height,
+                                                      relatedBy: .equal,
+                                                      toItem: nil,
+                                                      attribute: .notAnAttribute,
+                                                      multiplier: 1,
+                                                      constant: 320)
+            detailCalloutAccessoryView.addConstraint(heightConstraint)
+
+            let button = UIButton()
+            button.frame = CGRect(x: 0, y: 290, width: 280, height: 30)
+            button.backgroundColor = UIColor.darkGray
+            detailCalloutAccessoryView.addSubview(button)
+            
+//                callButton.setTitle(annotation.phoneNumber, for: .normal)
+            
 
             if #available(iOS 9.0, *) {
                 annotationView?.detailCalloutAccessoryView = detailCalloutAccessoryView
@@ -117,7 +131,7 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        detailCalloutAccessoryView.isHidden = false
+//        detailCalloutAccessoryView.isHidden = false
     }
 
     @IBAction func call(_ sender: Any) {

@@ -11,3 +11,4 @@ import Foundation
 //let kCollectionCentersUrl = "http://acopio-api.skycatch.net/v1/acopios"
 let kCollectionCentersUrl = "https://hapi.balterbyte.com/api/acopios"
 let kCollectionCenterNeedsUrl = "https://hapi.balterbyte.com/api/acopios/%@/productos"
+let kCollectionCenterContactInfoUrl = "https://hapi.balterbyte.com/api/acopios/%@/contactos"

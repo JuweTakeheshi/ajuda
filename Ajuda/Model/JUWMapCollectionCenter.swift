@@ -36,4 +36,13 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
     var subtitle: String? {
         return address
     }
+
+    func retrieveContacInfotWith(completion: @escaping (_ result: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let networkManager = JUWNetworkManager()
+        networkManager.get(url: kCollectionCenterContactInfoUrl, completion: { (result) in
+            
+        }) { (error) in
+            
+        }
+    }
 }
