@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import MapKit
 
-class JUWMapViewController: UIViewController {
+class JUWMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
 
@@ -46,10 +46,38 @@ class JUWMapViewController: UIViewController {
 
             mapView.addAnnotation(annotation)
         }
-//        print(centersArray.count)
     }
 
-//    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-//
-//    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if (annotation is MKUserLocation) {
+            return nil
+        }
+
+        let reuseId = "test"
+
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            annotationView?.image = UIImage(named:"circle")
+            annotationView?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+
+        let detailView = UIView()
+        detailView.backgroundColor = UIColor.gray
+        let widthConstraint = NSLayoutConstraint(item: detailView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200)
+        detailView.addConstraint(widthConstraint)
+        
+        let heightConstraint = NSLayoutConstraint(item: detailView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 140)
+        detailView.addConstraint(heightConstraint)
+        if #available(iOS 9.0, *) {
+            annotationView?.detailCalloutAccessoryView = detailView
+        } else {
+            // Fallback on earlier versions
+        }
+
+        return annotationView
+    }
 }

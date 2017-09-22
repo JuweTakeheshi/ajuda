@@ -38,6 +38,7 @@
 		D153A3561F747D3300541263 /* JUWConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D153A3551F747D3300541263 /* JUWConstants.swift */; };
 		D153A3581F74B26600541263 /* JUWCourier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D153A3571F74B26600541263 /* JUWCourier.swift */; };
 		D1E534841F74D65C0000E2A9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E534831F74D65C0000E2A9 /* MapKit.framework */; };
+		D1E534891F7571150000E2A9 /* circle.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D1E534881F7571150000E2A9 /* circle.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		D153A3551F747D3300541263 /* JUWConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWConstants.swift; sourceTree = "<group>"; };
 		D153A3571F74B26600541263 /* JUWCourier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWCourier.swift; sourceTree = "<group>"; };
 		D1E534831F74D65C0000E2A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D1E534881F7571150000E2A9 /* circle.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = circle.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 		D13709661F74261200F3B216 /* Ajuda */ = {
 			isa = PBXGroup;
 			children = (
+				D1E534871F756BE20000E2A9 /* Resources */,
 				D13709A61F74334800F3B216 /* VC */,
 				D13709951F74281F00F3B216 /* Model */,
 				D13709671F74261200F3B216 /* AppDelegate.swift */,
@@ -242,6 +245,14 @@
 				D13709C01F74661800F3B216 /* JUWKeychainService.swift */,
 			);
 			path = keychain;
+			sourceTree = "<group>";
+		};
+		D1E534871F756BE20000E2A9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D1E534881F7571150000E2A9 /* circle.pdf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E534891F7571150000E2A9 /* circle.pdf in Resources */,
 				D13709721F74261200F3B216 /* LaunchScreen.storyboard in Resources */,
 				D137096F1F74261200F3B216 /* Assets.xcassets in Resources */,
 				D137096D1F74261200F3B216 /* Main.storyboard in Resources */,
