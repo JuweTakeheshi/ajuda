@@ -107,11 +107,11 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
                                                       toItem: nil,
                                                       attribute: .notAnAttribute,
                                                       multiplier: 1,
-                                                      constant: 320)
+                                                      constant: 260)
             detailCalloutAccessoryView.addConstraint(heightConstraint)
 
             let button = UIButton()
-            button.frame = CGRect(x: 0, y: 290, width: 280, height: 30)
+            button.frame = CGRect(x: 0, y: 220, width: 280, height: 30)
             button.backgroundColor = UIColor.darkGray
             detailCalloutAccessoryView.addSubview(button)
 

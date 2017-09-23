@@ -28,10 +28,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func validateSession() {
         let token = JUWKeychainService.loadToken()
         let userType = JUWKeychainService.loadUserType()
-
+        
         if token != nil && userType != nil {
             if userType! as String == JUWSession.UserType.courier.rawValue {
-                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWCourierViewController
                 navigationController?.pushViewController(bikerViewController, animated: false)
             }
         }
