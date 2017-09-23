@@ -114,7 +114,7 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
             button.frame = CGRect(x: 0, y: 290, width: 280, height: 30)
             button.backgroundColor = UIColor.darkGray
             detailCalloutAccessoryView.addSubview(button)
-            
+
             annotation.retrieveContacInfotWith(completion: { (resultPhone) in
                 if resultPhone.isEmpty {
                     button.setTitle("Sin teléfono registrado", for: .normal)
@@ -122,27 +122,24 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
                 else {
                     button.setTitle(resultPhone, for: .normal)
                 }
-                
             }, failure: { (error) in
                 button.setTitle("Sin teléfono registrado", for: .normal)
             })
 
             button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
-
             if #available(iOS 9.0, *) {
                 annotationView?.detailCalloutAccessoryView = detailCalloutAccessoryView
             } else {
                 // Fallback on earlier versions
             }
+            
 
             return annotationView
         }
             return nil
     }
 
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//        detailCalloutAccessoryView.isHidden = false
-    }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {}
 
     @IBAction func call(_ sender: UIButton) {
         if let phoneNumber = sender.titleLabel?.text {

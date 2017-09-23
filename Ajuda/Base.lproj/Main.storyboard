@@ -310,7 +310,7 @@
         <!--Courier View Controller-->
         <scene sceneID="nZh-8C-PaP">
             <objects>
-                <tabBarController storyboardIdentifier="JUWBikerViewController" id="7gw-bt-eMa" customClass="JUWCourierViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="JUWBikerViewController" hidesBottomBarWhenPushed="YES" id="7gw-bt-eMa" customClass="JUWCourierViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t6R-xM-SJe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
