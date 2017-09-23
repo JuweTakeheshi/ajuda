@@ -124,10 +124,10 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
                 }
                 
             }, failure: { (error) in
-                
+                button.setTitle("Sin teléfono registrado", for: .normal)
             })
-//                callButton.setTitle(annotation.phoneNumber, for: .normal)
-            
+
+            button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
 
             if #available(iOS 9.0, *) {
                 annotationView?.detailCalloutAccessoryView = detailCalloutAccessoryView
@@ -144,7 +144,20 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
 //        detailCalloutAccessoryView.isHidden = false
     }
 
-    @IBAction func call(_ sender: Any) {
+    @IBAction func call(_ sender: UIButton) {
+        if let phoneNumber = sender.titleLabel?.text {
+            let formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+            if let url = URL(string: "tel://\(formatedNumber)") {
+                let application:UIApplication = UIApplication.shared
+                if (application.canOpenURL(url)) {
+                    if #available(iOS 10.0, *) {
+                        application.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func showDetail(_ sender: Any) {
