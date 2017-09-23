@@ -16,10 +16,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        provisionalSkipSingIn()
         validateSession()
         customizeUserInterface()
     }
-
+    
+    func provisionalSkipSingIn(){
+        let window = UIApplication.shared.keyWindow!
+        let whiteView = UIView(frame: CGRect(x: window.frame.origin.x, y: window.frame.origin.y+15, width: window.frame.width, height: window.frame.height))
+        window.addSubview(whiteView);
+        whiteView.backgroundColor = UIColor.white
+        
+        let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWCourierViewController
+        let provisionalNavC = UINavigationController(rootViewController: bikerViewController)
+        self.present(provisionalNavC, animated: false, completion:{
+            whiteView.removeFromSuperview()
+        })
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
