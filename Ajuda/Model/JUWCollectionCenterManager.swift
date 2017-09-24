@@ -71,7 +71,9 @@ class JUWCollectionCenterManager: NSObject {
         
         var collectionCenter: [JUWCollectionCenter] = []
         guard let url = String(format: kCollectionCenterSearchProductUrl, query).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {
-            completion(collectionCenter)
+            DispatchQueue.main.async {
+                completion(collectionCenter)
+            }
             return
         }
         networkManager.get(url: url, completion: { (result) in
@@ -89,9 +91,13 @@ class JUWCollectionCenterManager: NSObject {
                     }
                 }
             }
-            completion(collectionCenter)
+            DispatchQueue.main.async {
+                completion(collectionCenter)
+            }
         }) { (error) in
-            completion(collectionCenter)
+            DispatchQueue.main.async {
+                completion(collectionCenter)
+            }
         }
     }
 }
