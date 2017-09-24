@@ -28,35 +28,6 @@ class JUWCollectionCenterManager: NSObject {
                                     realm.add(center!)
                                 }
                             }
-
-                            //http://acopio-api.skycatch.net/v1/acopios
-//                            try! realm.write {
-//                                center?.name = dictionary["nombre"] as! String
-//                                center?.address = dictionary["direccion"] as! String
-//                                // API is broken
-//                                center?.latitude = dictionary["latitud"] as! Double
-//                                center?.longitude = dictionary["longitud"] as! Double
-//                                center?.centerIdentifier = dictionary["id"] as! Int32
-//
-//                                if let peopleInChargeArray = dictionary["responsables"] as? [Any] {
-//                                    if peopleInChargeArray.count > 0 {
-//                                        if let peopleInCharge = peopleInChargeArray[0] as? [String: Any] {
-//                                            center?.phoneNumber = peopleInCharge["telefono"] as! String
-//                                        }
-//                                    }
-//                                }
-//                            }
-                            //http://ec2-54-242-119-209.compute-1.amazonaws.com/api/acopios
-                            /*{
-                             "legacy_id": "29",
-                             "nombre": "365",
-                             "direccion": "Calle Bajío 365. Condesa. Cuauhtémoc. Ciudad de México",
-                             "geopos": {
-                             "lat": 19.402515,
-                             "lng": -99.170374
-                             },
-                             "id": "59c4c10500220a53359e04d9"
-                             },*/
                             try! realm.write {
                                 if let name = dictionary["nombre"] as? String {
                                     center?.name = name

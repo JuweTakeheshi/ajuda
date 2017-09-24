@@ -43,6 +43,7 @@
 		D1E534841F74D65C0000E2A9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E534831F74D65C0000E2A9 /* MapKit.framework */; };
 		D1E5348B1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */; };
 		D1E5348D1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */; };
+		D1F348021F775A74003AB9A2 /* JUWProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F348011F775A74003AB9A2 /* JUWProduct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		D1E534831F74D65C0000E2A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JUWDetailCalloutAccessoryView.xib; sourceTree = "<group>"; };
 		D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWMapCollectionCenter.swift; sourceTree = "<group>"; };
+		D1F348011F775A74003AB9A2 /* JUWProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWProduct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				D153A3551F747D3300541263 /* JUWConstants.swift */,
 				D153A3571F74B26600541263 /* JUWCourier.swift */,
 				D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */,
+				D1F348011F775A74003AB9A2 /* JUWProduct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				D13709B61F7460C300F3B216 /* JUWCollectionCenterViewController.swift in Sources */,
 				D13709BA1F7460E300F3B216 /* JUWCourierViewController.swift in Sources */,
 				D13709A51F74328500F3B216 /* JUWSession.swift in Sources */,
+				D1F348021F775A74003AB9A2 /* JUWProduct.swift in Sources */,
 				D13709A31F74325E00F3B216 /* JUWUser.swift in Sources */,
 				D13709C51F74797B00F3B216 /* JUWCollectionCenterManager.swift in Sources */,
 				D13709AA1F743A1B00F3B216 /* JUWSignUpViewController.swift in Sources */,
