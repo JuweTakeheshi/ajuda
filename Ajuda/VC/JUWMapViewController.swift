@@ -113,12 +113,12 @@ extension JUWMapViewController: MKMapViewDelegate {
         
         //Add Button For calling in XIB
         let button = UIButton()
-        button.frame = CGRect(x: 0, y: 220, width: 280, height: 30)
+        button.frame = CGRect(x: 10, y: 270, width: 260, height: 40)
         button.backgroundColor = UIColor.darkGray
         detailCalloutAccessoryView.addSubview(button)
         //Add button for detail center in XIB
         let btnDetailCenter = UIButton()
-        btnDetailCenter.frame = CGRect(x: 0, y: 120, width: 280, height: 30)
+        btnDetailCenter.frame = CGRect(x: 10, y: 220, width: 260, height: 40)
         btnDetailCenter.backgroundColor = UIColor.darkGray
         detailCalloutAccessoryView.addSubview(btnDetailCenter)
         btnDetailCenter.setTitle("Ver mas", for: .normal)
