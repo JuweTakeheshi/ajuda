@@ -23,6 +23,8 @@ class JUWMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Centros acopio"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Quiero ayudar", style: .plain, target: self, action: #selector(JUWMapViewController.sendHelp(_:)))
         loadCollectionCenters()
     }
 
@@ -78,7 +80,7 @@ class JUWMapViewController: UIViewController {
         let detailCenterNC = sb.instantiateViewController(withIdentifier: "DetailCenterNC") as! UINavigationController
         let detailVC  = detailCenterNC.viewControllers[0] as! DetailCenterVC
         detailVC.center = currentCenter
-        self.present(detailCenterNC, animated: true, completion: nil)
+        present(detailCenterNC, animated: true, completion: nil)
     }
 }
 
@@ -158,7 +160,13 @@ extension JUWMapViewController: MKMapViewDelegate {
             }
         }
     }
-    
-
- 
+    @IBAction func sendHelp(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchViewController = storyboard.instantiateViewController(withIdentifier: "JUWShelterViewController") as! JUWShelterViewController
+        
+        let navigationController = UINavigationController(rootViewController: searchViewController)
+        present(navigationController, animated: true) {
+            
+        }
+    }
 }

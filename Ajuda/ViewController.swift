@@ -22,20 +22,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func provisionalSkipSingIn(){
-        let window = UIApplication.shared.keyWindow!
-        let whiteView = UIView(frame: CGRect(x: window.frame.origin.x, y: window.frame.origin.y+15, width: window.frame.width, height: window.frame.height))
-        window.addSubview(whiteView);
-        whiteView.backgroundColor = UIColor.white
-        
-        let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWCourierViewController
-        let provisionalNavC = UINavigationController(rootViewController: bikerViewController)
-        self.present(provisionalNavC, animated: false, completion:{
-            whiteView.removeFromSuperview()
-        })
+        let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+        let provisionalNavC = UINavigationController(rootViewController: mapViewController)
+        self.present(provisionalNavC, animated: false, completion:nil)
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func validateSession() {
