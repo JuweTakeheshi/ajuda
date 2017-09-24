@@ -12,3 +12,4 @@ import Foundation
 let kCollectionCentersUrl = "https://hapi.balterbyte.com/api/acopios"
 let kCollectionCenterNeedsUrl = "https://hapi.balterbyte.com/api/acopios/%@/productos"
 let kCollectionCenterContactInfoUrl = "https://hapi.balterbyte.com/api/acopios/%@/contactos"
+let kCollectionCenterProductsUrl = "https://hapi.balterbyte.com/api/acopios/%@/productos"
