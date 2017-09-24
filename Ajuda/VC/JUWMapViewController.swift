@@ -109,6 +109,12 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
         button.frame = CGRect(x: 0, y: 220, width: 280, height: 30)
         button.backgroundColor = UIColor.darkGray
         detailCalloutAccessoryView.addSubview(button)
+        //Add button for detail center in XIB
+        let btnDetailCenter = UIButton()
+        btnDetailCenter.frame = CGRect(x: 0, y: 120, width: 280, height: 30)
+        btnDetailCenter.backgroundColor = UIColor.darkGray
+        detailCalloutAccessoryView.addSubview(btnDetailCenter)
+        btnDetailCenter.setTitle("Ver mas", for: .normal)
         
         annotation.retrieveContacInfotWith(completion: { (resultPhone) in
             if resultPhone.isEmpty {
@@ -121,8 +127,9 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
             button.setTitle("Sin teléfono registrado", for: .normal)
         })
         
-        button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
         
+        button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
+        btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
         detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
         view.addSubview(detailCalloutAccessoryView)
         mapView.setCenter((view.annotation?.coordinate)!, animated: true)
@@ -156,5 +163,8 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func showDetail(_ sender: Any) {
+        let sb = UIStoryboard(name: "Products", bundle: nil)
+        let detailCenterNC = sb.instantiateViewController(withIdentifier: "DetailCenterNC")
+        self.present(detailCenterNC, animated: true, completion: nil)
     }
 }
