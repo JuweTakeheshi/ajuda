@@ -143,7 +143,13 @@ extension JUWMapViewController: MKMapViewDelegate {
         }, failure: { (error) in
             button.setTitle("Sin teléfono registrado", for: .normal)
         })
-        
+
+        annotation.retrieveProductsWith(completion: { (products) in
+            
+        }) { (error) in
+            
+        }
+
         button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
         
         detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
