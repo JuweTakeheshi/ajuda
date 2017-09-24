@@ -70,4 +70,19 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
             
         }
     }
+
+    func retrieveProductsWith(completion: @escaping (_ result: [Any]) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let networkManager = JUWNetworkManager()
+        let url = String(format: kCollectionCenterProductsUrl, self.centerIdentifier)
+        networkManager.get(url: url, completion: { (result) in
+            DispatchQueue.global().async {
+//                if let array = result as? [Any] {
+//                    let realm = try! Realm()
+//                    
+//                }
+            }
+        }) { (error) in
+            
+        }
+    }
 }

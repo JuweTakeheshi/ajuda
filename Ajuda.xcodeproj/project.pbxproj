@@ -44,6 +44,7 @@
 		D1E5348B1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */; };
 		D1E5348D1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */; };
 		D1F348021F775A74003AB9A2 /* JUWProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F348011F775A74003AB9A2 /* JUWProduct.swift */; };
+		D1F348041F77E43B003AB9A2 /* JUWProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F348031F77E43B003AB9A2 /* JUWProductManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JUWDetailCalloutAccessoryView.xib; sourceTree = "<group>"; };
 		D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWMapCollectionCenter.swift; sourceTree = "<group>"; };
 		D1F348011F775A74003AB9A2 /* JUWProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWProduct.swift; sourceTree = "<group>"; };
+		D1F348031F77E43B003AB9A2 /* JUWProductManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWProductManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 				D153A3571F74B26600541263 /* JUWCourier.swift */,
 				D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */,
 				D1F348011F775A74003AB9A2 /* JUWProduct.swift */,
+				D1F348031F77E43B003AB9A2 /* JUWProductManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				D13709AA1F743A1B00F3B216 /* JUWSignUpViewController.swift in Sources */,
 				D13709971F74284A00F3B216 /* JUWCollectionCenter.swift in Sources */,
 				D153A3561F747D3300541263 /* JUWConstants.swift in Sources */,
+				D1F348041F77E43B003AB9A2 /* JUWProductManager.swift in Sources */,
 				D13709991F74286200F3B216 /* JUWDamagedBuilding.swift in Sources */,
 				D13709C11F74661800F3B216 /* JUWKeychainService.swift in Sources */,
 				D13709681F74261200F3B216 /* AppDelegate.swift in Sources */,
@@ -621,7 +625,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M83HJ6VTJG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -642,7 +646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M83HJ6VTJG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
