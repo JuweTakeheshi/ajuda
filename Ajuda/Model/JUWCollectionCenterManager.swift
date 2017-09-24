@@ -11,8 +11,9 @@ import RealmSwift
 
 class JUWCollectionCenterManager: NSObject {
 
+    private let networkManager = JUWNetworkManager()
+    
     func getCollectionCenters(centers: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
-        let networkManager = JUWNetworkManager()
         networkManager.get(url: kCollectionCentersUrl, completion: { (result) in
             DispatchQueue.global().async {
                 if let array = result as? [Any] {
@@ -61,6 +62,30 @@ class JUWCollectionCenterManager: NSObject {
             }
         }) { (error) in
             failure(error!)
+        }
+    }
+    
+    func collectionCenters(whichNeed product: String, completion: @escaping (_ result: [JUWCollectionCenter]) -> Void) {
+        var collectionCenter: [JUWCollectionCenter] = []
+        
+        networkManager.get(url: "https://hapi.balterbyte.com/api/productos?filter=%7B%22where%22:%7B%22nombre%22:%7B%22like%22:%22\(product.lowercased())%22%7D%7D%7D", completion: { (result) in
+            
+            if let array = result as? [Any] {
+                let realm = try! Realm()
+                
+                for value in array {
+                    if let dictionary = value as? [String: Any] {
+                        
+                        let predicate = NSPredicate(format: "centerIdentifier = %@", dictionary["acopioId"] as! String)
+                        if let center = realm.objects(JUWCollectionCenter.self).filter(predicate).first {
+                            collectionCenter.append(center)
+                        }
+                    }
+                }
+            }
+            completion(collectionCenter)
+        }) { (error) in
+            completion(collectionCenter)
         }
     }
 }
