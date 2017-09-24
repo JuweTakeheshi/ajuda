@@ -82,6 +82,19 @@ class JUWMapViewController: UIViewController {
         detailVC.center = currentCenter
         present(detailCenterNC, animated: true, completion: nil)
     }
+
+    @IBAction func sendHelp(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchViewController = storyboard.instantiateViewController(withIdentifier: "JUWShelterViewController") as! JUWShelterViewController
+        searchViewController.onResultsFound = {(results) in
+            
+        }
+        
+        let navigationController = UINavigationController(rootViewController: searchViewController)
+        present(navigationController, animated: true) {
+            
+        }
+    }
 }
 
 extension JUWMapViewController: MKMapViewDelegate {
@@ -158,15 +171,6 @@ extension JUWMapViewController: MKMapViewDelegate {
             {
                 subview.removeFromSuperview()
             }
-        }
-    }
-    @IBAction func sendHelp(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let searchViewController = storyboard.instantiateViewController(withIdentifier: "JUWShelterViewController") as! JUWShelterViewController
-        
-        let navigationController = UINavigationController(rootViewController: searchViewController)
-        present(navigationController, animated: true) {
-            
         }
     }
 }

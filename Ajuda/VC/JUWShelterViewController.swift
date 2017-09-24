@@ -11,7 +11,6 @@ typealias OnResultsFound = (_ result: [JUWCollectionCenter])->()
 import UIKit
 
 class JUWShelterViewController: UIViewController {
-
     var onResultsFound: OnResultsFound?
     
     override func viewDidLoad() {
