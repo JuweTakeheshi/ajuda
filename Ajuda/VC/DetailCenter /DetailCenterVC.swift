@@ -9,10 +9,12 @@
 import UIKit
 
 class DetailCenterVC: UIViewController {
-
+    // MARK: Properties
+    var center:JUWMapCollectionCenter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = center.name
         // Do any additional setup after loading the view.
     }
 

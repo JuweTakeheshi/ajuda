@@ -11,6 +11,8 @@ import RealmSwift
 import MapKit
 
 class JUWMapViewController: UIViewController, MKMapViewDelegate {
+    // MARK: Properties
+    var currentCenter:JUWMapCollectionCenter!
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var needLabel: UILabel!
@@ -127,7 +129,7 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
             button.setTitle("Sin teléfono registrado", for: .normal)
         })
         
-        
+        currentCenter = annotation
         button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
         btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
         detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
@@ -164,7 +166,9 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func showDetail(_ sender: Any) {
         let sb = UIStoryboard(name: "Products", bundle: nil)
-        let detailCenterNC = sb.instantiateViewController(withIdentifier: "DetailCenterNC")
+        let detailCenterNC = sb.instantiateViewController(withIdentifier: "DetailCenterNC") as! UINavigationController
+        let detailVC  = detailCenterNC.viewControllers[0] as! DetailCenterVC
+        detailVC.center = currentCenter
         self.present(detailCenterNC, animated: true, completion: nil)
     }
 }
