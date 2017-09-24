@@ -6,30 +6,23 @@
 //  Copyright © 2017 Juwe Takeheshi. All rights reserved.
 //
 
+typealias OnResultsFound = (_ result: [JUWCollectionCenter])->()
+
 import UIKit
 
 class JUWShelterViewController: UIViewController {
 
+    var onResultsFound: OnResultsFound?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // Cuando tengas los resultados, llamas un bloque así:
+        let resultsFromYourSearch = [JUWCollectionCenter]()
+        onResultsFound!(resultsFromYourSearch)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
