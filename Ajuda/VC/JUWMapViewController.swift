@@ -10,9 +10,11 @@ import UIKit
 import RealmSwift
 import MapKit
 
-class JUWMapViewController: UIViewController, MKMapViewDelegate {
+
+class JUWMapViewController: UIViewController {
     // MARK: Properties
     var currentCenter:JUWMapCollectionCenter!
+
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var needLabel: UILabel!
@@ -78,6 +80,34 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
 //        }
 //        return nil
     }
+
+    @IBAction func call(_ sender: UIButton) {
+        if let phoneNumber = sender.titleLabel?.text {
+            let formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+            if let url = URL(string: "tel://\(formatedNumber)") {
+                let application:UIApplication = UIApplication.shared
+                if (application.canOpenURL(url)) {
+                    if #available(iOS 10.0, *) {
+                        application.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func showDetail(_ sender: Any) {
+        let sb = UIStoryboard(name: "Products", bundle: nil)
+        let detailCenterNC = sb.instantiateViewController(withIdentifier: "DetailCenterNC") as! UINavigationController
+        let detailVC  = detailCenterNC.viewControllers[0] as! DetailCenterVC
+        detailVC.center = currentCenter
+        self.present(detailCenterNC, animated: true, completion: nil)
+    }
+}
+
+extension JUWMapViewController: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation is MKUserLocation {
@@ -93,7 +123,7 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
         annotationView?.image = UIImage(named:"circle")
         return annotationView
     }
-
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if view.annotation is MKUserLocation {
@@ -146,29 +176,7 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-
-
-    @IBAction func call(_ sender: UIButton) {
-        if let phoneNumber = sender.titleLabel?.text {
-            let formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
-            if let url = URL(string: "tel://\(formatedNumber)") {
-                let application:UIApplication = UIApplication.shared
-                if (application.canOpenURL(url)) {
-                    if #available(iOS 10.0, *) {
-                        application.open(url, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(url)
-                    }
-                }
-            }
-        }
-    }
     
-    @IBAction func showDetail(_ sender: Any) {
-        let sb = UIStoryboard(name: "Products", bundle: nil)
-        let detailCenterNC = sb.instantiateViewController(withIdentifier: "DetailCenterNC") as! UINavigationController
-        let detailVC  = detailCenterNC.viewControllers[0] as! DetailCenterVC
-        detailVC.center = currentCenter
-        self.present(detailCenterNC, animated: true, completion: nil)
-    }
+
+ 
 }

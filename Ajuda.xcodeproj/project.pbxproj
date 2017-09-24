@@ -660,7 +660,7 @@
 					"$(PROJECT_DIR)/frameworks",
 				);
 				INFOPLIST_FILE = Ajuda/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JUW.Ajuda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -681,7 +681,7 @@
 					"$(PROJECT_DIR)/frameworks",
 				);
 				INFOPLIST_FILE = Ajuda/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JUW.Ajuda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
