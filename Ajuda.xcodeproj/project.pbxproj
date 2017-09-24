@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9D0C1A91F762E56008DB717 /* detailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D0C1A81F762E38008DB717 /* detailCalloutAccessoryView.swift */; };
+		B9D0C1AA1F762E5D008DB717 /* detailCalloutAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D0C1A71F762E38008DB717 /* detailCalloutAccessoryView.xib */; };
+		B9D0C1AB1F762E60008DB717 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D0C1A61F762E30008DB717 /* AnnotationView.swift */; };
 		D13709681F74261200F3B216 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709671F74261200F3B216 /* AppDelegate.swift */; };
 		D137096A1F74261200F3B216 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13709691F74261200F3B216 /* ViewController.swift */; };
 		D137096D1F74261200F3B216 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D137096B1F74261200F3B216 /* Main.storyboard */; };
@@ -75,6 +78,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B9D0C1A61F762E30008DB717 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
+		B9D0C1A71F762E38008DB717 /* detailCalloutAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = detailCalloutAccessoryView.xib; sourceTree = "<group>"; };
+		B9D0C1A81F762E38008DB717 /* detailCalloutAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailCalloutAccessoryView.swift; sourceTree = "<group>"; };
 		D13709641F74261200F3B216 /* Ajuda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ajuda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D13709671F74261200F3B216 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D13709691F74261200F3B216 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +149,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B9D0C1A51F762E09008DB717 /* CustomCallOut */ = {
+			isa = PBXGroup;
+			children = (
+				B9D0C1A61F762E30008DB717 /* AnnotationView.swift */,
+				B9D0C1A81F762E38008DB717 /* detailCalloutAccessoryView.swift */,
+				B9D0C1A71F762E38008DB717 /* detailCalloutAccessoryView.xib */,
+			);
+			path = CustomCallOut;
+			sourceTree = "<group>";
+		};
 		D137095B1F74261200F3B216 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +244,7 @@
 				D13709B71F7460D100F3B216 /* JUWShelterViewController.swift */,
 				D13709B91F7460E300F3B216 /* JUWCourierViewController.swift */,
 				D13709BD1F7464F200F3B216 /* JUWMapViewController.swift */,
+				B9D0C1A51F762E09008DB717 /* CustomCallOut */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -369,6 +386,7 @@
 			files = (
 				D13709721F74261200F3B216 /* LaunchScreen.storyboard in Resources */,
 				D137096F1F74261200F3B216 /* Assets.xcassets in Resources */,
+				B9D0C1AA1F762E5D008DB717 /* detailCalloutAccessoryView.xib in Resources */,
 				D1E5348B1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib in Resources */,
 				D137096D1F74261200F3B216 /* Main.storyboard in Resources */,
 			);
@@ -414,7 +432,9 @@
 				D13709A11F742B5A00F3B216 /* JUWFoundPerson.swift in Sources */,
 				D13709AD1F744A4600F3B216 /* JUWNetworkManager.swift in Sources */,
 				D137096A1F74261200F3B216 /* ViewController.swift in Sources */,
+				B9D0C1A91F762E56008DB717 /* detailCalloutAccessoryView.swift in Sources */,
 				D13709B81F7460D100F3B216 /* JUWShelterViewController.swift in Sources */,
+				B9D0C1AB1F762E60008DB717 /* AnnotationView.swift in Sources */,
 				D1E5348D1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift in Sources */,
 				D13709C31F746EE100F3B216 /* JUWFoundPet.swift in Sources */,
 				D153A3581F74B26600541263 /* JUWCourier.swift in Sources */,

@@ -77,69 +77,67 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
 //        return nil
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let annotation = annotation as? JUWMapCollectionCenter {
-            print(annotation)
-
-            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
-            if annotationView == nil {
-                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "reuseIdentifier")
-                annotationView?.image = UIImage(named:"circle")
-                annotationView?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-                annotationView?.canShowCallout = true
-            } else {
-                annotationView?.annotation = annotation
-            }
-
-            let detailCalloutAccessoryView = UIView()
-
-            let widthConstraint = NSLayoutConstraint(item: detailCalloutAccessoryView,
-                                                     attribute: .width,
-                                                     relatedBy: .equal,
-                                                     toItem: nil,
-                                                     attribute: .notAnAttribute,
-                                                     multiplier: 1,
-                                                     constant: 280)
-            detailCalloutAccessoryView.addConstraint(widthConstraint)
-
-            let heightConstraint = NSLayoutConstraint(item: detailCalloutAccessoryView,
-                                                      attribute: .height,
-                                                      relatedBy: .equal,
-                                                      toItem: nil,
-                                                      attribute: .notAnAttribute,
-                                                      multiplier: 1,
-                                                      constant: 260)
-            detailCalloutAccessoryView.addConstraint(heightConstraint)
-
-            let button = UIButton()
-            button.frame = CGRect(x: 0, y: 220, width: 280, height: 30)
-            button.backgroundColor = UIColor.darkGray
-            detailCalloutAccessoryView.addSubview(button)
-
-            annotation.retrieveContacInfotWith(completion: { (resultPhone) in
-                if resultPhone.isEmpty {
-                    button.setTitle("Sin teléfono registrado", for: .normal)
-                }
-                else {
-                    button.setTitle(resultPhone, for: .normal)
-                }
-            }, failure: { (error) in
-                button.setTitle("Sin teléfono registrado", for: .normal)
-            })
-
-            button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
-            if #available(iOS 9.0, *) {
-                annotationView?.detailCalloutAccessoryView = detailCalloutAccessoryView
-            } else {
-                // Fallback on earlier versions
-            }
-            
-
-            return annotationView
-        }
+        
+        if annotation is MKUserLocation {
             return nil
+        }
+        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
+        if annotationView == nil{
+            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "reuseIdentifier")
+            annotationView?.canShowCallout = false
+        }else{
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named:"circle")
+        return annotationView
     }
 
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {}
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        if view.annotation is MKUserLocation {
+            return
+        }
+        let annotation = view.annotation as! JUWMapCollectionCenter
+        let views = Bundle.main.loadNibNamed("detailCalloutAccessoryView", owner: nil, options: nil)
+        let detailCalloutAccessoryView = views?[0] as! detailCalloutAccessoryView
+        
+        detailCalloutAccessoryView.labelTitle.text = annotation.name
+        detailCalloutAccessoryView.labelSubTitle.text = annotation.address
+        
+        //Add Button For calling in XIB
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y: 220, width: 280, height: 30)
+        button.backgroundColor = UIColor.darkGray
+        detailCalloutAccessoryView.addSubview(button)
+        
+        annotation.retrieveContacInfotWith(completion: { (resultPhone) in
+            if resultPhone.isEmpty {
+                button.setTitle("Sin teléfono registrado", for: .normal)
+            }
+            else {
+                button.setTitle(resultPhone, for: .normal)
+            }
+        }, failure: { (error) in
+            button.setTitle("Sin teléfono registrado", for: .normal)
+        })
+        
+        button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
+        
+        detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
+        view.addSubview(detailCalloutAccessoryView)
+        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if view.isKind(of: AnnotationView.self)
+        {
+            for subview in view.subviews
+            {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+
 
     @IBAction func call(_ sender: UIButton) {
         if let phoneNumber = sender.titleLabel?.text {
