@@ -36,6 +36,7 @@ extension JUWShelterViewController: UISearchBarDelegate {
         }
         JUWCollectionCenterManager().collectionCenters(whichNeed: product) { collectionCenters in
             self.searchResults?(collectionCenters)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }
