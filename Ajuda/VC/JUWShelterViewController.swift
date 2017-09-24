@@ -9,9 +9,14 @@
 import UIKit
 
 class JUWShelterViewController: UIViewController {
-
+    @IBOutlet var searchBar: UISearchBar!
+    var searchController: UISearchController!
+    var productSearch: String?
+    var searchResults: (([JUWCollectionCenter])->Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Quiero Ayudar"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(JUWShelterViewController.cancel(_:)))
     }
 
@@ -19,3 +24,19 @@ class JUWShelterViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 }
+
+extension JUWShelterViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        productSearch = searchText
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let product = productSearch else {
+            return
+        }
+        JUWCollectionCenterManager().collectionCenters(whichNeed: product) { collectionCenters in
+            self.searchResults?(collectionCenters)
+        }
+    }
+}
+
