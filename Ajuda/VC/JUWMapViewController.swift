@@ -23,11 +23,7 @@ class JUWMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        UINib(nibName: "JUWDetailCalloutAccessoryView", bundle: nil).instantiate(withOwner: self, options: nil)
-//        view.addSubview(detailCalloutAccessoryView)
-//        detailCalloutAccessoryView.isHidden = true
         loadCollectionCenters()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,26 +57,6 @@ class JUWMapViewController: UIViewController {
         }
     }
 
-    func lol() {
-//        if let annotation = annotation as? Artwork {
-//            let identifier = "pin"
-//            var view: MKPinAnnotationView
-//            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-//                as? MKPinAnnotationView { // 2
-//                dequeuedView.annotation = annotation
-//                view = dequeuedView
-//            } else {
-//                // 3
-//                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//                view.canShowCallout = true
-//                view.calloutOffset = CGPoint(x: -5, y: 5)
-//                view.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as! UIView
-//            }
-//            return view
-//        }
-//        return nil
-    }
-
     @IBAction func call(_ sender: UIButton) {
         if let phoneNumber = sender.titleLabel?.text {
             let formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
@@ -109,7 +85,6 @@ class JUWMapViewController: UIViewController {
 extension JUWMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
         if annotation is MKUserLocation {
             return nil
         }
