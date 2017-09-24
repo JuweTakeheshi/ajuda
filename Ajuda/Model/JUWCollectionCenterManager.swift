@@ -70,8 +70,11 @@ class JUWCollectionCenterManager: NSObject {
         precondition(!query.isEmpty, "Query should not be an empty")
         
         var collectionCenter: [JUWCollectionCenter] = []
-    
-        networkManager.get(url: "https://hapi.balterbyte.com/api/productos?filter=%7B%22where%22:%7B%22nombre%22:%7B%22like%22:%22\(query)%22%7D%7D%7D", completion: { (result) in
+        guard let url = String(format: kCollectionCenterSearchProductUrl, query).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {
+            completion(collectionCenter)
+            return
+        }
+        networkManager.get(url: url, completion: { (result) in
             
             if let array = result as? [Any] {
                 let realm = try! Realm()
