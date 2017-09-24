@@ -245,12 +245,32 @@
                     <view key="view" contentMode="scaleToFill" id="Jsr-bL-66e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Nombre del Producto" translatesAutoresizingMaskIntoConstraints="NO" id="uQa-ud-4Te">
+                                <rect key="frame" x="0.0" y="64" width="320" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="YO4-3c-PXx"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Jxe-dj-lyo" id="6Sq-gl-q8T"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uQa-ud-4Te" firstAttribute="leading" secondItem="Jsr-bL-66e" secondAttribute="leading" id="Jx0-d2-4vR"/>
+                            <constraint firstAttribute="trailing" secondItem="uQa-ud-4Te" secondAttribute="trailing" id="qXQ-sn-Uzq"/>
+                            <constraint firstItem="uQa-ud-4Te" firstAttribute="top" secondItem="Jsr-bL-66e" secondAttribute="top" constant="64" id="qvO-g5-TKM"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="uQa-ud-4Te" id="TTV-ih-AYI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egj-lM-M2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1952" y="-123"/>
+            <point key="canvasLocation" x="1951.875" y="-123.75"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="VSO-kN-G0y">
