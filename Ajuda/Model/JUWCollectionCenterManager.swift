@@ -17,9 +17,22 @@ class JUWCollectionCenterManager: NSObject {
             DispatchQueue.global().async {
                 if let array = result as? [Any] {
                     let realm = try! Realm()
+                    let storedCenters = realm.objects(JUWCollectionCenter.self)
+                    for localCenter in storedCenters {
+                        let predicate = NSPredicate(format: "id == %@", localCenter.centerIdentifier)
+                        let foundItems = array.filter{ predicate.evaluate(with: $0) }
+                        if foundItems.count == 0 {
+                            #if DEBUG
+                            print("center not anymore in server", localCenter.centerIdentifier)
+                            #endif
+                            try! realm.write {
+                                realm.delete(localCenter)
+                            }
+                        }
+                    }
 
-                    for value in array {
-                        if let dictionary = value as? [String: Any] {
+                    for centerValue in array {
+                        if let dictionary = centerValue as? [String: Any] {
                             let predicate = NSPredicate(format: "centerIdentifier = %@", dictionary["id"] as! String)
                             var center = realm.objects(JUWCollectionCenter.self).filter(predicate).first
                             if center == nil {
@@ -28,6 +41,7 @@ class JUWCollectionCenterManager: NSObject {
                                     realm.add(center!)
                                 }
                             }
+
                             try! realm.write {
                                 if let name = dictionary["nombre"] as? String {
                                     center?.name = name
