@@ -66,9 +66,12 @@ class JUWCollectionCenterManager: NSObject {
     }
     
     func collectionCenters(whichNeed product: String, completion: @escaping (_ result: [JUWCollectionCenter]) -> Void) {
-        var collectionCenter: [JUWCollectionCenter] = []
+        let query = product.lowercased().stripCharacters(in: CharacterSet.alphanumerics.inverted)
+        precondition(!query.isEmpty, "Query should not be an empty")
         
-        networkManager.get(url: "https://hapi.balterbyte.com/api/productos?filter=%7B%22where%22:%7B%22nombre%22:%7B%22like%22:%22\(product.lowercased())%22%7D%7D%7D", completion: { (result) in
+        var collectionCenter: [JUWCollectionCenter] = []
+    
+        networkManager.get(url: "https://hapi.balterbyte.com/api/productos?filter=%7B%22where%22:%7B%22nombre%22:%7B%22like%22:%22\(query)%22%7D%7D%7D", completion: { (result) in
             
             if let array = result as? [Any] {
                 let realm = try! Realm()
@@ -87,5 +90,11 @@ class JUWCollectionCenterManager: NSObject {
         }) { (error) in
             completion(collectionCenter)
         }
+    }
+}
+
+extension String {
+    func stripCharacters(in set: CharacterSet) -> String {
+        return self.components(separatedBy: set).joined(separator: "")
     }
 }
