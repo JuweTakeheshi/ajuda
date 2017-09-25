@@ -26,10 +26,6 @@ class JUWShelterViewController: UIViewController {
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
 
 extension JUWShelterViewController: UISearchBarDelegate {
