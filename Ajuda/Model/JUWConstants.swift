@@ -8,7 +8,7 @@
 
 import Foundation
 
-//let kCollectionCentersUrl = "http://acopio-api.skycatch.net/v1/acopios"
+let kUserAuthenticationUrl = "http://hapi.balterbyte.com:8080/api/voluntarios/login"
 let kCollectionCentersUrl = "https://hapi.balterbyte.com/api/acopios"
 let kCollectionCenterNeedsUrl = "https://hapi.balterbyte.com/api/acopios/%@/productos"
 let kCollectionCenterContactInfoUrl = "https://hapi.balterbyte.com/api/acopios/%@/contactos"

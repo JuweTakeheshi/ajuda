@@ -16,16 +16,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        provisionalSkipSingIn()
+//        provisionalSkipSingIn()
         validateSession()
         customizeUserInterface()
     }
     
-    func provisionalSkipSingIn(){
-        let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
-        let provisionalNavC = UINavigationController(rootViewController: mapViewController)
-        self.present(provisionalNavC, animated: false, completion:nil)
-    }
+//    func provisionalSkipSingIn(){
+//        let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+//        let provisionalNavC = UINavigationController(rootViewController: mapViewController)
+//        self.present(provisionalNavC, animated: false, completion:nil)
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,13 +33,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func validateSession() {
         let token = JUWKeychainService.loadToken()
-        let userType = JUWKeychainService.loadUserType()
-        
-        if token != nil && userType != nil {
-            if userType! as String == JUWSession.UserType.courier.rawValue {
-                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWCourierViewController
-                navigationController?.pushViewController(bikerViewController, animated: false)
-            }
+        if token != nil {
+            let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+            navigationController?.pushViewController(mapViewController, animated: false)
         }
     }
 
@@ -65,9 +61,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signIn(_ sender: Any) {
         if !(usernameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
             let session = JUWSession.sharedInstance
-            session.signInWithUserName(username: usernameTextField.text!, password: passwordTextField.text!, completion: { (result) in
-                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWCourierViewController
-                navigationController?.pushViewController(bikerViewController, animated: true)
+            session.signInWithUserName(username: usernameTextField.text!, password: passwordTextField.text!, completion: {
+                let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+                self.navigationController?.pushViewController(mapViewController, animated: true)
             }, failure: { (error) in
                 
             })
