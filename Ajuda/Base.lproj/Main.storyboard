@@ -53,7 +53,7 @@
                                             <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8SX-ht-aWR"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Contraseña" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u5B-0Z-EqC">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="changeme" borderStyle="line" placeholder="Contraseña" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u5B-0Z-EqC">
                                         <rect key="frame" x="27" y="69" width="266" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -275,7 +275,6 @@
         <!--Item 2-->
         <scene sceneID="VSO-kN-G0y">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Oc-Vv-dQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="LOL" id="9Cs-Dj-rwi" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RXy-JG-32g"/>
@@ -288,6 +287,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="5D9-xT-r4h"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Oc-Vv-dQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3114" y="-1085"/>
         </scene>
@@ -330,7 +330,6 @@
         <!--Courier View Controller-->
         <scene sceneID="nZh-8C-PaP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iQL-QV-Y1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="JUWBikerViewController" hidesBottomBarWhenPushed="YES" id="7gw-bt-eMa" customClass="JUWCourierViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t6R-xM-SJe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -342,6 +341,7 @@
                         <segue destination="9Cs-Dj-rwi" kind="relationship" relationship="viewControllers" id="XeO-s6-LoR"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iQL-QV-Y1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1504" y="-848"/>
         </scene>
