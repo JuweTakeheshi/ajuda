@@ -50,10 +50,9 @@ class JUWMapViewController: UIViewController {
             let annotation = JUWMapCollectionCenter(title: center.name,
                                                     name: center.name,
                                                     address: center.address,
-                                                    latitude: center.latitude,
-                                                    longitude: center.longitude,
                                                     phoneNumber: center.phoneNumber,
                                                     identifier: center.centerIdentifier,
+                                                    twitter: center.twitterHandle,
                                                     coordinate: CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude))
             mapView.addAnnotation(annotation)
         }
@@ -136,7 +135,7 @@ extension JUWMapViewController: MKMapViewDelegate {
         btnDetailCenter.frame = CGRect(x: 10, y: 220, width: 260, height: 40)
         btnDetailCenter.backgroundColor = UIColor.darkGray
         detailCalloutAccessoryView.addSubview(btnDetailCenter)
-        btnDetailCenter.setTitle("Ver mas", for: .normal)
+        
         
         annotation.retrieveContacInfotWith(completion: { (resultPhone) in
             if resultPhone.isEmpty {
@@ -150,7 +149,8 @@ extension JUWMapViewController: MKMapViewDelegate {
         })
 
         annotation.retrieveProductsWith(completion: { (products) in
-            
+            btnDetailCenter.setTitle("Ver mas", for: .normal)
+            btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
         }) { (error) in
             
         }
@@ -158,7 +158,6 @@ extension JUWMapViewController: MKMapViewDelegate {
         currentCenter = annotation
 
         button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
-        btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
         detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
         view.addSubview(detailCalloutAccessoryView)
         mapView.setCenter((view.annotation?.coordinate)!, animated: true)

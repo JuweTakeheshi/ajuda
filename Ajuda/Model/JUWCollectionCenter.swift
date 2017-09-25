@@ -20,5 +20,5 @@ final class JUWCollectionCenter: Object {
     @objc dynamic var contactEmail: String = ""
     @objc dynamic var twitterHandle: String = ""
     @objc dynamic var facebookHandle: String = ""
-    var products = List<JUWProduct>()
+    let products = List<JUWProduct>()
 }
