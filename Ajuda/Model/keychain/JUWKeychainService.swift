@@ -45,8 +45,8 @@ public class JUWKeychainService: NSObject {
         return self.load(service: tokenKey as NSString)
     }
 
-    public class func deleteToken() {
-        self.delete(service: tokenKey as NSString)
+    public class func deleteToken() -> Bool {
+        return self.delete(service: tokenKey as NSString)
     }
 
     //MARK: - User Type
@@ -59,20 +59,17 @@ public class JUWKeychainService: NSObject {
 
     //MARK: - Internal methods
 
-    private class func delete(service: NSString) {
-        
-//        let dataFromString: NSData = data.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)! as NSData
-
-        /* return @{
-         (__bridge id)kSecClass : (__bridge id)kSecClassGenericPassword,
-         (__bridge id)kSecAttrService : kSkyBellKeychainService,
-         (__bridge id)kSecAttrAccount : identifier,
-         (__bridge id)kSecAttrAccessible : (__bridge id)kSecAttrAccessibleWhenUnlocked
-         };*/
+    private class func delete(service: NSString) -> Bool {
         // Instantiate a new default keychain query
-//        let keychainQuery: NSMutableDictionary = NSMutableDictionary(objects: [kSecValueDataValue, service, userAccount, dataFromString], forKeys: [kSecClassValue, kSecAttrServiceValue, kSecAttrAccountValue, kSecValueDataValue])
-//
-//        SecItemDelete(keychainQuery as CFDictionary)
+        let keychainQuery: NSMutableDictionary = NSMutableDictionary(objects: [kSecValueDataValue, service, userAccount],
+                                                                     forKeys: [kSecClassValue, kSecAttrServiceValue, kSecAttrAccountValue])
+        // Delete
+        let status: OSStatus = SecItemDelete(keychainQuery as CFDictionary)
+        if status == errSecSuccess {
+            return true
+        } else {
+            return false
+        }
     }
 
     private class func save(service: NSString, data: NSString) {

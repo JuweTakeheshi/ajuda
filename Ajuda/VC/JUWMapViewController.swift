@@ -25,6 +25,7 @@ class JUWMapViewController: UIViewController {
         super.viewDidLoad()
         title = "Centros acopio"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Quiero ayudar", style: .plain, target: self, action: #selector(JUWMapViewController.sendHelp(_:)))
+        self.navigationItem.setHidesBackButton(true, animated:false)
         loadCollectionCenters()
     }
 
