@@ -36,17 +36,16 @@ class JUWMapViewController: UIViewController {
     func loadCollectionCenters() {
         let collectionCentersManager = JUWCollectionCenterManager()
         collectionCentersManager.updateCollectionCenters(centers: { () in
-            self.loadCenters()
+            let realm = try! Realm()
+            let centers = Array(realm.objects(JUWCollectionCenter.self))
+            self.load(centers: centers)
         }) { (error) in
-            
         }
     }
 
-    func loadCenters() {
-        let realm = try! Realm()
-        let centersArray = realm.objects(JUWCollectionCenter.self)
-
-        for center in centersArray {
+    func load(centers: [JUWCollectionCenter]) {
+        mapView.removeAnnotations(mapView.annotations)
+        for center in centers {
             let annotation = JUWMapCollectionCenter(title: center.name,
                                                     name: center.name,
                                                     address: center.address,
@@ -86,7 +85,7 @@ class JUWMapViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let searchViewController = storyboard.instantiateViewController(withIdentifier: "JUWShelterViewController") as! JUWShelterViewController
         searchViewController.onResultsFound = { results in
-            
+            self.load(centers: results)
         }
         
         let navigationController = UINavigationController(rootViewController: searchViewController)
