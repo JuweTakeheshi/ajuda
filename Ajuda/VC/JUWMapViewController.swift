@@ -86,7 +86,7 @@ class JUWMapViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let searchViewController = storyboard.instantiateViewController(withIdentifier: "JUWShelterViewController") as! JUWShelterViewController
         searchViewController.onResultsFound = {(results) in
-            
+            print(results)
         }
         
         let navigationController = UINavigationController(rootViewController: searchViewController)
