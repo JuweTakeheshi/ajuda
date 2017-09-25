@@ -55,10 +55,16 @@ class DetailCenterVC: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
-
-    @IBAction func addProduct(_ sender: Any) {
-    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "goToAddProduct"{
+            let destinationVC = segue.destination as! JUWAddProductViewController
+            destinationVC.currentCenter = collectionCenter()
+        }
+    }
+//
     
     //MARK: - UITableViewDataSource
 
