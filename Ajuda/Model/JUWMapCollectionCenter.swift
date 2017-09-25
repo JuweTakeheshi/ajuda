@@ -152,7 +152,7 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
                 }
             }
         }) { (error) in
-            
+            let realm = try! Realm()
         }
     }
 }

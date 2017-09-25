@@ -38,7 +38,9 @@ class JUWMapViewController: UIViewController {
         collectionCentersManager.getCollectionCenters(centers: { () in
             self.loadCenters()
         }) { (error) in
-            
+            self.displayHandlAlert(title: "Aviso", message: "Tuvimos un problema al obtener los centros de acopio, mostraremos los centros de la ultima actualización, recuerda que podria no ser la información mas actual"){  action in
+                self.loadCenters()
+                }
         }
     }
 
@@ -152,7 +154,7 @@ extension JUWMapViewController: MKMapViewDelegate {
             btnDetailCenter.setTitle("Ver mas", for: .normal)
             btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
         }) { (error) in
-            
+            self.displayOKAlert(title: "Aviso", message: "Tuvimos un problema al obtener los productos que se necesitan en seste centro de acopio")
         }
 
         currentCenter = annotation
