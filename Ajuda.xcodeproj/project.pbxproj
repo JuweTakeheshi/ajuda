@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF3420A21F798EF9004226A3 /* UIViewController+ajuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3420A11F798EF9004226A3 /* UIViewController+ajuda.swift */; };
 		AFDE29E51F774DB9002AB604 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFDE29E31F774DB9002AB604 /* Products.storyboard */; };
 		AFDE29E81F7752F2002AB604 /* DetailCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDE29E71F7752F2002AB604 /* DetailCenterVC.swift */; };
 		B9D0C1A91F762E56008DB717 /* detailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D0C1A81F762E38008DB717 /* detailCalloutAccessoryView.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AF3420A11F798EF9004226A3 /* UIViewController+ajuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ajuda.swift"; sourceTree = "<group>"; };
 		AFDE29E41F774DB9002AB604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Products.storyboard; sourceTree = "<group>"; };
 		AFDE29E71F7752F2002AB604 /* DetailCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCenterVC.swift; sourceTree = "<group>"; };
 		B9D0C1A61F762E30008DB717 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,22 @@
 			path = "DetailCenter ";
 			sourceTree = "<group>";
 		};
+		AF3420A31F798F01004226A3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AF3420A41F798F0B004226A3 /* UI */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AF3420A41F798F0B004226A3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AF3420A11F798EF9004226A3 /* UIViewController+ajuda.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		AFDE29E61F774DC1002AB604 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +239,7 @@
 				D13709701F74261200F3B216 /* LaunchScreen.storyboard */,
 				D13709731F74261200F3B216 /* Info.plist */,
 				AFDE29E61F774DC1002AB604 /* Storyboards */,
+				AF3420A31F798F01004226A3 /* Helpers */,
 			);
 			path = Ajuda;
 			sourceTree = "<group>";
@@ -477,6 +496,7 @@
 				AFDE29E81F7752F2002AB604 /* DetailCenterVC.swift in Sources */,
 				D13709BA1F7460E300F3B216 /* JUWCourierViewController.swift in Sources */,
 				D13709A51F74328500F3B216 /* JUWSession.swift in Sources */,
+				AF3420A21F798EF9004226A3 /* UIViewController+ajuda.swift in Sources */,
 				D1F348021F775A74003AB9A2 /* JUWProduct.swift in Sources */,
 				D13709A31F74325E00F3B216 /* JUWUser.swift in Sources */,
 				D13709C51F74797B00F3B216 /* JUWCollectionCenterManager.swift in Sources */,
