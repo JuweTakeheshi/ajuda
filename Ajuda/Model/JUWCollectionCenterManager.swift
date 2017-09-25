@@ -114,6 +114,10 @@ class JUWCollectionCenterManager: NSObject {
             }
         }
     }
+
+    func addProductToCollectionCenter(collectionCenter: JUWCollectionCenter, product: String, completion: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+        
+    }
 }
 
 extension String {
