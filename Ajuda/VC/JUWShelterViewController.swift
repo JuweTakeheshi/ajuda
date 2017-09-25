@@ -20,7 +20,12 @@ class JUWShelterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Quiero ayudar con..."
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(JUWShelterViewController.cancel(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Cancelar",
+            style: .plain,
+            target: self,
+            action: #selector(JUWShelterViewController.cancel(_:))
+        )
     }
 
     @IBAction func cancel(_ sender: UIButton) {
