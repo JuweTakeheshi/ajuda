@@ -16,16 +16,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        provisionalSkipSingIn()
         validateSession()
         customizeUserInterface()
     }
-    
-//    func provisionalSkipSingIn(){
-//        let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
-//        let provisionalNavC = UINavigationController(rootViewController: mapViewController)
-//        self.present(provisionalNavC, animated: false, completion:nil)
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
