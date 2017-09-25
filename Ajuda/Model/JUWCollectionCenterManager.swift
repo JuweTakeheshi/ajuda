@@ -13,7 +13,7 @@ class JUWCollectionCenterManager: NSObject {
 
     private let networkManager = JUWNetworkManager()
     
-    func getCollectionCenters(centers: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+    func updateCollectionCenters(centers: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
         networkManager.get(url: kCollectionCentersUrl, completion: { (result) in
             DispatchQueue.global().async {
                 if let array = result as? [Any] {
@@ -117,11 +117,5 @@ class JUWCollectionCenterManager: NSObject {
 
     func addProductToCollectionCenter(collectionCenter: JUWCollectionCenter, product: String, completion: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
         
-    }
-}
-
-extension String {
-    func stripCharacters(in set: CharacterSet) -> String {
-        return self.components(separatedBy: set).joined(separator: "")
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3867A5AF1F79B8A200FAFF96 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3867A5AE1F79B8A200FAFF96 /* String+Utils.swift */; };
 		AF3420A21F798EF9004226A3 /* UIViewController+ajuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3420A11F798EF9004226A3 /* UIViewController+ajuda.swift */; };
 		AFDE29E51F774DB9002AB604 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFDE29E31F774DB9002AB604 /* Products.storyboard */; };
 		AFDE29E81F7752F2002AB604 /* DetailCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDE29E71F7752F2002AB604 /* DetailCenterVC.swift */; };
@@ -84,6 +85,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3867A5AE1F79B8A200FAFF96 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		AF3420A11F798EF9004226A3 /* UIViewController+ajuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ajuda.swift"; sourceTree = "<group>"; };
 		AFDE29E41F774DB9002AB604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Products.storyboard; sourceTree = "<group>"; };
 		AFDE29E71F7752F2002AB604 /* DetailCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCenterVC.swift; sourceTree = "<group>"; };
@@ -161,6 +163,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3867A5AD1F79B85800FAFF96 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				3867A5AE1F79B8A200FAFF96 /* String+Utils.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		AF2DC3151F77653B00D719AD /* DetailCenter  */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +239,7 @@
 		D13709661F74261200F3B216 /* Ajuda */ = {
 			isa = PBXGroup;
 			children = (
+				3867A5AD1F79B85800FAFF96 /* Util */,
 				D1E534871F756BE20000E2A9 /* Resources */,
 				D13709A61F74334800F3B216 /* VC */,
 				D13709951F74281F00F3B216 /* Model */,
@@ -492,6 +503,7 @@
 				D153A3581F74B26600541263 /* JUWCourier.swift in Sources */,
 				D137099B1F74287A00F3B216 /* JUWShelter.swift in Sources */,
 				D13709BE1F7464F200F3B216 /* JUWMapViewController.swift in Sources */,
+				3867A5AF1F79B8A200FAFF96 /* String+Utils.swift in Sources */,
 				D13709B61F7460C300F3B216 /* JUWCollectionCenterViewController.swift in Sources */,
 				AFDE29E81F7752F2002AB604 /* DetailCenterVC.swift in Sources */,
 				D13709BA1F7460E300F3B216 /* JUWCourierViewController.swift in Sources */,

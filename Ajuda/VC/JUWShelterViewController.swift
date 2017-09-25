@@ -15,7 +15,6 @@ class JUWShelterViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     var searchController: UISearchController!
     var productSearch: String?
-//    var searchResults: (([JUWCollectionCenter])->Void)?
     var onResultsFound: OnResultsFound?
 
     override func viewDidLoad() {
@@ -26,7 +25,6 @@ class JUWShelterViewController: UIViewController {
 
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
-
     }
 
     override func didReceiveMemoryWarning() {

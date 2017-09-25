@@ -35,7 +35,7 @@ class JUWMapViewController: UIViewController {
 
     func loadCollectionCenters() {
         let collectionCentersManager = JUWCollectionCenterManager()
-        collectionCentersManager.getCollectionCenters(centers: { () in
+        collectionCentersManager.updateCollectionCenters(centers: { () in
             self.loadCenters()
         }) { (error) in
             
@@ -85,14 +85,12 @@ class JUWMapViewController: UIViewController {
     @IBAction func sendHelp(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let searchViewController = storyboard.instantiateViewController(withIdentifier: "JUWShelterViewController") as! JUWShelterViewController
-        searchViewController.onResultsFound = {(results) in
-            print(results)
+        searchViewController.onResultsFound = { results in
+            
         }
         
         let navigationController = UINavigationController(rootViewController: searchViewController)
-        present(navigationController, animated: true) {
-            
-        }
+        present(navigationController, animated: true, completion: nil)
     }
 }
 
