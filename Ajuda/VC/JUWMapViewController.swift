@@ -10,7 +10,11 @@ import UIKit
 import RealmSwift
 import MapKit
 
-class JUWMapViewController: UIViewController, MKMapViewDelegate {
+
+class JUWMapViewController: UIViewController {
+    // MARK: Properties
+    var currentCenter:JUWMapCollectionCenter!
+
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var needLabel: UILabel!
@@ -19,11 +23,9 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        UINib(nibName: "JUWDetailCalloutAccessoryView", bundle: nil).instantiate(withOwner: self, options: nil)
-//        view.addSubview(detailCalloutAccessoryView)
-//        detailCalloutAccessoryView.isHidden = true
+        title = "Centros acopio"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Quiero ayudar", style: .plain, target: self, action: #selector(JUWMapViewController.sendHelp(_:)))
         loadCollectionCenters()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,96 +50,13 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
             let annotation = JUWMapCollectionCenter(title: center.name,
                                                     name: center.name,
                                                     address: center.address,
-                                                    latitude: center.latitude,
-                                                    longitude: center.longitude,
                                                     phoneNumber: center.phoneNumber,
                                                     identifier: center.centerIdentifier,
+                                                    twitter: center.twitterHandle,
                                                     coordinate: CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude))
             mapView.addAnnotation(annotation)
         }
     }
-
-    func lol() {
-//        if let annotation = annotation as? Artwork {
-//            let identifier = "pin"
-//            var view: MKPinAnnotationView
-//            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-//                as? MKPinAnnotationView { // 2
-//                dequeuedView.annotation = annotation
-//                view = dequeuedView
-//            } else {
-//                // 3
-//                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//                view.canShowCallout = true
-//                view.calloutOffset = CGPoint(x: -5, y: 5)
-//                view.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as! UIView
-//            }
-//            return view
-//        }
-//        return nil
-    }
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        if annotation is MKUserLocation {
-            return nil
-        }
-        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
-        if annotationView == nil{
-            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "reuseIdentifier")
-            annotationView?.canShowCallout = false
-        }else{
-            annotationView?.annotation = annotation
-        }
-        annotationView?.image = UIImage(named:"circle")
-        return annotationView
-    }
-
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        if view.annotation is MKUserLocation {
-            return
-        }
-        let annotation = view.annotation as! JUWMapCollectionCenter
-        let views = Bundle.main.loadNibNamed("detailCalloutAccessoryView", owner: nil, options: nil)
-        let detailCalloutAccessoryView = views?[0] as! detailCalloutAccessoryView
-        
-        detailCalloutAccessoryView.labelTitle.text = annotation.name
-        detailCalloutAccessoryView.labelSubTitle.text = annotation.address
-        
-        //Add Button For calling in XIB
-        let button = UIButton()
-        button.frame = CGRect(x: 0, y: 220, width: 280, height: 30)
-        button.backgroundColor = UIColor.darkGray
-        detailCalloutAccessoryView.addSubview(button)
-        
-        annotation.retrieveContacInfotWith(completion: { (resultPhone) in
-            if resultPhone.isEmpty {
-                button.setTitle("Sin teléfono registrado", for: .normal)
-            }
-            else {
-                button.setTitle(resultPhone, for: .normal)
-            }
-        }, failure: { (error) in
-            button.setTitle("Sin teléfono registrado", for: .normal)
-        })
-        
-        button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
-        
-        detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
-        view.addSubview(detailCalloutAccessoryView)
-        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
-    }
-    
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        if view.isKind(of: AnnotationView.self)
-        {
-            for subview in view.subviews
-            {
-                subview.removeFromSuperview()
-            }
-        }
-    }
-
 
     @IBAction func call(_ sender: UIButton) {
         if let phoneNumber = sender.titleLabel?.text {
@@ -156,5 +75,101 @@ class JUWMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func showDetail(_ sender: Any) {
+        let sb = UIStoryboard(name: "Products", bundle: nil)
+        let detailCenterNC = sb.instantiateViewController(withIdentifier: "DetailCenterNC") as! UINavigationController
+        let detailVC  = detailCenterNC.viewControllers[0] as! DetailCenterVC
+        detailVC.center = currentCenter
+        present(detailCenterNC, animated: true, completion: nil)
+    }
+
+    @IBAction func sendHelp(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchViewController = storyboard.instantiateViewController(withIdentifier: "JUWShelterViewController") as! JUWShelterViewController
+        searchViewController.onResultsFound = {(results) in
+            
+        }
+        
+        let navigationController = UINavigationController(rootViewController: searchViewController)
+        present(navigationController, animated: true) {
+            
+        }
+    }
+}
+
+extension JUWMapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
+        if annotationView == nil{
+            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "reuseIdentifier")
+            annotationView?.canShowCallout = false
+        }else{
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named:"circle")
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        if view.annotation is MKUserLocation {
+            return
+        }
+        let annotation = view.annotation as! JUWMapCollectionCenter
+        let views = Bundle.main.loadNibNamed("detailCalloutAccessoryView", owner: nil, options: nil)
+        let detailCalloutAccessoryView = views?[0] as! detailCalloutAccessoryView
+        
+        detailCalloutAccessoryView.labelTitle.text = annotation.name
+        detailCalloutAccessoryView.labelSubTitle.text = annotation.address
+        
+        //Add Button For calling in XIB
+        let button = UIButton()
+        button.frame = CGRect(x: 10, y: 270, width: 260, height: 40)
+        button.backgroundColor = UIColor.darkGray
+        detailCalloutAccessoryView.addSubview(button)
+        //Add button for detail center in XIB
+        let btnDetailCenter = UIButton()
+        btnDetailCenter.frame = CGRect(x: 10, y: 220, width: 260, height: 40)
+        btnDetailCenter.backgroundColor = UIColor.darkGray
+        detailCalloutAccessoryView.addSubview(btnDetailCenter)
+        
+        
+        annotation.retrieveContacInfotWith(completion: { (resultPhone) in
+            if resultPhone.isEmpty {
+                button.setTitle("Sin teléfono registrado", for: .normal)
+            }
+            else {
+                button.setTitle(resultPhone, for: .normal)
+            }
+        }, failure: { (error) in
+            button.setTitle("Sin teléfono registrado", for: .normal)
+        })
+
+        annotation.retrieveProductsWith(completion: { (products) in
+            btnDetailCenter.setTitle("Ver mas", for: .normal)
+            btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
+        }) { (error) in
+            
+        }
+
+        currentCenter = annotation
+
+        button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
+        detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
+        view.addSubview(detailCalloutAccessoryView)
+        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if view.isKind(of: AnnotationView.self)
+        {
+            for subview in view.subviews
+            {
+                subview.removeFromSuperview()
+            }
+        }
     }
 }

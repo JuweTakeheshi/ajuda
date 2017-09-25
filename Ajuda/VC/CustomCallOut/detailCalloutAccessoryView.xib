@@ -12,34 +12,40 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="detailCalloutAccessoryView" customModule="Ajuda" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="280" height="255"/>
+            <rect key="frame" x="0.0" y="0.0" width="280" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4O-Md-nYf">
-                    <rect key="frame" x="6" y="9" width="268" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4O-Md-nYf">
+                    <rect key="frame" x="6" y="6" width="268" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="INm-u2-Fqm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pick" translatesAutoresizingMaskIntoConstraints="NO" id="qpe-3c-Gxt">
-                    <rect key="frame" x="125" y="255" width="30" height="15"/>
+                    <rect key="frame" x="125" y="324" width="30" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xj-XM-unm">
-                    <rect key="frame" x="6" y="31" width="268" height="17"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xj-XM-unm">
+                    <rect key="frame" x="6" y="45" width="268" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="yh8-gU-j6h"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="3Xj-XM-unm" secondAttribute="trailing" constant="6" id="B7Q-bK-Szh"/>
-                <constraint firstItem="E4O-Md-nYf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="QGf-P2-lWR"/>
-                <constraint firstItem="3Xj-XM-unm" firstAttribute="top" secondItem="E4O-Md-nYf" secondAttribute="bottom" constant="1" id="R8m-ei-ZD6"/>
-                <constraint firstAttribute="trailing" secondItem="E4O-Md-nYf" secondAttribute="trailing" constant="6" id="hk9-LO-ZxT"/>
-                <constraint firstItem="3Xj-XM-unm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="ttK-gW-GVe"/>
-                <constraint firstItem="E4O-Md-nYf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="w2e-l2-cdq"/>
+                <constraint firstItem="3Xj-XM-unm" firstAttribute="top" secondItem="E4O-Md-nYf" secondAttribute="bottom" constant="3" id="G5z-Fw-kzm"/>
+                <constraint firstItem="3Xj-XM-unm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="P3b-AN-a79"/>
+                <constraint firstAttribute="trailing" secondItem="3Xj-XM-unm" secondAttribute="trailing" constant="6" id="U9g-E2-fHs"/>
+                <constraint firstItem="E4O-Md-nYf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="VRE-dY-DuN"/>
+                <constraint firstItem="E4O-Md-nYf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="VYP-RS-xjJ"/>
+                <constraint firstAttribute="trailing" secondItem="E4O-Md-nYf" secondAttribute="trailing" constant="6" id="zve-K9-6mp"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <userDefinedRuntimeAttributes>
