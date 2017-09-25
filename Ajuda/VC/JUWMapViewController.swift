@@ -24,13 +24,13 @@ class JUWMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Centros acopio"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Ayudar", style: .plain, target: self, action: #selector(JUWMapViewController.sendHelp(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Ayudar",
+            style: .plain,
+            target: self,
+            action: #selector(JUWMapViewController.sendHelp(_:))
+        )
         loadCollectionCenters()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func loadCollectionCenters() {
