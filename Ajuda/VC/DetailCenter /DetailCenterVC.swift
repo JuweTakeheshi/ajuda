@@ -34,7 +34,8 @@ class DetailCenterVC: UIViewController, UITableViewDataSource, UITableViewDelega
         nameLabel.text = collectionCenter().name
         addressLabel.text = collectionCenter().address
         twitterLabel.text = collectionCenter().twitterHandle
-        callButton.setTitle(String.localizedStringWithFormat("%@ (llamar)", collectionCenter().phoneNumber), for: .normal)
+        let phoneNumber = collectionCenter().phoneNumber.isEmpty ? "Sin teléfono registrado" : String.localizedStringWithFormat("%@ (llamar)", collectionCenter().phoneNumber)
+        callButton.setTitle(phoneNumber, for: .normal)
     }
 
     @IBAction func backAction(_ sender: Any) {
@@ -55,6 +56,10 @@ class DetailCenterVC: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
+    @IBAction func addProduct(_ sender: Any) {
+    }
+    
+    
     //MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

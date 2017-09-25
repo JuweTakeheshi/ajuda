@@ -136,6 +136,19 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="zdI-ev-foa">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bJX-vC-KrS">
+                                <rect key="frame" x="274" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="addButtonOrange"/>
+                                <connections>
+                                    <action selector="addProduct:" destination="bim-ah-pvr" eventType="touchUpInside" id="aoY-5h-jo8"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <segue destination="SAg-O2-6HI" kind="show" id="uJv-YH-yst"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="Tf7-bK-1ui" id="UJX-mo-12u"/>
@@ -147,7 +160,63 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dq-5g-5aa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="204.375" y="229.22535211267606"/>
+            <point key="canvasLocation" x="64" y="229"/>
+        </scene>
+        <!--Add Product View Controller-->
+        <scene sceneID="uVe-SC-X8k">
+            <objects>
+                <viewController id="SAg-O2-6HI" customClass="JUWAddProductViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nP6-HE-nVU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Centro de acopio Deportivo 18 de Marzo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il0-1J-L9e">
+                                <rect key="frame" x="16" y="80" width="288" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="V4I-Nd-225"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agregar producto necesitado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odu-ua-fbP">
+                                <rect key="frame" x="16" y="132" width="288" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="scx-Gz-ZYb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Ejemplo: agua, pañales..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qfo-GP-Wmx">
+                                <rect key="frame" x="16" y="168" width="288" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="SAg-O2-6HI" id="Gbn-RM-7wg"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Odu-ua-fbP" firstAttribute="top" secondItem="il0-1J-L9e" secondAttribute="bottom" constant="6" id="1a8-cx-Sc9"/>
+                            <constraint firstItem="Odu-ua-fbP" firstAttribute="leading" secondItem="dmu-fS-xKp" secondAttribute="leading" constant="16" id="6HN-Jw-pN4"/>
+                            <constraint firstItem="dmu-fS-xKp" firstAttribute="trailing" secondItem="il0-1J-L9e" secondAttribute="trailing" constant="16" id="DQR-XW-EHr"/>
+                            <constraint firstItem="il0-1J-L9e" firstAttribute="top" secondItem="dmu-fS-xKp" secondAttribute="top" constant="16" id="KU0-0C-IrI"/>
+                            <constraint firstItem="dmu-fS-xKp" firstAttribute="trailing" secondItem="Odu-ua-fbP" secondAttribute="trailing" constant="16" id="d2r-2N-rJd"/>
+                            <constraint firstItem="il0-1J-L9e" firstAttribute="leading" secondItem="dmu-fS-xKp" secondAttribute="leading" constant="16" id="k4R-3d-xo1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dmu-fS-xKp"/>
+                    </view>
+                    <connections>
+                        <outlet property="addProductTextField" destination="qfo-GP-Wmx" id="9mU-1l-5AG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8cA-3m-JKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1070.625" y="227.11267605633802"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="chH-MR-OGs">
@@ -169,6 +238,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addButtonOrange" width="30" height="30"/>
         <image name="backButtonOrange" width="30" height="30"/>
     </resources>
 </document>

@@ -42,6 +42,7 @@
 		D153A3531F747B7000541263 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D153A34F1F747B5E00541263 /* RealmSwift.framework */; };
 		D153A3561F747D3300541263 /* JUWConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D153A3551F747D3300541263 /* JUWConstants.swift */; };
 		D153A3581F74B26600541263 /* JUWCourier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D153A3571F74B26600541263 /* JUWCourier.swift */; };
+		D1644AE31F79581300B4DAB5 /* JUWAddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1644AE21F79581300B4DAB5 /* JUWAddProductViewController.swift */; };
 		D1E534841F74D65C0000E2A9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E534831F74D65C0000E2A9 /* MapKit.framework */; };
 		D1E5348B1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */; };
 		D1E5348D1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */; };
@@ -121,6 +122,7 @@
 		D153A34F1F747B5E00541263 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = frameworks/RealmSwift.framework; sourceTree = "<group>"; };
 		D153A3551F747D3300541263 /* JUWConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWConstants.swift; sourceTree = "<group>"; };
 		D153A3571F74B26600541263 /* JUWCourier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWCourier.swift; sourceTree = "<group>"; };
+		D1644AE21F79581300B4DAB5 /* JUWAddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWAddProductViewController.swift; sourceTree = "<group>"; };
 		D1E534831F74D65C0000E2A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JUWDetailCalloutAccessoryView.xib; sourceTree = "<group>"; };
 		D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWMapCollectionCenter.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				D13709BD1F7464F200F3B216 /* JUWMapViewController.swift */,
 				B9D0C1A51F762E09008DB717 /* CustomCallOut */,
 				AF2DC3151F77653B00D719AD /* DetailCenter  */,
+				D1644AE21F79581300B4DAB5 /* JUWAddProductViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				D13709B81F7460D100F3B216 /* JUWShelterViewController.swift in Sources */,
 				B9D0C1AB1F762E60008DB717 /* AnnotationView.swift in Sources */,
 				D1E5348D1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift in Sources */,
+				D1644AE31F79581300B4DAB5 /* JUWAddProductViewController.swift in Sources */,
 				D13709C31F746EE100F3B216 /* JUWFoundPet.swift in Sources */,
 				D153A3581F74B26600541263 /* JUWCourier.swift in Sources */,
 				D137099B1F74287A00F3B216 /* JUWShelter.swift in Sources */,
