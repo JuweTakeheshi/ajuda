@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3867A5AF1F79B8A200FAFF96 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3867A5AE1F79B8A200FAFF96 /* String+Utils.swift */; };
+		3867A5B11F79BA2700FAFF96 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3867A5B01F79BA2700FAFF96 /* Result.swift */; };
 		AF3420A21F798EF9004226A3 /* UIViewController+ajuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3420A11F798EF9004226A3 /* UIViewController+ajuda.swift */; };
 		AFDE29E51F774DB9002AB604 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFDE29E31F774DB9002AB604 /* Products.storyboard */; };
 		AFDE29E81F7752F2002AB604 /* DetailCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDE29E71F7752F2002AB604 /* DetailCenterVC.swift */; };
@@ -86,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		3867A5AE1F79B8A200FAFF96 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
+		3867A5B01F79BA2700FAFF96 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		AF3420A11F798EF9004226A3 /* UIViewController+ajuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ajuda.swift"; sourceTree = "<group>"; };
 		AFDE29E41F774DB9002AB604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Products.storyboard; sourceTree = "<group>"; };
 		AFDE29E71F7752F2002AB604 /* DetailCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCenterVC.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				3867A5AE1F79B8A200FAFF96 /* String+Utils.swift */,
+				3867A5B01F79BA2700FAFF96 /* Result.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				D13709AA1F743A1B00F3B216 /* JUWSignUpViewController.swift in Sources */,
 				D13709971F74284A00F3B216 /* JUWCollectionCenter.swift in Sources */,
 				D153A3561F747D3300541263 /* JUWConstants.swift in Sources */,
+				3867A5B11F79BA2700FAFF96 /* Result.swift in Sources */,
 				D1F348041F77E43B003AB9A2 /* JUWProductManager.swift in Sources */,
 				D13709991F74286200F3B216 /* JUWDamagedBuilding.swift in Sources */,
 				D13709C11F74661800F3B216 /* JUWKeychainService.swift in Sources */,
