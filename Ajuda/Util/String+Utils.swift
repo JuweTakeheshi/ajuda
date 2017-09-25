@@ -12,4 +12,8 @@ extension String {
     func stripCharacters(in set: CharacterSet) -> String {
         return self.components(separatedBy: set).joined(separator: "")
     }
+    
+    func encoded() -> String? {
+        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+    }
 }

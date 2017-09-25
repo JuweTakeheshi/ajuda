@@ -82,13 +82,11 @@ class JUWCollectionCenterManager: NSObject {
     
     func collectionCenters(whichNeed product: String, completion: @escaping (_ result: [JUWCollectionCenter]) -> Void) {
         let query = product.lowercased().stripCharacters(in: CharacterSet.alphanumerics.inverted)
-        precondition(!query.isEmpty, "Query should not be an empty")
+        precondition(!query.isEmpty, "Query should not be empty")
         
         var collectionCenter: [JUWCollectionCenter] = []
-        guard let url = String(format: kCollectionCenterSearchProductUrl, query).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {
-            DispatchQueue.main.async {
-                completion(collectionCenter)
-            }
+        guard let url = String(format: kCollectionCenterSearchProductUrl, query).encoded() else {
+            DispatchQueue.main.async { completion(collectionCenter) }
             return
         }
         networkManager.get(url: url, completion: { (result) in
