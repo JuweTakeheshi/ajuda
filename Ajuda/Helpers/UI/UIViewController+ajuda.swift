@@ -30,8 +30,8 @@ extension UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Aceptar", style: .default, handler: completion)
         let actionCancel =  UIAlertAction(title:"Cancelar",style:.destructive)
-        alertController.addAction(action)
         alertController.addAction(actionCancel)
+        alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
     }
 }
