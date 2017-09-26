@@ -23,9 +23,7 @@ class JUWMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Centros acopio"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Quiero ayudar", style: .plain, target: self, action: #selector(JUWMapViewController.sendHelp(_:)))
-        self.navigationItem.setHidesBackButton(true, animated:false)
+        customizeUserInterface()
         loadCollectionCenters()
     }
 
@@ -34,12 +32,32 @@ class JUWMapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func customizeUserInterface() {
+        title = "Centros acopio"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Quiero ayudar", style: .plain, target: self, action: #selector(JUWMapViewController.sendHelp(_:)))
+        self.navigationItem.setHidesBackButton(true, animated:false)
+        let dismissButton = UIButton()
+        dismissButton.setImage(UIImage(named: "closeButtonOrange"), for: .normal)
+        dismissButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        dismissButton.addTarget(self, action: #selector(JUWMapViewController.tempLogout), for: .touchUpInside)
+
+        let dismissBarButton = UIBarButtonItem(customView: dismissButton)
+        navigationItem.leftBarButtonItem = dismissBarButton
+    }
+
     func loadCollectionCenters() {
         let collectionCentersManager = JUWCollectionCenterManager()
         collectionCentersManager.getCollectionCenters(centers: { () in
             self.loadCenters()
         }) { (error) in
             
+        }
+    }
+
+    @objc func tempLogout(_ sender: UIButton) {
+        let session = JUWSession.sharedInstance
+        session.signOut { (success) in
+            self.navigationController?.popViewController(animated: true)
         }
     }
 

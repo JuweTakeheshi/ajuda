@@ -28,13 +28,24 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        userNameTextField.becomeFirstResponder()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     func customizeUserInterface() {
+        let dismissButton = UIButton()
+        dismissButton.setImage(UIImage(named: "closeButtonOrange"), for: .normal)
+        dismissButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        dismissButton.addTarget(self, action: #selector(JUWSignUpViewController.dismissSignUp), for: .touchUpInside)
         
+        let dismissBarButton = UIBarButtonItem(customView: dismissButton)
+        navigationItem.leftBarButtonItem = dismissBarButton
     }
 
     @IBAction func showUserTypeSelection(_ sender: Any) {
@@ -75,6 +86,10 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         selectedUserType = session.userTypes[selectedIndex].rawValue
         let formattedString = String.localizedStringWithFormat("Soy %@", selectedUserType!)
         userTypeButton.setTitle(formattedString, for: .normal)
+    }
+
+    @objc func dismissSignUp() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
     // MARK: - UIPickerView

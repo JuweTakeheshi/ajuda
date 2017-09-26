@@ -31,18 +31,14 @@ class JUWSession: NSObject {
                     let keychain = KeychainSwift()
                     keychain.set(dictionary["id"] as! String, forKey: kTokenKey)
                 }
-                
+
                 DispatchQueue.main.async {
                     completion()
                 }
             }
-            
-            
         }) { (error) in
             failure(error!)
         }
-//        JUWKeychainService.saveUserType(type: "Llevo ayuda")
-//        completion("OK")
     }
 
     func signUpWithUserName(username: String, password: String, userType: String, completion: @escaping (_ result: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
@@ -54,5 +50,12 @@ class JUWSession: NSObject {
         }) { (error) in
             failure(error!)
         }
+    }
+
+    func signOut(completion: @escaping (_ success: Bool) -> Void) {
+        let keychain = KeychainSwift()
+        keychain.delete(kTokenKey)
+
+        completion(true)
     }
 }

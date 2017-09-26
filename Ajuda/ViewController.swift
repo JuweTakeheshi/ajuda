@@ -20,6 +20,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         customizeUserInterface()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        usernameTextField.becomeFirstResponder()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -27,7 +32,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func validateSession() {
         let keychain = KeychainSwift()
         let token = keychain.get(kTokenKey)
-
         if token != nil {
             let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
             navigationController?.pushViewController(mapViewController, animated: false)
@@ -35,10 +39,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func customizeUserInterface() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.945, green: 0.525, blue: 0.200, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let signUpButton = UIButton()
         signUpButton.setTitle("Registro", for: .normal)
-        signUpButton.frame = CGRect(x: 0, y: 0, width: 80, height: 45)
-        signUpButton.setTitleColor(UIColor.black, for: .normal)
+        signUpButton.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Bold", size: 14.0)
+        signUpButton.setTitleColor(UIColor.white, for: .normal)
+        signUpButton.frame = CGRect(x: 0, y: 0, width: 60, height: 45)
         signUpButton.addTarget(self, action: #selector(ViewController.pushSignUp), for: .touchUpInside)
         let signUpBarButton = UIBarButtonItem()
         signUpBarButton.customView = signUpButton
