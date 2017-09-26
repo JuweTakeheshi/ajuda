@@ -147,18 +147,19 @@ extension JUWMapViewController: MKMapViewDelegate {
                 button.setTitle(resultPhone, for: .normal)
             }
         }, failure: { (error) in
-            button.setTitle("Sin teléfono registrado", for: .normal)
+            button.setTitle("Sin teléfono", for: .normal)
+            button.alpha = 0.5
         })
 
         annotation.retrieveProductsWith(completion: { (products) in
-            btnDetailCenter.setTitle("Ver mas", for: .normal)
-            btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
+            
         }) { (error) in
-            self.displayOKAlert(title: "Aviso", message: "Tuvimos un problema al obtener los productos que se necesitan en seste centro de acopio")
+            self.displayOKAlert(title: "Aviso", message: "Tuvimos un problema al obtener los productos que se necesitan en seste centro de acopio, mostraremos los productos de la ultima actualización recuerda que puede no ser la mas actuals")
+            
         }
-
         currentCenter = annotation
-
+        btnDetailCenter.setTitle("Ver mas", for: .normal)
+        btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
         button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
         detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
         view.addSubview(detailCalloutAccessoryView)
