@@ -101,7 +101,8 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
                 }
             }
         }) { (error) in
-            
+          print("Error")
+            failure(error!)
         }
     }
 
@@ -152,7 +153,7 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
                 }
             }
         }) { (error) in
-            
+           failure(error!)
         }
     }
 }

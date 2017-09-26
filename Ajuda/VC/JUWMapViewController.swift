@@ -55,6 +55,9 @@ class JUWMapViewController: UIViewController {
             let centers = Array(realm.objects(JUWCollectionCenter.self))
             self.load(centers: centers)
         }) { (error) in
+            self.displayHandlAlert(title: "Error", message: "Tuvimos un problema al obtener los centros de acopio. Mostraremos los centros de la última actualización; recuerda que podría ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con ellos."){  action in
+                self.loadCenters()
+            }
         }
     }
 
@@ -202,18 +205,19 @@ extension JUWMapViewController: MKMapViewDelegate {
                 button.setTitle(resultPhone, for: .normal)
             }
         }, failure: { (error) in
-            button.setTitle("Sin teléfono registrado", for: .normal)
+            button.setTitle("Sin teléfono", for: .normal)
+            button.alpha = 0.5
         })
 
         annotation.retrieveProductsWith(completion: { (products) in
-            btnDetailCenter.setTitle("Ver mas", for: .normal)
-            btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
+            
         }) { (error) in
+            self.displayOKAlert(title: "Error", message: "Tuvimos un problema al obtener los productos que se necesitan en este centro de acopio. Mostraremos los productos de la ultima actualización recuerda que puede ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con ellos.")
             
         }
-
         currentCenter = annotation
-
+        btnDetailCenter.setTitle("Ver mas", for: .normal)
+        btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
         button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
         detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
         view.addSubview(detailCalloutAccessoryView)
