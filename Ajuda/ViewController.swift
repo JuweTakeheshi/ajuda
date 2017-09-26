@@ -59,6 +59,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         signInButton.alpha = 0.5
         usernameTextField.isUserInteractionEnabled = false
         passwordTextField.isUserInteractionEnabled = false
+        signUpButton?.isEnabled = false
+    }
+
+    func enableUserInterface() {
+        signInButton.isEnabled = true
+        signInButton.alpha = 1.0
+        usernameTextField.isUserInteractionEnabled = true
+        passwordTextField.isUserInteractionEnabled = true
+        signUpButton?.isEnabled = true
     }
 
     @objc func pushSignUp() {
@@ -73,11 +82,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func signIn(_ sender: Any) {
         if !(usernameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
+            disableUserInterface()
             let session = JUWSession.sharedInstance
             session.signInWithUserName(username: usernameTextField.text!, password: passwordTextField.text!, completion: {
+                self.enableUserInterface()
                 let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
                 self.navigationController?.pushViewController(mapViewController, animated: true)
             }, failure: { (error) in
+                self.enableUserInterface()
                 self.displayErrorAlert(title: "Error al ingresar",
                                        message: "No pudimos verificar tus datos. Confirma que los escribiste correctamente")
             })
