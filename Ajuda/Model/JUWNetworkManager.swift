@@ -11,13 +11,13 @@ import Alamofire
 
 class JUWNetworkManager: NSObject {
 
-    func post(url: String, parameters: [String: String], completion: @escaping (_ result: Any) -> Void, failure: @escaping (_ error: Error?) -> Void) {
+    func post(url: String, parameters: [String: String], completion: @escaping (_ result: Any?) -> Void, failure: @escaping (_ error: Error?) -> Void) {
         Alamofire.request(url, method: .post, parameters: parameters)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 switch response.result {
                 case .success:
-                    completion(response)
+                    completion(response.result.value)
                 case .failure:
                     failure(response.error)
                 }

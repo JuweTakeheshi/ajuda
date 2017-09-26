@@ -22,20 +22,48 @@ class JUWSession: NSObject {
         return true
     }
 
-    func signInWithUserName(username: String, password: String, completion: (_ result: Any) -> Void, failure: (_ error: Error) -> Void) {
-        JUWKeychainService.saveToken(token: "obtainedTokenFromServer")
-        JUWKeychainService.saveUserType(type: "Llevo ayuda")
-        completion("OK")
-    }
-
-    func signUpWithUserName(username: String, password: String, userType: String, completion: @escaping (_ result: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
+    func signInWithUserName(username: String, password: String, completion: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
-        networkManager.post(url: "", parameters: ["username": username, "password": password, "userType": userType], completion: { (result) in
-            JUWKeychainService.saveToken(token: "obtainedTokenFromServer")
-            JUWKeychainService.saveUserType(type: userType as NSString)
-            completion("OK")
+        let parameters = ["email": username, "username": username, "password": password]
+        networkManager.post(url: kUserAuthenticationUrl, parameters: parameters, completion: { (result) in
+            DispatchQueue.global().async {
+                if let dictionary = result as? [String: Any] {
+                    let keychain = KeychainSwift()
+                    keychain.set(dictionary["id"] as! String, forKey: kTokenKey)
+                }
+
+                DispatchQueue.main.async {
+                    completion()
+                }
+            }
         }) { (error) in
             failure(error!)
         }
+    }
+
+    func signUpWithUserName(username: String, password: String, email: String, completion: @escaping (_ result: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let networkManager = JUWNetworkManager()
+        networkManager.post(url: kUserCreationUrl, parameters: ["username": username, "password": password, "email": email], completion: { (result) in
+            DispatchQueue.global().async {
+                if let dictionary = result as? [String: Any] {
+                    let keychain = KeychainSwift()
+                    keychain.set(dictionary["id"] as! String, forKey: kTokenKey)
+                    keychain.set(username, forKey: kUserNameKey)
+                }
+
+                DispatchQueue.main.async {
+                    completion("OK")
+                }
+            }
+        }) { (error) in
+            failure(error!)
+        }
+    }
+
+    func signOut(completion: @escaping (_ success: Bool) -> Void) {
+        let keychain = KeychainSwift()
+        keychain.delete(kTokenKey)
+
+        completion(true)
     }
 }

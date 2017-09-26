@@ -15,7 +15,6 @@ class JUWMapViewController: UIViewController {
     // MARK: Properties
     var currentCenter:JUWMapCollectionCenter!
 
-
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var needLabel: UILabel!
     @IBOutlet var contactLabel: UILabel!
@@ -25,9 +24,28 @@ class JUWMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.viewDidLoad()
+        customizeUserInterface()
+        loadCollectionCenters()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    func customizeUserInterface() {
         title = "Centros acopio"
         showRightBarButton()
         loadCollectionCenters()
+        self.navigationItem.setHidesBackButton(true, animated:false)
+        let dismissButton = UIButton()
+        dismissButton.setImage(UIImage(named: "closeButtonOrange"), for: .normal)
+        dismissButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        dismissButton.addTarget(self, action: #selector(JUWMapViewController.tempLogout), for: .touchUpInside)
+        
+        let dismissBarButton = UIBarButtonItem(customView: dismissButton)
+        navigationItem.leftBarButtonItem = dismissBarButton
     }
 
     func loadCollectionCenters() {
@@ -42,7 +60,31 @@ class JUWMapViewController: UIViewController {
 
     func load(centers: [JUWCollectionCenter]) {
         mapView.removeAnnotations(mapView.annotations)
+        
         for center in centers {
+            let annotation = JUWMapCollectionCenter(title: center.name,
+                                                    name: center.name,
+                                                    address: center.address,
+                                                    phoneNumber: center.phoneNumber,
+                                                    identifier: center.centerIdentifier,
+                                                    twitter: center.twitterHandle,
+                                                    coordinate: CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude))
+            mapView.addAnnotation(annotation)
+        }
+    }
+
+    @objc func tempLogout(_ sender: UIButton) {
+        let session = JUWSession.sharedInstance
+        session.signOut { (success) in
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+
+    func loadCenters() {
+        let realm = try! Realm()
+        let centersArray = realm.objects(JUWCollectionCenter.self)
+
+        for center in centersArray {
             let annotation = JUWMapCollectionCenter(title: center.name,
                                                     name: center.name,
                                                     address: center.address,
