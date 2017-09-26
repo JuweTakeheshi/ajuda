@@ -128,6 +128,7 @@
                     <navigationItem key="navigationItem" id="1pp-1I-bUi"/>
                     <connections>
                         <outlet property="passwordTextField" destination="u5B-0Z-EqC" id="wTW-Nq-JXP"/>
+                        <outlet property="signInButton" destination="S3e-Ez-xRo" id="ihb-w5-jgZ"/>
                         <outlet property="signInTextField" destination="S3e-Ez-xRo" id="2mn-ew-B1K"/>
                         <outlet property="usernameTextField" destination="xZ8-Jf-yGG" id="FY3-nP-Tzi"/>
                     </connections>
@@ -305,7 +306,7 @@
                         <outlet property="passwordTextField" destination="1hP-D0-lCE" id="fr6-DV-Ud3"/>
                         <outlet property="pickerToolbar" destination="Xdv-mg-OzR" id="qZS-JQ-ghb"/>
                         <outlet property="pickerView" destination="mTX-zJ-Nnq" id="GuK-Px-waK"/>
-                        <outlet property="signUpButton" destination="tnX-bq-wrB" id="9g2-JC-g5T"/>
+                        <outlet property="signUpButton" destination="tnX-bq-wrB" id="Nho-yK-B1d"/>
                         <outlet property="userNameTextField" destination="uYl-P7-xfH" id="AE1-m1-xNW"/>
                         <outlet property="userTypeButton" destination="chK-uY-KTr" id="CHY-E2-Jae"/>
                     </connections>

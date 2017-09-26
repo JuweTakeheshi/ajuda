@@ -13,7 +13,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInTextField: UIButton!
-
+    @IBOutlet weak var signInButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         validateSession()
@@ -50,6 +51,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let signUpBarButton = UIBarButtonItem()
         signUpBarButton.customView = signUpButton
         self.navigationItem.rightBarButtonItem = signUpBarButton
+    }
+
+    func disableUserInterface() {
+        signInButton.isEnabled = false
+        signInButton.alpha = 0.5
+        usernameTextField.isUserInteractionEnabled = false
+        passwordTextField.isUserInteractionEnabled = false
     }
 
     @objc func pushSignUp() {

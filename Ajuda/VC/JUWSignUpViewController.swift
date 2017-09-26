@@ -18,7 +18,7 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var userTypeButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var pickerToolbar: UIToolbar!
-
+    
     var onSignUp: OnSignUp?
     var selectedUserType: String?
 
