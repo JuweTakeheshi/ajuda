@@ -140,7 +140,7 @@
                                             <outlet property="delegate" destination="R8Z-m1-hdT" id="jlY-yX-Nmr"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chK-uY-KTr">
+                                    <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chK-uY-KTr">
                                         <rect key="frame" x="27" y="136" width="266" height="45"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -156,7 +156,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnX-bq-wrB">
-                                        <rect key="frame" x="27" y="200" width="266" height="45"/>
+                                        <rect key="frame" x="27" y="133" width="266" height="45"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="266" id="5wl-kv-3oc"/>
@@ -175,12 +175,12 @@
                                     <constraint firstItem="1hP-D0-lCE" firstAttribute="centerX" secondItem="jcf-Fm-yWt" secondAttribute="centerX" id="0ho-95-poZ"/>
                                     <constraint firstItem="uYl-P7-xfH" firstAttribute="top" secondItem="jcf-Fm-yWt" secondAttribute="top" constant="5" id="Alb-6S-D7c"/>
                                     <constraint firstItem="chK-uY-KTr" firstAttribute="centerX" secondItem="jcf-Fm-yWt" secondAttribute="centerX" id="EpK-5g-Q6K"/>
+                                    <constraint firstItem="tnX-bq-wrB" firstAttribute="top" secondItem="1hP-D0-lCE" secondAttribute="bottom" constant="19" id="FW3-m6-f46"/>
                                     <constraint firstAttribute="height" constant="280" id="UyW-LV-hnd"/>
                                     <constraint firstItem="1hP-D0-lCE" firstAttribute="top" secondItem="uYl-P7-xfH" secondAttribute="bottom" constant="19" id="Ve3-MH-vYF"/>
                                     <constraint firstItem="uYl-P7-xfH" firstAttribute="centerX" secondItem="jcf-Fm-yWt" secondAttribute="centerX" id="aNj-se-Eb7"/>
                                     <constraint firstItem="chK-uY-KTr" firstAttribute="top" secondItem="1hP-D0-lCE" secondAttribute="bottom" constant="22" id="fjf-lN-8Xe"/>
                                     <constraint firstItem="tnX-bq-wrB" firstAttribute="centerX" secondItem="jcf-Fm-yWt" secondAttribute="centerX" id="yJf-V8-ocA"/>
-                                    <constraint firstItem="tnX-bq-wrB" firstAttribute="top" secondItem="chK-uY-KTr" secondAttribute="bottom" constant="19" id="zb4-b9-hRo"/>
                                 </constraints>
                             </view>
                             <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xdv-mg-OzR">

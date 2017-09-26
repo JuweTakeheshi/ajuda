@@ -24,13 +24,17 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        customizeUserInterface()
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func customizeUserInterface() {
+        
     }
 
     @IBAction func showUserTypeSelection(_ sender: Any) {
