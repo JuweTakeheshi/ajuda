@@ -309,23 +309,69 @@
                                     <outlet property="delegate" destination="nsa-SR-3vQ" id="jMh-yD-La9"/>
                                 </connections>
                             </mapView>
+                            <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFa-Pu-YXd">
+                                <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiV-iR-ltC">
+                                        <rect key="frame" x="282" y="10" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="WJM-AJ-svH"/>
+                                            <constraint firstAttribute="height" constant="30" id="lC8-0P-isw"/>
+                                        </constraints>
+                                        <state key="normal" image="close"/>
+                                        <connections>
+                                            <action selector="closeFilter:" destination="nsa-SR-3vQ" eventType="touchUpInside" id="0tw-eR-xL3"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtro aplicado, centros que necesitan:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOA-az-9hY">
+                                        <rect key="frame" x="8" y="5" width="269" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cq-A5-gcK">
+                                        <rect key="frame" x="8" y="26" width="269" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="NiV-iR-ltC" firstAttribute="leading" secondItem="VOA-az-9hY" secondAttribute="trailing" constant="5" id="8zM-QI-FMR"/>
+                                    <constraint firstItem="VOA-az-9hY" firstAttribute="leading" secondItem="pFa-Pu-YXd" secondAttribute="leading" constant="8" id="MQG-Cf-gRq"/>
+                                    <constraint firstItem="6Cq-A5-gcK" firstAttribute="leading" secondItem="pFa-Pu-YXd" secondAttribute="leading" constant="8" id="X0t-GN-9OZ"/>
+                                    <constraint firstItem="VOA-az-9hY" firstAttribute="top" secondItem="pFa-Pu-YXd" secondAttribute="top" constant="5" id="aLA-5K-QMS"/>
+                                    <constraint firstAttribute="height" constant="50" id="iEN-gd-MxY"/>
+                                    <constraint firstAttribute="trailing" secondItem="NiV-iR-ltC" secondAttribute="trailing" constant="8" id="k2R-Gn-klf"/>
+                                    <constraint firstItem="NiV-iR-ltC" firstAttribute="leading" secondItem="6Cq-A5-gcK" secondAttribute="trailing" constant="5" id="kLh-sn-qMF"/>
+                                    <constraint firstItem="NiV-iR-ltC" firstAttribute="centerY" secondItem="pFa-Pu-YXd" secondAttribute="centerY" id="nqS-KM-57F"/>
+                                    <constraint firstItem="6Cq-A5-gcK" firstAttribute="top" secondItem="VOA-az-9hY" secondAttribute="bottom" constant="4" id="x58-YO-N1I"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="pFa-Pu-YXd" secondAttribute="trailing" id="0aS-el-6UU"/>
                             <constraint firstItem="gr2-ba-HpW" firstAttribute="leading" secondItem="seR-Ra-Bjf" secondAttribute="leading" id="AFa-PE-rcj"/>
                             <constraint firstItem="FJE-v5-qaR" firstAttribute="top" secondItem="gr2-ba-HpW" secondAttribute="bottom" id="XdH-yB-XA7"/>
                             <constraint firstAttribute="trailing" secondItem="gr2-ba-HpW" secondAttribute="trailing" id="nas-oF-Yhs"/>
+                            <constraint firstItem="pFa-Pu-YXd" firstAttribute="leading" secondItem="seR-Ra-Bjf" secondAttribute="leading" id="nd5-9i-5DN"/>
+                            <constraint firstItem="pFa-Pu-YXd" firstAttribute="top" secondItem="rFb-bt-5hC" secondAttribute="bottom" id="oKa-FT-92F"/>
                             <constraint firstItem="gr2-ba-HpW" firstAttribute="top" secondItem="rFb-bt-5hC" secondAttribute="bottom" id="sJy-Q3-gWu"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mapa" id="Rru-mv-thW"/>
                     <connections>
+                        <outlet property="closeFilterButton" destination="NiV-iR-ltC" id="zWv-6H-WhP"/>
+                        <outlet property="filterLabel" destination="6Cq-A5-gcK" id="zFQ-cy-XBD"/>
+                        <outlet property="filterView" destination="pFa-Pu-YXd" id="VmB-cu-NRl"/>
                         <outlet property="mapView" destination="gr2-ba-HpW" id="kZ1-Pd-gCt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXp-aT-7cT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2396" y="-1085"/>
+            <point key="canvasLocation" x="2394.375" y="-1085"/>
         </scene>
         <!--Courier View Controller-->
         <scene sceneID="nZh-8C-PaP">
@@ -382,4 +428,7 @@
             <point key="canvasLocation" x="-338" y="30"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="close" width="30" height="30"/>
+    </resources>
 </document>

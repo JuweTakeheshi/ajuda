@@ -6,7 +6,7 @@
 //  Copyright © 2017 Juwe Takeheshi. All rights reserved.
 //
 
-typealias OnResultsFound = (_ result: [JUWCollectionCenter])->()
+typealias OnResultsFound = (_ result: [JUWCollectionCenter], _ product: String)->()
 
 import UIKit
 
@@ -44,7 +44,7 @@ extension JUWShelterViewController: UISearchBarDelegate {
         }
 
         JUWCollectionCenterManager().collectionCenters(whichNeed: product) { collectionCenters in
-            self.onResultsFound?(collectionCenters)
+            self.onResultsFound?(collectionCenters, product)
             self.dismiss(animated: true, completion: nil)
         }
     }

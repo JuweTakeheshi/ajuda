@@ -16,10 +16,13 @@ class JUWMapViewController: UIViewController {
     var currentCenter:JUWMapCollectionCenter!
 
 
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var needLabel: UILabel!
-    @IBOutlet weak var contactLabel: UILabel!
-    @IBOutlet weak var callButton: UIButton!
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var needLabel: UILabel!
+    @IBOutlet var contactLabel: UILabel!
+    @IBOutlet var callButton: UIButton!
+    @IBOutlet var filterView: UIView!
+    @IBOutlet var closeFilterButton: UIButton!
+    @IBOutlet var filterLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,12 +88,21 @@ class JUWMapViewController: UIViewController {
     @IBAction func sendHelp(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let searchViewController = storyboard.instantiateViewController(withIdentifier: "JUWShelterViewController") as! JUWShelterViewController
-        searchViewController.onResultsFound = { results in
+        searchViewController.onResultsFound = { results, product in
+            self.filterLabel.text = product
+            self.filterView.isHidden = false
             self.load(centers: results)
         }
         
         let navigationController = UINavigationController(rootViewController: searchViewController)
         present(navigationController, animated: true, completion: nil)
+    }
+    
+    @IBAction func closeFilter(_ sender: UIButton) {
+        let realm = try! Realm()
+        let centers = Array(realm.objects(JUWCollectionCenter.self))
+        load(centers: centers)
+        filterView.isHidden = true
     }
 }
 
