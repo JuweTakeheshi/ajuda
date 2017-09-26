@@ -9,6 +9,7 @@
 import Foundation
 
 let kUserAuthenticationUrl = "http://hapi.balterbyte.com:8080/api/voluntarios/login"
+let kUserCreationUrl = "http://hapi.balterbyte.com:8080/api/voluntarios"
 let kCollectionCentersUrl = "https://hapi.balterbyte.com/api/acopios"
 let kCollectionCenterNeedsUrl = "https://hapi.balterbyte.com/api/acopios/%@/productos"
 let kCollectionCenterContactInfoUrl = "https://hapi.balterbyte.com/api/acopios/%@/contactos"
@@ -17,4 +18,5 @@ let kCollectionCenterProductsUrl = "https://hapi.balterbyte.com/api/acopios/%@/p
 
 //
 let kTokenKey = "KeyForToken"
+let kUserNameKey = "KeyForUserName"
 let kUserTypeKey = "KeyForUserType"

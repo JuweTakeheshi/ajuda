@@ -41,12 +41,20 @@ class JUWSession: NSObject {
         }
     }
 
-    func signUpWithUserName(username: String, password: String, userType: String, completion: @escaping (_ result: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
+    func signUpWithUserName(username: String, password: String, email: String, completion: @escaping (_ result: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
-        networkManager.post(url: "", parameters: ["username": username, "password": password, "userType": userType], completion: { (result) in
-//            JUWKeychainService.saveToken(token: "obtainedTokenFromServer")
-//            JUWKeychainService.saveUserType(type: userType as NSString)
-            completion("OK")
+        networkManager.post(url: kUserCreationUrl, parameters: ["username": username, "password": password, "email": email], completion: { (result) in
+            DispatchQueue.global().async {
+                if let dictionary = result as? [String: Any] {
+                    let keychain = KeychainSwift()
+                    keychain.set(dictionary["id"] as! String, forKey: kTokenKey)
+                    keychain.set(username, forKey: kUserNameKey)
+                }
+
+                DispatchQueue.main.async {
+                    completion("OK")
+                }
+            }
         }) { (error) in
             failure(error!)
         }

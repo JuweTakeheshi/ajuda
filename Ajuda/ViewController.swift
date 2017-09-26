@@ -43,7 +43,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let signUpButton = UIButton()
         signUpButton.setTitle("Registro", for: .normal)
-        signUpButton.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Bold", size: 14.0)
+        signUpButton.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Bold", size: 16.0)
         signUpButton.setTitleColor(UIColor.white, for: .normal)
         signUpButton.frame = CGRect(x: 0, y: 0, width: 60, height: 45)
         signUpButton.addTarget(self, action: #selector(ViewController.pushSignUp), for: .touchUpInside)
@@ -54,10 +54,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     @objc func pushSignUp() {
         let signUpViewController = storyboard?.instantiateViewController(withIdentifier: "JUWSignUpViewController") as! JUWSignUpViewController
-        let navigationController = UINavigationController(rootViewController: signUpViewController)
-        present(navigationController, animated: true) {
-            
+        signUpViewController.onSignUp = {
+            let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+            self.navigationController?.pushViewController(mapViewController, animated: true)
         }
+        let navigationController = UINavigationController(rootViewController: signUpViewController)
+        present(navigationController, animated: true, completion: nil)
     }
 
     @IBAction func signIn(_ sender: Any) {
@@ -67,7 +69,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
                 self.navigationController?.pushViewController(mapViewController, animated: true)
             }, failure: { (error) in
-                
+                self.displayErrorAlert(title: "Error al ingresar",
+                                       message: "No pudimos verificar tus datos. Confirma que los escribiste correctamente")
             })
         }
     }

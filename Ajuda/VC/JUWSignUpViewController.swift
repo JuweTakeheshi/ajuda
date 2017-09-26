@@ -39,6 +39,8 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
 
     func customizeUserInterface() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.945, green: 0.525, blue: 0.200, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let dismissButton = UIButton()
         dismissButton.setImage(UIImage(named: "closeButtonOrange"), for: .normal)
         dismissButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -63,14 +65,14 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func signUp(_ sender: Any) {
         let session = JUWSession.sharedInstance
         if !(userNameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
-            session.signUpWithUserName(username: userNameTextField.text!, password: passwordTextField.text!, userType: selectedUserType!, completion: { (result) in
+            session.signUpWithUserName(username: userNameTextField.text!, password: passwordTextField.text!, email: userNameTextField.text!, completion: { (result) in
                 self.dismiss(animated: true, completion: {
                     if self.onSignUp != nil {
                         self.onSignUp!()
                     }
                 })
             }, failure: { (error) in
-                
+                self.displayErrorAlert(title: "Error en Registro", message: "No pudimos registrarte. Por favor intenta más tarde")
             })
         }
     }

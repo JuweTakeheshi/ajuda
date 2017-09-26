@@ -44,6 +44,8 @@
 		D153A3581F74B26600541263 /* JUWCourier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D153A3571F74B26600541263 /* JUWCourier.swift */; };
 		D1644AE31F79581300B4DAB5 /* JUWAddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1644AE21F79581300B4DAB5 /* JUWAddProductViewController.swift */; };
 		D1644AED1F79D2F900B4DAB5 /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1644AEC1F79D2F900B4DAB5 /* KeychainSwiftDistrib.swift */; };
+		D1644AEF1F7A02C600B4DAB5 /* UIButton+ajuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1644AEE1F7A02C600B4DAB5 /* UIButton+ajuda.swift */; };
+		D1644AF11F7A036B00B4DAB5 /* UITextField+ajuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1644AF01F7A036B00B4DAB5 /* UITextField+ajuda.swift */; };
 		D1E534841F74D65C0000E2A9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E534831F74D65C0000E2A9 /* MapKit.framework */; };
 		D1E5348B1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */; };
 		D1E5348D1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */; };
@@ -125,6 +127,8 @@
 		D153A3571F74B26600541263 /* JUWCourier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWCourier.swift; sourceTree = "<group>"; };
 		D1644AE21F79581300B4DAB5 /* JUWAddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWAddProductViewController.swift; sourceTree = "<group>"; };
 		D1644AEC1F79D2F900B4DAB5 /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
+		D1644AEE1F7A02C600B4DAB5 /* UIButton+ajuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ajuda.swift"; sourceTree = "<group>"; };
+		D1644AF01F7A036B00B4DAB5 /* UITextField+ajuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ajuda.swift"; sourceTree = "<group>"; };
 		D1E534831F74D65C0000E2A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JUWDetailCalloutAccessoryView.xib; sourceTree = "<group>"; };
 		D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWMapCollectionCenter.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				AF3420A11F798EF9004226A3 /* UIViewController+ajuda.swift */,
+				D1644AEE1F7A02C600B4DAB5 /* UIButton+ajuda.swift */,
+				D1644AF01F7A036B00B4DAB5 /* UITextField+ajuda.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -496,6 +502,7 @@
 				D13709B61F7460C300F3B216 /* JUWCollectionCenterViewController.swift in Sources */,
 				AFDE29E81F7752F2002AB604 /* DetailCenterVC.swift in Sources */,
 				D13709BA1F7460E300F3B216 /* JUWCourierViewController.swift in Sources */,
+				D1644AF11F7A036B00B4DAB5 /* UITextField+ajuda.swift in Sources */,
 				D13709A51F74328500F3B216 /* JUWSession.swift in Sources */,
 				AF3420A21F798EF9004226A3 /* UIViewController+ajuda.swift in Sources */,
 				D1F348021F775A74003AB9A2 /* JUWProduct.swift in Sources */,
@@ -505,6 +512,7 @@
 				D13709971F74284A00F3B216 /* JUWCollectionCenter.swift in Sources */,
 				D153A3561F747D3300541263 /* JUWConstants.swift in Sources */,
 				D1F348041F77E43B003AB9A2 /* JUWProductManager.swift in Sources */,
+				D1644AEF1F7A02C600B4DAB5 /* UIButton+ajuda.swift in Sources */,
 				D13709991F74286200F3B216 /* JUWDamagedBuilding.swift in Sources */,
 				D13709681F74261200F3B216 /* AppDelegate.swift in Sources */,
 			);
@@ -681,7 +689,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 35CB8SJ2Q9;
+				DEVELOPMENT_TEAM = M83HJ6VTJG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -702,7 +710,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 35CB8SJ2Q9;
+				DEVELOPMENT_TEAM = M83HJ6VTJG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
