@@ -40,9 +40,9 @@ class JUWMapViewController: UIViewController {
         loadCollectionCenters()
         self.navigationItem.setHidesBackButton(true, animated:false)
         let dismissButton = UIButton()
-        dismissButton.setImage(UIImage(named: "closeButtonOrange"), for: .normal)
+        dismissButton.setImage(UIImage(named: "infoButtonWhite"), for: .normal)
         dismissButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        dismissButton.addTarget(self, action: #selector(JUWMapViewController.tempLogout), for: .touchUpInside)
+        dismissButton.addTarget(self, action: #selector(JUWMapViewController.loadInfoVC), for: .touchUpInside)
         
         let dismissBarButton = UIBarButtonItem(customView: dismissButton)
         navigationItem.leftBarButtonItem = dismissBarButton
@@ -153,6 +153,11 @@ class JUWMapViewController: UIViewController {
         load(centers: centers)
         showRightBarButton()
         filterView.isHidden = true
+    }
+    
+    @objc func loadInfoVC() {
+        let infoNC = storyboard?.instantiateViewController(withIdentifier: "InfoNC") as! UINavigationController
+        present(infoNC, animated: true, completion: nil)
     }
 }
 
