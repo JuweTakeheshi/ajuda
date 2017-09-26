@@ -14,7 +14,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInTextField: UIButton!
     @IBOutlet weak var signInButton: UIButton!
-    
+    var signUpButton: UIButton?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         validateSession()
@@ -42,12 +43,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func customizeUserInterface() {
         navigationController?.navigationBar.barTintColor = UIColor(red: 0.945, green: 0.525, blue: 0.200, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        let signUpButton = UIButton()
-        signUpButton.setTitle("Registro", for: .normal)
-        signUpButton.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Bold", size: 16.0)
-        signUpButton.setTitleColor(UIColor.white, for: .normal)
-        signUpButton.frame = CGRect(x: 0, y: 0, width: 60, height: 45)
-        signUpButton.addTarget(self, action: #selector(ViewController.pushSignUp), for: .touchUpInside)
+        signUpButton = UIButton()
+        signUpButton?.setTitle("Registro", for: .normal)
+        signUpButton?.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Bold", size: 16.0)
+        signUpButton?.setTitleColor(UIColor.white, for: .normal)
+        signUpButton?.frame = CGRect(x: 0, y: 0, width: 60, height: 45)
+        signUpButton?.addTarget(self, action: #selector(ViewController.pushSignUp), for: .touchUpInside)
         let signUpBarButton = UIBarButtonItem()
         signUpBarButton.customView = signUpButton
         self.navigationItem.rightBarButtonItem = signUpBarButton
