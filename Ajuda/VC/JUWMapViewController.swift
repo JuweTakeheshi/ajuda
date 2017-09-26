@@ -15,16 +15,17 @@ class JUWMapViewController: UIViewController {
     // MARK: Properties
     var currentCenter:JUWMapCollectionCenter!
 
-
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var needLabel: UILabel!
-    @IBOutlet weak var contactLabel: UILabel!
-    @IBOutlet weak var callButton: UIButton!
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var needLabel: UILabel!
+    @IBOutlet var contactLabel: UILabel!
+    @IBOutlet var callButton: UIButton!
+    @IBOutlet var filterView: UIView!
+    @IBOutlet var filterLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Centros acopio"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Quiero ayudar", style: .plain, target: self, action: #selector(JUWMapViewController.sendHelp(_:)))
+        super.viewDidLoad()
+        customizeUserInterface()
         loadCollectionCenters()
     }
 
@@ -33,14 +34,52 @@ class JUWMapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func customizeUserInterface() {
+        title = "Centros acopio"
+        showRightBarButton()
+        loadCollectionCenters()
+        self.navigationItem.setHidesBackButton(true, animated:false)
+        let dismissButton = UIButton()
+        dismissButton.setImage(UIImage(named: "closeButtonOrange"), for: .normal)
+        dismissButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        dismissButton.addTarget(self, action: #selector(JUWMapViewController.tempLogout), for: .touchUpInside)
+        
+        let dismissBarButton = UIBarButtonItem(customView: dismissButton)
+        navigationItem.leftBarButtonItem = dismissBarButton
+    }
+
     func loadCollectionCenters() {
         let collectionCentersManager = JUWCollectionCenterManager()
-        collectionCentersManager.getCollectionCenters(centers: { () in
-            self.loadCenters()
+        collectionCentersManager.updateCollectionCenters(centers: { () in
+            let realm = try! Realm()
+            let centers = Array(realm.objects(JUWCollectionCenter.self))
+            self.load(centers: centers)
         }) { (error) in
-            self.displayHandlAlert(title: "Aviso", message: "Tuvimos un problema al obtener los centros de acopio, mostraremos los centros de la ultima actualización, recuerda que podria no ser la información mas actual"){  action in
+            self.displayHandlAlert(title: "Error", message: "Tuvimos un problema al obtener los centros de acopio. Mostraremos los centros de la última actualización; recuerda que podría ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con ellos."){  action in
                 self.loadCenters()
-                }
+            }
+        }
+    }
+
+    func load(centers: [JUWCollectionCenter]) {
+        mapView.removeAnnotations(mapView.annotations)
+        
+        for center in centers {
+            let annotation = JUWMapCollectionCenter(title: center.name,
+                                                    name: center.name,
+                                                    address: center.address,
+                                                    phoneNumber: center.phoneNumber,
+                                                    identifier: center.centerIdentifier,
+                                                    twitter: center.twitterHandle,
+                                                    coordinate: CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude))
+            mapView.addAnnotation(annotation)
+        }
+    }
+
+    @objc func tempLogout(_ sender: UIButton) {
+        let session = JUWSession.sharedInstance
+        session.signOut { (success) in
+            self.navigationController?.popViewController(animated: true)
         }
     }
 
@@ -59,19 +98,29 @@ class JUWMapViewController: UIViewController {
             mapView.addAnnotation(annotation)
         }
     }
+    
+    func showRightBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Ayudar",
+            style: .plain,
+            target: self,
+            action: #selector(JUWMapViewController.sendHelp(_:))
+        )
+    }
 
     @IBAction func call(_ sender: UIButton) {
-        if let phoneNumber = sender.titleLabel?.text {
-            let formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
-            if let url = URL(string: "tel://\(formatedNumber)") {
-                let application:UIApplication = UIApplication.shared
-                if (application.canOpenURL(url)) {
-                    if #available(iOS 10.0, *) {
-                        application.open(url, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(url)
-                    }
-                }
+        guard let phoneNumber = sender.titleLabel?.text else {
+            return
+        }
+        let formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+        guard let url = URL(string: "tel://\(formatedNumber)")  else {
+            return
+        }
+        if (UIApplication.shared.canOpenURL(url)) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
             }
         }
     }
@@ -87,14 +136,23 @@ class JUWMapViewController: UIViewController {
     @IBAction func sendHelp(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let searchViewController = storyboard.instantiateViewController(withIdentifier: "JUWShelterViewController") as! JUWShelterViewController
-        searchViewController.onResultsFound = {(results) in
-            print(results)
+        searchViewController.onResultsFound = { results, product in
+            self.navigationItem.rightBarButtonItem = nil
+            self.filterLabel.text = product
+            self.filterView.isHidden = false
+            self.load(centers: results)
         }
         
         let navigationController = UINavigationController(rootViewController: searchViewController)
-        present(navigationController, animated: true) {
-            
-        }
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    @IBAction func removeFilter(_ sender: UIButton) {
+        let realm = try! Realm()
+        let centers = Array(realm.objects(JUWCollectionCenter.self))
+        load(centers: centers)
+        showRightBarButton()
+        filterView.isHidden = true
     }
 }
 
@@ -154,7 +212,7 @@ extension JUWMapViewController: MKMapViewDelegate {
         annotation.retrieveProductsWith(completion: { (products) in
             
         }) { (error) in
-            self.displayOKAlert(title: "Aviso", message: "Tuvimos un problema al obtener los productos que se necesitan en seste centro de acopio, mostraremos los productos de la ultima actualización recuerda que puede no ser la mas actuals")
+            self.displayOKAlert(title: "Error", message: "Tuvimos un problema al obtener los productos que se necesitan en este centro de acopio. Mostraremos los productos de la ultima actualización recuerda que puede ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con ellos.")
             
         }
         currentCenter = annotation

@@ -16,15 +16,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        provisionalSkipSingIn()
         validateSession()
         customizeUserInterface()
     }
-    
-    func provisionalSkipSingIn(){
-        let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
-        let provisionalNavC = UINavigationController(rootViewController: mapViewController)
-        self.present(provisionalNavC, animated: false, completion:nil)
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        usernameTextField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,22 +30,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func validateSession() {
-        let token = JUWKeychainService.loadToken()
-        let userType = JUWKeychainService.loadUserType()
-        
-        if token != nil && userType != nil {
-            if userType! as String == JUWSession.UserType.courier.rawValue {
-                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWCourierViewController
-                navigationController?.pushViewController(bikerViewController, animated: false)
-            }
+        let keychain = KeychainSwift()
+        let token = keychain.get(kTokenKey)
+        if token != nil {
+            let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+            navigationController?.pushViewController(mapViewController, animated: false)
         }
     }
 
     func customizeUserInterface() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.945, green: 0.525, blue: 0.200, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let signUpButton = UIButton()
         signUpButton.setTitle("Registro", for: .normal)
-        signUpButton.frame = CGRect(x: 0, y: 0, width: 80, height: 45)
-        signUpButton.setTitleColor(UIColor.black, for: .normal)
+        signUpButton.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Bold", size: 16.0)
+        signUpButton.setTitleColor(UIColor.white, for: .normal)
+        signUpButton.frame = CGRect(x: 0, y: 0, width: 60, height: 45)
         signUpButton.addTarget(self, action: #selector(ViewController.pushSignUp), for: .touchUpInside)
         let signUpBarButton = UIBarButtonItem()
         signUpBarButton.customView = signUpButton
@@ -56,20 +54,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     @objc func pushSignUp() {
         let signUpViewController = storyboard?.instantiateViewController(withIdentifier: "JUWSignUpViewController") as! JUWSignUpViewController
-        let navigationController = UINavigationController(rootViewController: signUpViewController)
-        present(navigationController, animated: true) {
-            
+        signUpViewController.onSignUp = {
+            let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+            self.navigationController?.pushViewController(mapViewController, animated: true)
         }
+        let navigationController = UINavigationController(rootViewController: signUpViewController)
+        present(navigationController, animated: true, completion: nil)
     }
 
     @IBAction func signIn(_ sender: Any) {
         if !(usernameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
             let session = JUWSession.sharedInstance
-            session.signInWithUserName(username: usernameTextField.text!, password: passwordTextField.text!, completion: { (result) in
-                let bikerViewController = storyboard?.instantiateViewController(withIdentifier: "JUWBikerViewController") as! JUWCourierViewController
-                navigationController?.pushViewController(bikerViewController, animated: true)
+            session.signInWithUserName(username: usernameTextField.text!, password: passwordTextField.text!, completion: {
+                let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+                self.navigationController?.pushViewController(mapViewController, animated: true)
             }, failure: { (error) in
-                
+                self.displayErrorAlert(title: "Error al ingresar",
+                                       message: "No pudimos verificar tus datos. Confirma que los escribiste correctamente")
             })
         }
     }
