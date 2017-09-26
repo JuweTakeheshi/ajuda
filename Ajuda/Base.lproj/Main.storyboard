@@ -454,7 +454,7 @@
                                     <outlet property="delegate" destination="nsa-SR-3vQ" id="jMh-yD-La9"/>
                                 </connections>
                             </mapView>
-                            <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFa-Pu-YXd">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFa-Pu-YXd">
                                 <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiV-iR-ltC">
@@ -481,7 +481,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="NiV-iR-ltC" firstAttribute="leading" secondItem="VOA-az-9hY" secondAttribute="trailing" constant="5" id="8zM-QI-FMR"/>
                                     <constraint firstItem="VOA-az-9hY" firstAttribute="leading" secondItem="pFa-Pu-YXd" secondAttribute="leading" constant="8" id="MQG-Cf-gRq"/>

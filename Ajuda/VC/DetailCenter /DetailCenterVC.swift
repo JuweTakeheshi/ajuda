@@ -31,6 +31,8 @@ class DetailCenterVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func customizeUserInterface() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.945, green: 0.525, blue: 0.200, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         nameLabel.text = collectionCenter().name
         addressLabel.text = collectionCenter().address
         twitterLabel.text = collectionCenter().twitterHandle

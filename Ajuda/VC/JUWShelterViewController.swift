@@ -19,15 +19,21 @@ class JUWShelterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Quiero ayudar con..."
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Cancelar",
-            style: .plain,
-            target: self,
-            action: #selector(JUWShelterViewController.cancel(_:))
-        )
+        customizeUserInterface()
     }
 
+    func customizeUserInterface() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.945, green: 0.525, blue: 0.200, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        title = "Quiero ayudar con..."
+        let dismissButton = UIButton()
+        dismissButton.setImage(UIImage(named: "closeButtonOrange"), for: .normal)
+        dismissButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        dismissButton.addTarget(self, action: #selector(JUWShelterViewController.cancel(_:)), for: .touchUpInside)
+        
+        let dismissBarButton = UIBarButtonItem(customView: dismissButton)
+        navigationItem.rightBarButtonItem = dismissBarButton
+    }
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

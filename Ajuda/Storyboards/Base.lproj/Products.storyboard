@@ -58,7 +58,7 @@
                                     <constraint firstAttribute="height" constant="46" id="lva-Ph-dLB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Av Principal S/N Col. Ejidos del Moral. Tlalnepantla. Estado de México" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tf7-bK-1ui">
@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="height" constant="35" id="idO-Dt-xl2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@deportivo18marzo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqZ-sn-pp8">
@@ -76,7 +76,7 @@
                                     <constraint firstAttribute="height" constant="35" id="Lhm-6z-REc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l14-nA-CQ8">
@@ -101,7 +101,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.49588176855151522" green="0.49588176855151522" blue="0.49588176855151522" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="l14-nA-CQ8" firstAttribute="leading" secondItem="7YE-fl-PyN" secondAttribute="leading" id="5dA-0q-fmH"/>
                             <constraint firstItem="Tf7-bK-1ui" firstAttribute="leading" secondItem="evd-rH-XcA" secondAttribute="leading" constant="16" id="7oO-Fp-oDH"/>
@@ -130,7 +130,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="z0s-0Y-6QG">
                                 <rect key="frame" x="16" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="backButtonOrange"/>
+                                <state key="normal" image="closeButtonOrange"/>
                                 <connections>
                                     <action selector="backAction:" destination="bim-ah-pvr" eventType="touchUpInside" id="sg6-bN-eXm"/>
                                 </connections>
@@ -177,7 +177,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2Y-hd-mpJ">
-                                <rect key="frame" x="0.0" y="263" width="320" height="42"/>
+                                <rect key="frame" x="0.0" y="269" width="320" height="42"/>
                                 <color key="backgroundColor" red="0.95187014250000002" green="0.53200862900000001" blue="0.00036156449180000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="afK-GQ-xOo"/>
@@ -190,14 +190,25 @@
                                     <action selector="addProductAction:" destination="SAg-O2-6HI" eventType="touchUpInside" id="bFJ-7F-S9B"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Ejemplo: agua, pañales..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qfo-GP-Wmx">
-                                <rect key="frame" x="16" y="181" width="288" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Ejemplo: agua, pañales..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qfo-GP-Wmx">
+                                <rect key="frame" x="16" y="181" width="288" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="caS-RY-UvQ"/>
+                                    <constraint firstAttribute="height" constant="40" id="caS-RY-UvQ"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="SAg-O2-6HI" id="Gbn-RM-7wg"/>
                                 </connections>
@@ -258,7 +269,7 @@
     </scenes>
     <resources>
         <image name="addButtonOrange" width="30" height="30"/>
-        <image name="backButtonOrange" width="30" height="30"/>
+        <image name="closeButtonOrange" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="0.95187014250000002" green="0.53200862900000001" blue="0.00036156449180000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
