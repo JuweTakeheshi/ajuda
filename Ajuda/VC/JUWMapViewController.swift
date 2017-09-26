@@ -21,18 +21,12 @@ class JUWMapViewController: UIViewController {
     @IBOutlet var contactLabel: UILabel!
     @IBOutlet var callButton: UIButton!
     @IBOutlet var filterView: UIView!
-    @IBOutlet var closeFilterButton: UIButton!
     @IBOutlet var filterLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Centros acopio"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Ayudar",
-            style: .plain,
-            target: self,
-            action: #selector(JUWMapViewController.sendHelp(_:))
-        )
+        showRightBarButton()
         loadCollectionCenters()
     }
 
@@ -58,6 +52,15 @@ class JUWMapViewController: UIViewController {
                                                     coordinate: CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude))
             mapView.addAnnotation(annotation)
         }
+    }
+    
+    func showRightBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Ayudar",
+            style: .plain,
+            target: self,
+            action: #selector(JUWMapViewController.sendHelp(_:))
+        )
     }
 
     @IBAction func call(_ sender: UIButton) {
@@ -89,6 +92,7 @@ class JUWMapViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let searchViewController = storyboard.instantiateViewController(withIdentifier: "JUWShelterViewController") as! JUWShelterViewController
         searchViewController.onResultsFound = { results, product in
+            self.navigationItem.rightBarButtonItem = nil
             self.filterLabel.text = product
             self.filterView.isHidden = false
             self.load(centers: results)
@@ -98,10 +102,11 @@ class JUWMapViewController: UIViewController {
         present(navigationController, animated: true, completion: nil)
     }
     
-    @IBAction func closeFilter(_ sender: UIButton) {
+    @IBAction func removeFilter(_ sender: UIButton) {
         let realm = try! Realm()
         let centers = Array(realm.objects(JUWCollectionCenter.self))
         load(centers: centers)
+        showRightBarButton()
         filterView.isHidden = true
     }
 }

@@ -320,7 +320,7 @@
                                         </constraints>
                                         <state key="normal" image="close"/>
                                         <connections>
-                                            <action selector="closeFilter:" destination="nsa-SR-3vQ" eventType="touchUpInside" id="0tw-eR-xL3"/>
+                                            <action selector="removeFilter:" destination="nsa-SR-3vQ" eventType="touchUpInside" id="0Wv-Lt-JsT"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtro aplicado, centros que necesitan:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOA-az-9hY">
@@ -363,7 +363,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Mapa" id="Rru-mv-thW"/>
                     <connections>
-                        <outlet property="closeFilterButton" destination="NiV-iR-ltC" id="zWv-6H-WhP"/>
                         <outlet property="filterLabel" destination="6Cq-A5-gcK" id="zFQ-cy-XBD"/>
                         <outlet property="filterView" destination="pFa-Pu-YXd" id="VmB-cu-NRl"/>
                         <outlet property="mapView" destination="gr2-ba-HpW" id="kZ1-Pd-gCt"/>
