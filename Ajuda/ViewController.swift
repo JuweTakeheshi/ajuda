@@ -25,7 +25,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func validateSession() {
-        let token = JUWKeychainService.loadToken()
+        let keychain = KeychainSwift()
+        let token = keychain.get(kTokenKey)
+
         if token != nil {
             let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
             navigationController?.pushViewController(mapViewController, animated: false)

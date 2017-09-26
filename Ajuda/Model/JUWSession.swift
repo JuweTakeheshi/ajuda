@@ -28,7 +28,8 @@ class JUWSession: NSObject {
         networkManager.post(url: kUserAuthenticationUrl, parameters: parameters, completion: { (result) in
             DispatchQueue.global().async {
                 if let dictionary = result as? [String: Any] {
-                    JUWKeychainService.saveToken(token: dictionary["id"] as! NSString)
+                    let keychain = KeychainSwift()
+                    keychain.set(dictionary["id"] as! String, forKey: kTokenKey)
                 }
                 
                 DispatchQueue.main.async {
@@ -47,8 +48,8 @@ class JUWSession: NSObject {
     func signUpWithUserName(username: String, password: String, userType: String, completion: @escaping (_ result: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
         networkManager.post(url: "", parameters: ["username": username, "password": password, "userType": userType], completion: { (result) in
-            JUWKeychainService.saveToken(token: "obtainedTokenFromServer")
-            JUWKeychainService.saveUserType(type: userType as NSString)
+//            JUWKeychainService.saveToken(token: "obtainedTokenFromServer")
+//            JUWKeychainService.saveUserType(type: userType as NSString)
             completion("OK")
         }) { (error) in
             failure(error!)
