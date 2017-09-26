@@ -12,7 +12,7 @@ import Alamofire
 class JUWNetworkManager: NSObject {
 
     func post(url: String, parameters: [String: String], completion: @escaping (_ result: Any?) -> Void, failure: @escaping (_ error: Error?) -> Void) {
-        Alamofire.request(url, method: .post, parameters: parameters)
+        Alamofire.request(url, method: .post, parameters: parameters,encoding:JSONEncoding.default)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 switch response.result {

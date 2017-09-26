@@ -49,7 +49,14 @@ class JUWCollectionCenterManager: NSObject {
     }
     
     func addProductToCollectionCenter(collectionCenter: JUWCollectionCenter, product: String, completion: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
-        
+        let keychain = KeychainSwift()
+        let token = keychain.get(kTokenKey)
+        let url = String(format:kCollectionCenterAddProduct,collectionCenter.centerIdentifier,token!)
+        networkManager.post(url: url, parameters:["nombre":product], completion: { _ in
+            completion()
+        }, failure: { error in
+            failure(error!)
+        })
     }
 }
 
