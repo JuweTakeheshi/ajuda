@@ -20,6 +20,7 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
     let centerIdentifier: String
     let twitterHandle: String
     let coordinate: CLLocationCoordinate2D
+    let keychain = KeychainSwift()
 
     init(title: String,
          name: String,
@@ -45,7 +46,8 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
 
     func retrieveContacInfotWith(completion: @escaping (_ resultPhone: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
-        let url = String(format: kCollectionCenterContactInfoUrl, self.centerIdentifier)
+         let token = keychain.get(kTokenKey)
+        let url = String(format: kCollectionCenterContactInfoUrl, self.centerIdentifier,token!)
         networkManager.get(url: url, completion: { (result) in
             DispatchQueue.global().async {
                 if let array = result as? [Any] {
@@ -108,7 +110,8 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
 
     func retrieveProductsWith(completion: @escaping (_ result: [Any]) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
-        let url = String(format: kCollectionCenterNeedsUrl, self.centerIdentifier)
+         let token = keychain.get(kTokenKey)
+        let url = String(format: kCollectionCenterNeedsUrl, self.centerIdentifier,token!)
         networkManager.get(url: url, completion: { (result) in
             DispatchQueue.global().async {
                 if let productsArray = result as? [Any] {
