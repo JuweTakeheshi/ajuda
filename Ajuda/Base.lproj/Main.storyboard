@@ -350,13 +350,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="YO4-3c-PXx"/>
                                 </constraints>
-                                <textInputTraits key="textInputTraits"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
                                 <connections>
                                     <outlet property="delegate" destination="Jxe-dj-lyo" id="6Sq-gl-q8T"/>
                                 </connections>
                             </searchBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uQa-ud-4Te" firstAttribute="leading" secondItem="Jsr-bL-66e" secondAttribute="leading" id="Jx0-d2-4vR"/>
                             <constraint firstAttribute="trailing" secondItem="uQa-ud-4Te" secondAttribute="trailing" id="qXQ-sn-Uzq"/>
@@ -393,7 +393,7 @@
         <!--Aerca de-->
         <scene sceneID="IZO-nl-dof">
             <objects>
-                <viewController storyboardIdentifier="InfoVC" id="dvL-e2-Tgl" customClass="JUWInfoViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JUWInfoViewController" id="dvL-e2-Tgl" customClass="JUWInfoViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vxz-wj-Etn"/>
                         <viewControllerLayoutGuide type="bottom" id="b5V-GO-buF"/>
@@ -402,40 +402,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66X-vG-GtJ">
-                                <rect key="frame" x="40" y="72" width="240" height="89"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ajuda_logo" translatesAutoresizingMaskIntoConstraints="NO" id="66X-vG-GtJ">
+                                <rect key="frame" x="16" y="70" width="288" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="H7M-4L-wKf"/>
+                                    <constraint firstAttribute="width" constant="288" id="JaB-mo-Fby"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aMi-8a-WWM">
-                                <rect key="frame" x="40" y="249" width="240" height="89"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thx_to" translatesAutoresizingMaskIntoConstraints="NO" id="aMi-8a-WWM">
+                                <rect key="frame" x="3" y="289" width="314" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="NoD-uI-DW0"/>
+                                    <constraint firstAttribute="width" constant="314" id="kIe-7f-vMo"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ajuda App v. 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmh-8t-dPi">
-                                <rect key="frame" x="16" y="171" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gjg-z8-jL9">
+                                <rect key="frame" x="0.0" y="410" width="320" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="B2J-bK-7Jj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="En colaboración con:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEu-QQ-x0t">
-                                <rect key="frame" x="16" y="205" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gjg-z8-jL9">
-                                <rect key="frame" x="0.0" y="440" width="320" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.95187014250000002" green="0.53200862900000001" blue="0.00036156449180000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Cerrar  sesión"/>
+                                <state key="normal" title="Cerrar sesión">
+                                    <color key="titleColor" red="1" green="0.029831843470767838" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="closeSessionAction:" destination="dvL-e2-Tgl" eventType="touchUpInside" id="8nQ-hm-gNE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gracias por el apoyo de:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSe-hM-9uv">
+                                <rect key="frame" x="16" y="243" width="288" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="Qdc-yr-dNr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEu-QQ-x0t">
+                                <rect key="frame" x="16" y="153" width="288" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="uLx-KZ-hcr"/>
+                                    <constraint firstAttribute="height" constant="82" id="ugs-Ue-6fV"/>
+                                </constraints>
+                                <string key="text">Ajuda sismo MX App v1.0
+En colaboración con:
+- Nélida Velázquez
+- Josúe Hernández</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b5V-GO-buF" firstAttribute="top" secondItem="Gjg-z8-jL9" secondAttribute="bottom" id="1JP-C5-iLW"/>
+                            <constraint firstItem="66X-vG-GtJ" firstAttribute="centerX" secondItem="h7K-jr-FZq" secondAttribute="centerX" id="ND7-ok-Tbm"/>
+                            <constraint firstItem="BEu-QQ-x0t" firstAttribute="centerX" secondItem="h7K-jr-FZq" secondAttribute="centerX" id="NhG-mF-WNT"/>
+                            <constraint firstAttribute="trailing" secondItem="LSe-hM-9uv" secondAttribute="trailing" constant="16" id="QcG-fQ-m3L"/>
+                            <constraint firstItem="Gjg-z8-jL9" firstAttribute="leading" secondItem="h7K-jr-FZq" secondAttribute="leading" id="UvZ-Nb-4dA"/>
+                            <constraint firstAttribute="trailing" secondItem="Gjg-z8-jL9" secondAttribute="trailing" id="Xvy-xd-Emd"/>
+                            <constraint firstItem="66X-vG-GtJ" firstAttribute="top" secondItem="vxz-wj-Etn" secondAttribute="bottom" constant="50" id="dso-gn-UaS"/>
+                            <constraint firstItem="LSe-hM-9uv" firstAttribute="leading" secondItem="h7K-jr-FZq" secondAttribute="leading" constant="16" id="gjP-g6-MW0"/>
+                            <constraint firstItem="LSe-hM-9uv" firstAttribute="top" secondItem="BEu-QQ-x0t" secondAttribute="bottom" constant="8" id="jBF-L9-TNt"/>
+                            <constraint firstItem="aMi-8a-WWM" firstAttribute="centerX" secondItem="h7K-jr-FZq" secondAttribute="centerX" id="mdh-4a-QHu"/>
+                            <constraint firstItem="aMi-8a-WWM" firstAttribute="top" secondItem="LSe-hM-9uv" secondAttribute="bottom" constant="20" id="rBA-DE-EFu"/>
+                            <constraint firstItem="BEu-QQ-x0t" firstAttribute="top" secondItem="66X-vG-GtJ" secondAttribute="bottom" id="tPJ-6E-Vbz"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Aerca de" id="Yvq-2I-ftG">
                         <barButtonItem key="leftBarButtonItem" id="yOJ-TB-hmh">
@@ -589,28 +621,12 @@
             </objects>
             <point key="canvasLocation" x="-338" y="30"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="g8e-7Y-PLH">
-            <objects>
-                <navigationController storyboardIdentifier="InfoNC" automaticallyAdjustsScrollViewInsets="NO" id="23k-bx-Z5h" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DFo-b6-e8w">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="dvL-e2-Tgl" kind="relationship" relationship="rootViewController" id="peb-MU-JxP"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hTt-gz-OG4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4099" y="-1108"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="ajuda_logo" width="522" height="151"/>
         <image name="close" width="30" height="30"/>
         <image name="closeButtonOrange" width="30" height="30"/>
+        <image name="thx_to" width="626" height="259"/>
     </resources>
     <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

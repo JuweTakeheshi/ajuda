@@ -107,6 +107,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.enableUserInterface()
                 let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
                 self.navigationController?.pushViewController(mapViewController, animated: true)
+                self.usernameTextField.text = ""
+                self.passwordTextField.text = ""
             }, failure: { (error) in
                 self.enableUserInterface()
                 self.displayErrorAlert(title: "Error al ingresar",

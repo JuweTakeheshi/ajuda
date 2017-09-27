@@ -76,13 +76,6 @@ class JUWMapViewController: UIViewController {
         }
     }
 
-    @objc func tempLogout(_ sender: UIButton) {
-        let session = JUWSession.sharedInstance
-        session.signOut { (success) in
-            self.navigationController?.popViewController(animated: true)
-        }
-    }
-
     func loadCenters() {
         let realm = try! Realm()
         let centersArray = realm.objects(JUWCollectionCenter.self)
@@ -142,8 +135,11 @@ class JUWMapViewController: UIViewController {
             self.filterView.isHidden = false
             self.load(centers: results)
         }
-        
+
         let navigationController = UINavigationController(rootViewController: searchViewController)
+//        definesPresentationContext = true
+        navigationController.view.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        navigationController.modalPresentationStyle = .overCurrentContext
         present(navigationController, animated: true, completion: nil)
     }
     
@@ -156,8 +152,12 @@ class JUWMapViewController: UIViewController {
     }
     
     @objc func loadInfoVC() {
-        let infoNC = storyboard?.instantiateViewController(withIdentifier: "InfoNC") as! UINavigationController
-        present(infoNC, animated: true, completion: nil)
+        let infoViewController = storyboard?.instantiateViewController(withIdentifier: "JUWInfoViewController") as! JUWInfoViewController
+        infoViewController.onSignOut = {
+            self.navigationController?.popViewController(animated: true)
+        }
+        let navigationController = UINavigationController(rootViewController: infoViewController)
+        present(navigationController, animated: true, completion: nil)
     }
 }
 

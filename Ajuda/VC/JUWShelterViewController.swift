@@ -20,19 +20,24 @@ class JUWShelterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeUserInterface()
+        customizeNavigationBarColors()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchBar.becomeFirstResponder()
     }
 
     func customizeUserInterface() {
-        customizeNavigationBarColors()
         title = "Quiero ayudar con..."
         let dismissButton = UIButton()
         dismissButton.setImage(UIImage(named: "closeButtonOrange"), for: .normal)
         dismissButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         dismissButton.addTarget(self, action: #selector(JUWShelterViewController.cancel(_:)), for: .touchUpInside)
-        
         let dismissBarButton = UIBarButtonItem(customView: dismissButton)
         navigationItem.rightBarButtonItem = dismissBarButton
     }
+
     @IBAction func cancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

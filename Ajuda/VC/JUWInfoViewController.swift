@@ -6,43 +6,37 @@
 //  Copyright © 2017 Juwe Takeheshi. All rights reserved.
 //
 
+public typealias OnSignOut = ()->()
+
 import UIKit
 
 class JUWInfoViewController: UIViewController {
 
+    var onSignOut: OnSignOut?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        customizeNavigationBarColors()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func backAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func closeSessionAction(_ sender: Any) {
         let session = JUWSession.sharedInstance
         session.signOut { (success) in
             self.dismiss(animated: true, completion:{
-                self.parent?.navigationController?.popViewController(animated: true)
+//                self.parent?.navigationController?.popViewController(animated: true)
+                if self.onSignOut != nil {
+                    self.onSignOut!()
+                }
             })
-            
         }
     }
 }
