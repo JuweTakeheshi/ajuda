@@ -45,7 +45,12 @@ class JUWShelterViewController: UIViewController {
 
 extension JUWShelterViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        productSearch = searchText
+        if searchText != "" {
+            productSearch = searchText
+        }
+        else{
+            productSearch = nil
+        }
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
