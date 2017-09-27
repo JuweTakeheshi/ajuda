@@ -23,8 +23,7 @@ class JUWShelterViewController: UIViewController {
     }
 
     func customizeUserInterface() {
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0.945, green: 0.525, blue: 0.200, alpha: 1.0)
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        customizeNavigationBarColors()
         title = "Quiero ayudar con..."
         let dismissButton = UIButton()
         dismissButton.setImage(UIImage(named: "closeButtonOrange"), for: .normal)

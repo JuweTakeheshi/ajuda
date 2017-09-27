@@ -18,6 +18,7 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var userTypeButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var pickerToolbar: UIToolbar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var dismissButton: UIButton?
     var onSignUp: OnSignUp?
@@ -38,13 +39,12 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
 
     func customizeUserInterface() {
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0.945, green: 0.525, blue: 0.200, alpha: 1.0)
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        customizeNavigationBarColors()
         dismissButton = UIButton()
         dismissButton?.setImage(UIImage(named: "closeButtonOrange"), for: .normal)
         dismissButton?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         dismissButton?.addTarget(self, action: #selector(JUWSignUpViewController.dismissSignUp), for: .touchUpInside)
-        
+
         let dismissBarButton = UIBarButtonItem(customView: dismissButton!)
         navigationItem.leftBarButtonItem = dismissBarButton
     }
@@ -55,14 +55,18 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         userNameTextField.isUserInteractionEnabled = false
         passwordTextField.isUserInteractionEnabled = false
         signUpButton?.isEnabled = false
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
     }
-    
+
     func enableUserInterface() {
         dismissButton?.isEnabled = true
         dismissButton?.alpha = 1.0
         userNameTextField.isUserInteractionEnabled = true
         passwordTextField.isUserInteractionEnabled = true
         signUpButton?.isEnabled = true
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
     }
 
     @IBAction func showUserTypeSelection(_ sender: Any) {

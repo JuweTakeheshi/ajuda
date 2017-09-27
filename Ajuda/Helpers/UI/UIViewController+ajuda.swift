@@ -26,6 +26,7 @@ extension UIViewController {
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
     }
+
     func displayConfirmHandlAlert(title: String, message: String, completion: @escaping (UIAlertAction) -> Void ){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Aceptar", style: .default, handler: completion)
@@ -34,5 +35,9 @@ extension UIViewController {
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
     }
-}
 
+    func customizeNavigationBarColors() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.898, green: 0.397, blue: 0.094, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    }
+}

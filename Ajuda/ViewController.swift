@@ -14,6 +14,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInTextField: UIButton!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+
     var signUpButton: UIButton?
 
     override func viewDidLoad() {
@@ -41,17 +44,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func customizeUserInterface() {
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0.945, green: 0.525, blue: 0.200, alpha: 1.0)
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        customizeNavigationBarColors()
+        let logo = UIImage(named:"ajuda_logo_white")
+        let imageView = UIImageView()
+        imageView.image = logo
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = CGRect(x: 0, y: 0, width: 140, height: 40)
+        navigationItem.titleView = imageView
+
+        let emptyView = UIImageView()
+        emptyView.frame = CGRect(x: 0, y: 0, width: 70, height: 40)
+        let emptyLeftView = UIBarButtonItem()
+        emptyLeftView.customView = emptyView
+        navigationItem.leftBarButtonItem = emptyLeftView
+
         signUpButton = UIButton()
         signUpButton?.setTitle("Registro", for: .normal)
-        signUpButton?.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Bold", size: 16.0)
+        signUpButton?.titleLabel?.font = UIFont.init(name: "HelveticaNeue-Bold", size: 15.0)
         signUpButton?.setTitleColor(UIColor.white, for: .normal)
-        signUpButton?.frame = CGRect(x: 0, y: 0, width: 60, height: 45)
+        signUpButton?.frame = CGRect(x: 0, y: 0, width: 70, height: 45)
         signUpButton?.addTarget(self, action: #selector(ViewController.pushSignUp), for: .touchUpInside)
         let signUpBarButton = UIBarButtonItem()
         signUpBarButton.customView = signUpButton
-        self.navigationItem.rightBarButtonItem = signUpBarButton
+        navigationItem.rightBarButtonItem = signUpBarButton
     }
 
     func disableUserInterface() {
@@ -60,6 +75,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         usernameTextField.isUserInteractionEnabled = false
         passwordTextField.isUserInteractionEnabled = false
         signUpButton?.isEnabled = false
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
     }
 
     func enableUserInterface() {
@@ -68,6 +85,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         usernameTextField.isUserInteractionEnabled = true
         passwordTextField.isUserInteractionEnabled = true
         signUpButton?.isEnabled = true
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
     }
 
     @objc func pushSignUp() {
@@ -107,4 +126,3 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 }
-
