@@ -37,7 +37,6 @@ class JUWMapViewController: UIViewController {
     func customizeUserInterface() {
         title = "Centros acopio"
         showRightBarButton()
-        loadCollectionCenters()
         self.navigationItem.setHidesBackButton(true, animated:false)
         let dismissButton = UIButton()
         dismissButton.setImage(UIImage(named: "infoButtonWhite"), for: .normal)
@@ -55,9 +54,9 @@ class JUWMapViewController: UIViewController {
             let centers = Array(realm.objects(JUWCollectionCenter.self))
             self.load(centers: centers)
         }) { (error) in
-            self.displayHandlAlert(title: "Error", message: "Tuvimos un problema al obtener los centros de acopio. Mostraremos los centros de la última actualización; recuerda que podría ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con ellos."){  action in
-                self.loadCenters()
-            }
+            self.displayHandlAlert(title: "Error", message: "Tuvimos un problema al obtener los centros de acopio. Mostraremos los centros de la última actualización; recuerda que podría ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con ellos.", completion: {_ in 
+                self.loadCentersFromCache()
+            })
         }
     }
 
@@ -76,7 +75,7 @@ class JUWMapViewController: UIViewController {
         }
     }
 
-    func loadCenters() {
+    func loadCentersFromCache() {
         let realm = try! Realm()
         let centersArray = realm.objects(JUWCollectionCenter.self)
 
@@ -137,7 +136,6 @@ class JUWMapViewController: UIViewController {
         }
 
         let navigationController = UINavigationController(rootViewController: searchViewController)
-//        definesPresentationContext = true
         navigationController.view.backgroundColor = UIColor(white: 0, alpha: 0.8)
         navigationController.modalPresentationStyle = .overCurrentContext
         present(navigationController, animated: true, completion: nil)
