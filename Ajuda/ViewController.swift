@@ -49,7 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let imageView = UIImageView()
         imageView.image = logo
         imageView.contentMode = .scaleAspectFit
-        imageView.frame = CGRect(x: 0, y: 0, width: 140, height: 40)
+        imageView.frame = CGRect(x: 0, y: 0, width: 90, height: 25)
         navigationItem.titleView = imageView
 
         let emptyView = UIImageView()
