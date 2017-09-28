@@ -46,5 +46,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>&quot;Ayuda Sismo MX necesita to ubicación para encontrar los centros de acopio más cercanos&quot;</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>&quot;Ayuda Sismo MX necesita to ubicación para encontrar los centros de acopio más cercanos&quot;</string>
 </dict>
 </plist>
