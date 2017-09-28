@@ -48,12 +48,12 @@ class JUWMapViewController: UIViewController {
             case let .success(collectionCenters):
                 self.createMapAnnotations(with: collectionCenters!)
             case .failure(_):
-                self.showDisplayCollectionCentersError()
+                self.showCollectionCentersError()
             }
         }
     }
     
-    func showDisplayCollectionCentersError() {
+    func showCollectionCentersError() {
         self.displayHandlAlert(
             title: "Error",
             message: "Tuvimos un problema al obtener los centros de acopio. Mostraremos los centros de la última actualización; recuerda que podría ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con estos") { _ in
@@ -159,7 +159,6 @@ extension JUWMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
         if view.annotation is MKUserLocation {
             return
         }
@@ -180,7 +179,6 @@ extension JUWMapViewController: MKMapViewDelegate {
         btnDetailCenter.frame = CGRect(x: 10, y: 220, width: 260, height: 40)
         btnDetailCenter.backgroundColor = UIColor.darkGray
         detailCalloutAccessoryView.addSubview(btnDetailCenter)
-        
         
         annotation.retrieveContacInfotWith(completion: { (resultPhone) in
             if resultPhone.isEmpty {
