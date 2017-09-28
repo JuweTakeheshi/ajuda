@@ -13,7 +13,8 @@ import MapKit
 
 class JUWMapViewController: UIViewController {
     // MARK: Properties
-    var currentCenter:JUWMapCollectionCenter!
+    fileprivate var currentCenter:JUWMapCollectionCenter!
+    fileprivate var locationManager: CLLocationManager!
 
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var needLabel: UILabel!
@@ -24,7 +25,7 @@ class JUWMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        super.viewDidLoad()
+        setupLocationManager()
         customizeUserInterface()
         showCollectionCenters()
     }
@@ -73,6 +74,7 @@ class JUWMapViewController: UIViewController {
                                                     coordinate: CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude))
             mapView.addAnnotation(annotation)
         }
+        self.startLocationUpdates()
     }
     
     func showRightBarButton() {
@@ -213,5 +215,41 @@ extension JUWMapViewController: MKMapViewDelegate {
                 subview.removeFromSuperview()
             }
         }
+    }
+}
+
+extension JUWMapViewController: CLLocationManagerDelegate {
+    
+    func setupLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func startLocationUpdates() {
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let currentLocation = locations.first else {
+            return
+        }
+        zoomMapView(with: currentLocation)
+    }
+    
+    private func zoomMapView(with location: CLLocation) {
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        let latDelta: CLLocationDegrees = 0.05
+        let lonDelta: CLLocationDegrees = 0.05
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        mapView.setRegion(region, animated: true)
+        mapView.showsUserLocation = true
     }
 }
