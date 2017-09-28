@@ -54,7 +54,8 @@ class JUWAddProductViewController: UIViewController {
     }
 
     func showAddProductAlert() {
-        // Mostrar alerta al usuario pregntando si está seguro que esto que se va a agregar está confirmado como requerido en el centro de acopio...
+        // Mostrar alerta al usuario preguntando si está seguro que esto que se va a agregar
+        // está confirmado como requerido en el centro de acopio...
         self.displayConfirmHandlAlert(title: "Confirmacion", message: "¿Realmente desea agregar este producto a la lista de necesidades para este centro de acopio?"){ action in
             self.addProduct(product:self.addProductTextField.text!)
         }
@@ -63,11 +64,18 @@ class JUWAddProductViewController: UIViewController {
     
     func addProduct(product:String){
         let collectionCenterManager  = JUWCollectionCenterManager()
-        collectionCenterManager.addProductToCollectionCenter(collectionCenter: currentCenter, product: product, completion:{
-            self.displayOKAlert(title: "Aviso", message: "Producto agregado correctamente")
-        }, failure:{ error in
-             self.displayOKAlert(title: "Aviso", message: "Tuvimos un problema al tratar de añadir este producto intenta mas tarde")
-        })
+        collectionCenterManager.addProductToCollectionCenter(collectionCenter: currentCenter, product: product) { result in
+            switch result {
+            case .success(_):
+                self.displayOKAlert(
+                    title: "Aviso",
+                    message: "Producto agregado correctamente")
+            case .failure(_):
+                 self.displayOKAlert(
+                    title: "Aviso",
+                    message: "Tuvimos un problema al tratar de añadir este producto intenta mas tarde")
+            }
+        }
     }
 }
 

@@ -26,12 +26,7 @@ class JUWMapViewController: UIViewController {
         super.viewDidLoad()
         super.viewDidLoad()
         customizeUserInterface()
-        loadCollectionCenters()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        showCollectionCenters()
     }
 
     func customizeUserInterface() {
@@ -47,39 +42,28 @@ class JUWMapViewController: UIViewController {
         navigationItem.leftBarButtonItem = dismissBarButton
     }
 
-    func loadCollectionCenters() {
-        let collectionCentersManager = JUWCollectionCenterManager()
-        collectionCentersManager.updateCollectionCenters(centers: { () in
-            let realm = try! Realm()
-            let centers = Array(realm.objects(JUWCollectionCenter.self))
-            self.load(centers: centers)
-        }) { (error) in
-            self.displayHandlAlert(title: "Error", message: "Tuvimos un problema al obtener los centros de acopio. Mostraremos los centros de la última actualización; recuerda que podría ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con ellos.", completion: {_ in 
-                self.loadCentersFromCache()
-            })
+    func showCollectionCenters() {
+        JUWCollectionCenterManager().updateCollectionCenters { result in
+            switch result {
+            case let .success(collectionCenters):
+                self.createMapAnnotations(with: collectionCenters!)
+            case .failure(_):
+                self.showDisplayCollectionCentersError()
+            }
+        }
+    }
+    
+    func showDisplayCollectionCentersError() {
+        self.displayHandlAlert(
+            title: "Error",
+            message: "Tuvimos un problema al obtener los centros de acopio. Mostraremos los centros de la última actualización; recuerda que podría ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con estos") { _ in
+                self.createMapAnnotations(with: JUWCollectionCenterManager().collectionCentersFromCache())
         }
     }
 
-    func load(centers: [JUWCollectionCenter]) {
+    func createMapAnnotations(with collectionCenters: [JUWCollectionCenter]) {
         mapView.removeAnnotations(mapView.annotations)
-        
-        for center in centers {
-            let annotation = JUWMapCollectionCenter(title: center.name,
-                                                    name: center.name,
-                                                    address: center.address,
-                                                    phoneNumber: center.phoneNumber,
-                                                    identifier: center.centerIdentifier,
-                                                    twitter: center.twitterHandle,
-                                                    coordinate: CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude))
-            mapView.addAnnotation(annotation)
-        }
-    }
-
-    func loadCentersFromCache() {
-        let realm = try! Realm()
-        let centersArray = realm.objects(JUWCollectionCenter.self)
-
-        for center in centersArray {
+        for center in collectionCenters {
             let annotation = JUWMapCollectionCenter(title: center.name,
                                                     name: center.name,
                                                     address: center.address,
@@ -132,7 +116,7 @@ class JUWMapViewController: UIViewController {
             self.navigationItem.rightBarButtonItem = nil
             self.filterLabel.text = product
             self.filterView.isHidden = false
-            self.load(centers: results)
+            self.createMapAnnotations(with: results)
         }
 
         let navigationController = UINavigationController(rootViewController: searchViewController)
@@ -142,9 +126,7 @@ class JUWMapViewController: UIViewController {
     }
     
     @IBAction func removeFilter(_ sender: UIButton) {
-        let realm = try! Realm()
-        let centers = Array(realm.objects(JUWCollectionCenter.self))
-        load(centers: centers)
+        createMapAnnotations(with: JUWCollectionCenterManager().collectionCentersFromCache())
         showRightBarButton()
         filterView.isHidden = true
     }

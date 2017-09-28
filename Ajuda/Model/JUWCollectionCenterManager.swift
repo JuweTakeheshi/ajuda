@@ -9,29 +9,39 @@
 import UIKit
 import RealmSwift
 
+typealias OnUpdateCompletion = (_ result: Result<[JUWCollectionCenter], Error>) -> ()
+typealias OnSearchResults = (_ result: [JUWCollectionCenter]) -> ()
+typealias OnProductAdditionCompletion = (_ result: Result< Any, Error>) -> ()
+
 class JUWCollectionCenterManager: NSObject {
 
     private let networkManager = JUWNetworkManager()
     let keychain = KeychainSwift()
     
-    func updateCollectionCenters(centers: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+    func collectionCentersFromCache() -> [JUWCollectionCenter] {
+        let realm = try! Realm()
+        return Array(realm.objects(JUWCollectionCenter.self))
+    }
+    
+    func updateCollectionCenters(completion: @escaping OnUpdateCompletion) {
         let token = keychain.get(kTokenKey)
         let url = String(format: kCollectionCentersUrl, token!)
         networkManager.get(url: url, completion: { result in
             guard let array = result as? [[String: Any]]  else {
-                DispatchQueue.main.async { centers() }
+                DispatchQueue.main.async { completion(.failure(nil)) }
                 return
             }
-            let realm = try? Realm()
-            realm?.deleteCollectionCenters(notIn: array)
-            realm?.addCollectionCenters(in: array)
-            DispatchQueue.main.async { centers() }
+            let realm = try! Realm()
+            realm.deleteCollectionCenters(notIn: array)
+            realm.addCollectionCenters(in: array)
+            let collectionCenters = Array(realm.objects(JUWCollectionCenter.self))
+            DispatchQueue.main.async { completion(.success(collectionCenters)) }
         }) { (error) in
-            failure(error!)
+            DispatchQueue.main.async { completion(.failure(error)) }
         }
     }
     
-    func collectionCenters(whichNeed product: String, completion: @escaping (_ result: [JUWCollectionCenter]) -> Void) {
+    func collectionCenters(whichNeed product: String, completion: @escaping OnSearchResults) {
         let token = keychain.get(kTokenKey)
         let query = product.lowercased().stripCharacters(in: CharacterSet.alphanumerics.inverted)
         precondition(!query.isEmpty, "Query should not be empty")
@@ -52,13 +62,15 @@ class JUWCollectionCenterManager: NSObject {
         }
     }
     
-    func addProductToCollectionCenter(collectionCenter: JUWCollectionCenter, product: String, completion: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+    func addProductToCollectionCenter(collectionCenter: JUWCollectionCenter,
+                                      product: String,
+                                      completion: @escaping OnProductAdditionCompletion) {
         let token = keychain.get(kTokenKey)
         let url = String(format: kCollectionCenterAddProduct, collectionCenter.centerIdentifier, token!)
         networkManager.post(url: url, parameters:["nombre":product], completion: { _ in
-            completion()
+            DispatchQueue.main.async { completion(.success(nil)) }
         }, failure: { error in
-            failure(error!)
+            DispatchQueue.main.async { completion(.failure(error)) }
         })
     }
 }
