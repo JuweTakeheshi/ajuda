@@ -85,11 +85,9 @@ class JUWMapViewController: UIViewController {
     }
 
     @IBAction func call(_ sender: UIButton) {
-        guard let phoneNumber = sender.titleLabel?.text else {
-            return
-        }
-        let formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
-        guard let url = URL(string: "tel://\(formatedNumber)")  else {
+        let phoneNumber = sender.titleLabel?.text
+        guard let formattedNumber = phoneNumber?.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: ""),
+              let url = URL(string: "tel://\(formattedNumber)") else {
             return
         }
         if (UIApplication.shared.canOpenURL(url)) {
