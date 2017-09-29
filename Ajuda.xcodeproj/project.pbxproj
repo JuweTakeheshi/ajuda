@@ -11,6 +11,7 @@
 		3867A5B11F79BA2700FAFF96 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3867A5B01F79BA2700FAFF96 /* Result.swift */; };
 		389636AA1F7DE4F6008F1B7A /* JUWConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389636A91F7DE4F6008F1B7A /* JUWConfig.swift */; };
 		389636AD1F7DE582008F1B7A /* JUWConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389636AC1F7DE582008F1B7A /* JUWConfigManager.swift */; };
+		389636AF1F7DE7CE008F1B7A /* JUWUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389636AE1F7DE7CE008F1B7A /* JUWUrl.swift */; };
 		AF3420A21F798EF9004226A3 /* UIViewController+ajuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3420A11F798EF9004226A3 /* UIViewController+ajuda.swift */; };
 		AF8DBB051F7A2CFC008AACA4 /* JUWInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DBB041F7A2CFC008AACA4 /* JUWInfoViewController.swift */; };
 		AFDE29E51F774DB9002AB604 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFDE29E31F774DB9002AB604 /* Products.storyboard */; };
@@ -95,6 +96,7 @@
 		3867A5B01F79BA2700FAFF96 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		389636A91F7DE4F6008F1B7A /* JUWConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWConfig.swift; sourceTree = "<group>"; };
 		389636AC1F7DE582008F1B7A /* JUWConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWConfigManager.swift; sourceTree = "<group>"; };
+		389636AE1F7DE7CE008F1B7A /* JUWUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWUrl.swift; sourceTree = "<group>"; };
 		AF3420A11F798EF9004226A3 /* UIViewController+ajuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ajuda.swift"; sourceTree = "<group>"; };
 		AF8DBB041F7A2CFC008AACA4 /* JUWInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWInfoViewController.swift; sourceTree = "<group>"; };
 		AFDE29E41F774DB9002AB604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Products.storyboard; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				D1F348031F77E43B003AB9A2 /* JUWProductManager.swift */,
 				389636A91F7DE4F6008F1B7A /* JUWConfig.swift */,
 				389636AC1F7DE582008F1B7A /* JUWConfigManager.swift */,
+				389636AE1F7DE7CE008F1B7A /* JUWUrl.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				D13709B61F7460C300F3B216 /* JUWCollectionCenterViewController.swift in Sources */,
 				AFDE29E81F7752F2002AB604 /* DetailCenterVC.swift in Sources */,
 				D13709BA1F7460E300F3B216 /* JUWCourierViewController.swift in Sources */,
+				389636AF1F7DE7CE008F1B7A /* JUWUrl.swift in Sources */,
 				D1644AF11F7A036B00B4DAB5 /* UITextField+ajuda.swift in Sources */,
 				D13709A51F74328500F3B216 /* JUWSession.swift in Sources */,
 				AF3420A21F798EF9004226A3 /* UIViewController+ajuda.swift in Sources */,

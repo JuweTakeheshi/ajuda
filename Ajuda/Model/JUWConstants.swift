@@ -9,6 +9,7 @@
 import Foundation
 
 let kDefaultEndpoint = "http://hapi.balterbyte.com"
+let kDefaultVersion = "1.0"
 let kConfigUrl = "something"
 let kUserAuthenticationUrl = "http://hapi.balterbyte.com:8080/api/voluntarios/login"
 let kUserCreationUrl = "http://hapi.balterbyte.com:8080/api/voluntarios"
