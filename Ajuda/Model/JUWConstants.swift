@@ -8,6 +8,8 @@
 
 import Foundation
 
+let kDefaultEndpoint = "http://hapi.balterbyte.com"
+let kConfigUrl = "something"
 let kUserAuthenticationUrl = "http://hapi.balterbyte.com:8080/api/voluntarios/login"
 let kUserCreationUrl = "http://hapi.balterbyte.com:8080/api/voluntarios"
 let kCollectionCentersUrl = "http://hapi.balterbyte.com:8080/api/acopio?access_token=%@s"
