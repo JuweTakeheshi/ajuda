@@ -226,12 +226,12 @@ extension JUWMapViewController: CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         if CLLocationManager.locationServicesEnabled() {
-            self.locationManager.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         }
     }
     
     func startLocationUpdates() {
-        self.locationManager.startUpdatingLocation()
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -251,5 +251,6 @@ extension JUWMapViewController: CLLocationManagerDelegate {
         let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
         mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
+        locationManager.stopUpdatingLocation()
     }
 }
