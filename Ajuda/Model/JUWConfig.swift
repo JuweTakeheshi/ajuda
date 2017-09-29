@@ -9,5 +9,6 @@
 import Foundation
 
 struct JUWConfig {
-    var endpoint: String
+    var endpoint: String = kDefaultEndpoint
+    var version: String = kDefaultVersion
 }

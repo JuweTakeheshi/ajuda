@@ -13,14 +13,14 @@ class JUWConfigManager {
     func loadConfig(completion: @escaping (_ config: JUWConfig) -> Void) {
         JUWNetworkManager().get(url: kConfigUrl, completion: { result in
             guard let dictionary = result as? [String: Any],
-                  let endopoint = dictionary["endpoint"] as? String  else {
-                DispatchQueue.main.async { completion(JUWConfig(endpoint: kDefaultEndpoint)) }
+                  let endpoint = dictionary["endpoint"] as? String,
+                  let version = dictionary["version"] as? String  else {
+                completion(JUWConfig())
                 return
             }
-            DispatchQueue.main.async { completion(JUWConfig(endpoint: endopoint)) }
-            
+            completion(JUWConfig(endpoint: endpoint, version: version))
         }) { error in
-            DispatchQueue.main.async { completion(JUWConfig(endpoint: kDefaultEndpoint)) }
+            completion(JUWConfig())
         }
     }
 }
