@@ -62,7 +62,7 @@ class JUWCollectionCenterManager: NSObject {
         }
     }
     
-    func addProductToCollectionCenter(collectionCenter: JUWCollectionCenter,
+    func addProduct(to collectionCenter: JUWCollectionCenter,
                                       product: String,
                                       completion: @escaping OnProductAdditionCompletion) {
         let token = keychain.get(kTokenKey)

@@ -64,7 +64,7 @@ class JUWAddProductViewController: UIViewController {
     
     func addProduct(product:String){
         let collectionCenterManager  = JUWCollectionCenterManager()
-        collectionCenterManager.addProductToCollectionCenter(collectionCenter: currentCenter, product: product) { result in
+        collectionCenterManager.addProduct(to: currentCenter, product: product) { result in
             switch result {
             case .success(_):
                 self.displayOKAlert(
