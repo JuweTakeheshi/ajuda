@@ -45,6 +45,7 @@ class JUWMapViewController: UIViewController {
         
         let dismissBarButton = UIBarButtonItem(customView: dismissButton)
         navigationItem.leftBarButtonItem = dismissBarButton
+        navigationController?.navigationBar.tintColor = .white
     }
 
     func loadCollectionCenters() {
