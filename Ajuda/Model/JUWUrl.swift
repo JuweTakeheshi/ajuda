@@ -8,10 +8,21 @@
 
 class JUWUrl {
     static let shared = JUWUrl()
-    var config: JUWConfig!
+    private var optionalConfig: JUWConfig?
     
     private init() {}
 
+    func setup(with config: JUWConfig) {
+        self.optionalConfig = config
+    }
+    
+    private var config: JUWConfig {
+        guard let unwrappedConfig = optionalConfig else {
+            fatalError("JUWUrl needs to be set up with a config object before it can be used")
+        }
+        return unwrappedConfig
+    }
+    
     // MARK: - Available URLs
     
     func userAuthentication() -> String {
