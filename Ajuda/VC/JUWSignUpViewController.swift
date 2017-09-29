@@ -23,6 +23,7 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var dismissButton: UIButton?
     var onSignUp: OnSignUp?
     var selectedUserType: String?
+    var isPasswordShown = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +45,23 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         dismissButton?.setImage(UIImage(named: "closeButtonOrange"), for: .normal)
         dismissButton?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         dismissButton?.addTarget(self, action: #selector(JUWSignUpViewController.dismissSignUp), for: .touchUpInside)
-
         let dismissBarButton = UIBarButtonItem(customView: dismissButton!)
         navigationItem.leftBarButtonItem = dismissBarButton
+
+        let showPasswordButton = UIButton()
+        showPasswordButton.frame = CGRect(x:0, y:0, width:40, height:35)
+        showPasswordButton.setImage(UIImage(named:"noVisiblePasswordButton"), for: .normal)
+        showPasswordButton.contentMode = .left
+        showPasswordButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+        passwordTextField.rightView = showPasswordButton
+        passwordTextField.rightViewMode = .always
+    }
+
+    @objc func togglePasswordVisibility(_ button: UIButton) {
+        passwordTextField.isSecureTextEntry = isPasswordShown
+        let image = UIImage(named: isPasswordShown ? "noVisiblePasswordButton" : "visiblePasswordButton")
+        button.setImage(image, for: .normal)
+        isPasswordShown = !isPasswordShown
     }
 
     func disableUserInterface() {
@@ -82,9 +97,14 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
 
     @IBAction func signUp(_ sender: Any) {
-        let session = JUWSession.sharedInstance
+        if !isEmailValid(email: userNameTextField.text!) {
+            displayErrorAlert(title: "Error", message: "Por favor introduce un email válido")
+            return
+        }
+
         if !(userNameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
             disableUserInterface()
+            let session = JUWSession.sharedInstance
             session.signUpWithUserName(username: userNameTextField.text!, password: passwordTextField.text!, email: userNameTextField.text!, completion: { (result) in
                 self.dismiss(animated: true, completion: {
                     self.enableUserInterface()
@@ -146,5 +166,14 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
         
         return true
+    }
+}
+
+extension JUWSignUpViewController {
+    func isEmailValid(email: String) -> Bool {
+        let emailRegEx = "[+'A-Z0-9a-z._-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,20}"
+        let rules: [NSPredicate] = [ NSPredicate(format: "length > 0"), NSPredicate(format: "SELF MATCHES %@", emailRegEx)]
+        let validationPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: rules)
+        return validationPredicate.evaluate(with:email)
     }
 }
