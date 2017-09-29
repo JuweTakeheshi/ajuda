@@ -15,9 +15,7 @@ class JUWCollectionCenterManager: NSObject {
     let keychain = KeychainSwift()
     
     func updateCollectionCenters(centers: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
-        let token = keychain.get(kTokenKey)
-        let url = String(format: kCollectionCentersUrl, token!)
-        networkManager.get(url: url, completion: { result in
+        networkManager.get(url: JUWUrl.shared.collectionCenters(), completion: { result in
             guard let array = result as? [[String: Any]]  else {
                 DispatchQueue.main.async { centers() }
                 return
@@ -32,10 +30,9 @@ class JUWCollectionCenterManager: NSObject {
     }
     
     func collectionCenters(whichNeed product: String, completion: @escaping (_ result: [JUWCollectionCenter]) -> Void) {
-        let token = keychain.get(kTokenKey)
         let query = product.lowercased().stripCharacters(in: CharacterSet.alphanumerics.inverted)
         precondition(!query.isEmpty, "Query should not be empty")
-        guard let url = String(format: kCollectionCenterSearchProductUrl, query, token!).encoded() else {
+        guard let url = JUWUrl.shared.collectionCenters(whichNeed: query).encoded() else {
             DispatchQueue.main.async { completion([]) }
             return
         }
@@ -53,8 +50,7 @@ class JUWCollectionCenterManager: NSObject {
     }
     
     func addProductToCollectionCenter(collectionCenter: JUWCollectionCenter, product: String, completion: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
-        let token = keychain.get(kTokenKey)
-        let url = String(format: kCollectionCenterAddProduct, collectionCenter.centerIdentifier, token!)
+        let url = JUWUrl.shared.addProduct(to: collectionCenter.centerIdentifier)
         networkManager.post(url: url, parameters:["nombre":product], completion: { _ in
             completion()
         }, failure: { error in

@@ -25,7 +25,7 @@ class JUWSession: NSObject {
     func signInWithUserName(username: String, password: String, completion: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
         let parameters = ["email": username, "username": username, "password": password]
-        networkManager.post(url: kUserAuthenticationUrl, parameters: parameters, completion: { (result) in
+        networkManager.post(url: JUWUrl.shared.userAuthentication(), parameters: parameters, completion: { (result) in
             DispatchQueue.global().async {
                 if let dictionary = result as? [String: Any] {
                     let keychain = KeychainSwift()
@@ -43,7 +43,7 @@ class JUWSession: NSObject {
 
     func signUpWithUserName(username: String, password: String, email: String, completion: @escaping (_ result: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
-        networkManager.post(url: kUserCreationUrl, parameters: ["username": username, "password": password, "email": email], completion: { (result) in
+        networkManager.post(url: JUWUrl.shared.userCreation(), parameters: ["username": username, "password": password, "email": email], completion: { (result) in
             DispatchQueue.global().async {
                 if let dictionary = result as? [String: Any] {
                     let keychain = KeychainSwift()

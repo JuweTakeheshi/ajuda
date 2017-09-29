@@ -29,11 +29,11 @@ class JUWUrl {
         return "\(config.endpoint)/api/acopios?access_token=\(token)"
     }
     
-    func collectionCenter(needs product: String) -> String {
+    func productsNeeded(`for` collectionCenter: String) -> String {
         guard let token = KeychainSwift().get(kTokenKey),config.version != kDefaultVersion  else {
-            return "\(config.endpoint)/api/acopios/\(product)/productos"
+            return "\(config.endpoint)/api/acopios/\(collectionCenter)/productos"
         }
-        return "\(config.endpoint)/api/acopios/\(product)/acceptan?access_token=\(token)"
+        return "\(config.endpoint)/api/acopios/\(collectionCenter)/acceptan?access_token=\(token)"
     }
     
     func info(`for` collectionCenter: String ) -> String {
@@ -50,10 +50,10 @@ class JUWUrl {
         return "\(config.endpoint)/api/acceptan?filter={\"where\":{\"nombre\":{\"like\":\"\(product)\"}}}?access_token=\(token)"
     }
     
-    func add(product: String) -> String {
+    func addProduct(to collectionCenter: String) -> String {
         guard let token = KeychainSwift().get(kTokenKey), config.version != kDefaultVersion  else {
-            return "\(config.endpoint)/api/acopios/\(product)/aceptan"
+            return "\(config.endpoint)/api/acopios/\(collectionCenter)/aceptan"
         }
-        return "\(config.endpoint)/api/acopios/\(product)/aceptan?access_token=\(token)"
+        return "\(config.endpoint)/api/acopios/\(collectionCenter)/aceptan?access_token=\(token)"
     }
 }
