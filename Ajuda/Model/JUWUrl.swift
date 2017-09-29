@@ -8,7 +8,7 @@
 
 class JUWUrl {
     static let shared = JUWUrl()
-    private var config: JUWConfig!
+    var config: JUWConfig!
     
     private init() {}
 
