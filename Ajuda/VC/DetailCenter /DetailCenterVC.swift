@@ -78,8 +78,10 @@ class DetailCenterVC: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = collectionCenter().products[indexPath.row].name
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy HH:mm a"
-        let formattedDateString = String.localizedStringWithFormat("Actualizado - %@", dateformatter.string(from: collectionCenter().products[indexPath.row].updateDate!))
-        cell.detailTextLabel?.text = formattedDateString
+        if let date = collectionCenter().products[indexPath.row].updateDate {
+            let formattedDateString = String.localizedStringWithFormat("Actualizado - %@", dateformatter.string(from: date))
+            cell.detailTextLabel?.text = formattedDateString
+        }
 
         return cell
     }
