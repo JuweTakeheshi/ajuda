@@ -14,8 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        JUWConfigManager().loadConfig { config in
-            JUWUrl.shared.setup(with: config)
+        JUWConfigManager.shared.loadConfig {
             self.loadMainStoryboard()
         }
         return true

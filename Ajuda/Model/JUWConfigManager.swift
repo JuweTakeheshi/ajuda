@@ -9,18 +9,22 @@
 import Foundation
 
 class JUWConfigManager {
+    // MARK: - Singleton configuration
+    static let shared = JUWConfigManager()
+    private init() {}
     
-    func loadConfig(completion: @escaping (_ config: JUWConfig) -> Void) {
+    var config: JUWConfig!
+    
+    func loadConfig(completion: @escaping () -> Void) {
         JUWNetworkManager().get(url: kConfigUrl, completion: { result in
-            guard let dictionary = result as? [String: Any],
-                  let endpoint = dictionary["endpoint"] as? String,
-                  let version = dictionary["version"] as? String  else {
-                completion(JUWConfig())
+            guard let dictionary = result as? [String: Any] else {
+                completion()
                 return
             }
-            completion(JUWConfig(endpoint: endpoint, version: version))
+            self.config = JUWConfig(dictionary: dictionary)
+            completion()
         }) { error in
-            completion(JUWConfig())
+            completion()
         }
     }
 }
