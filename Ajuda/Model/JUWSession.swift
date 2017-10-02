@@ -47,7 +47,13 @@ class JUWSession: NSObject {
             DispatchQueue.global().async {
                 if let dictionary = result as? [String: Any] {
                     let keychain = KeychainSwift()
-                    keychain.set(dictionary["id"] as! String, forKey: kTokenKey)
+                    if let tokenString = dictionary["id"] as? String {
+                        keychain.set(tokenString, forKey: kTokenKey)
+                    }
+                    else {
+                        keychain.set(String(describing: dictionary["id"]), forKey: kTokenKey)
+                    }
+
                     keychain.set(username, forKey: kUserNameKey)
                 }
 
