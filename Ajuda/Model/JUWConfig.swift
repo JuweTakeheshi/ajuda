@@ -86,11 +86,12 @@ class JUWConfig {
     }
     
     func addProductURL(to collectionCenter: String) -> String {
-        guard let addProductURL = items["acopios-add-product"] as? String else {
+        guard let addProductURL = items["acopios-aceptan"] as? String else {
             return "\(kDefaultEndpoint)/api/acopios/\(collectionCenter)/aceptan"
         }
         if isAuthRequired, let token = KeychainSwift().get(kTokenKey) {
-            return "\(addProductURL)?access_token=\(token)"
+            return String(format: "\(addProductURL)", "\(collectionCenter)", "?access_token=\(token)")
+//            return "\(addProductURL)?access_token=\(token)"
         }
         else {
             return String(format: "%@%@", "\(kDefaultEndpoint)/api/acopios/\(collectionCenter)/aceptan", "")
