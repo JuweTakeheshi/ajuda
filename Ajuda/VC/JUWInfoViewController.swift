@@ -12,16 +12,26 @@ import UIKit
 
 class JUWInfoViewController: UIViewController {
 
+    @IBOutlet weak var signOutButton: UIButton!
+
     var onSignOut: OnSignOut?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeNavigationBarColors()
+        customizeUserInterface()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func customizeUserInterface() {
+        let configuration = JUWConfigManager.shared.config
+        if let authRequired = configuration?.isAuthRequired {
+            signOutButton.isHidden = !authRequired
+        }
     }
 
     @IBAction func backAction(_ sender: Any) {
@@ -32,7 +42,6 @@ class JUWInfoViewController: UIViewController {
         let session = JUWSession.sharedInstance
         session.signOut { (success) in
             self.dismiss(animated: true, completion:{
-//                self.parent?.navigationController?.popViewController(animated: true)
                 if self.onSignOut != nil {
                     self.onSignOut!()
                 }

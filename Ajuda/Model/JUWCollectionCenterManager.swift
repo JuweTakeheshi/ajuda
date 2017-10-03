@@ -42,7 +42,7 @@ class JUWCollectionCenterManager: NSObject {
     func collectionCenters(whichNeed product: String, completion: @escaping OnSearchResults) {
         let query = product.lowercased().stripCharacters(in: CharacterSet.alphanumerics.inverted)
         precondition(!query.isEmpty, "Query should not be empty")
-        guard let url = JUWConfigManager.shared.config.searhURL(for: query).encoded() else {
+        guard let url = JUWConfigManager.shared.config.searchURL(for: query).encoded() else {
             DispatchQueue.main.async { completion([]) }
             return
         }

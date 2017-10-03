@@ -12,9 +12,8 @@ class JUWConfigManager {
     // MARK: - Singleton configuration
     static let shared = JUWConfigManager()
     private init() {}
-    
+
     var config: JUWConfig!
-    
     func loadConfig(completion: @escaping () -> Void) {
         JUWNetworkManager().get(url: kConfigUrl, completion: { result in
             guard let dictionary = result as? [String: Any] else {

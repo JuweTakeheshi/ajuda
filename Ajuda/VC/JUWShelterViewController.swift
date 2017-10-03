@@ -29,6 +29,7 @@ class JUWShelterViewController: UIViewController {
     }
 
     func customizeUserInterface() {
+        searchBar.autocapitalizationType = .none
         title = "Quiero ayudar con..."
         let dismissButton = UIButton()
         dismissButton.setImage(UIImage(named: "closeButtonOrange"), for: .normal)

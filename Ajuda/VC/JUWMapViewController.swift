@@ -177,6 +177,7 @@ extension JUWMapViewController: MKMapViewDelegate {
         detailCalloutAccessoryView.addSubview(button)
         //Add button for detail center in XIB
         let btnDetailCenter = UIButton()
+        btnDetailCenter.setTitle("Cargando...", for: .normal)
         btnDetailCenter.frame = CGRect(x: 10, y: 220, width: 260, height: 40)
         btnDetailCenter.backgroundColor = UIColor.darkGray
         detailCalloutAccessoryView.addSubview(btnDetailCenter)
@@ -187,6 +188,7 @@ extension JUWMapViewController: MKMapViewDelegate {
             }
             else {
                 button.setTitle(resultPhone, for: .normal)
+                button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
             }
         }, failure: { (error) in
             button.setTitle("Sin teléfono", for: .normal)
@@ -194,25 +196,22 @@ extension JUWMapViewController: MKMapViewDelegate {
         })
 
         annotation.retrieveProductsWith(completion: { (products) in
+            self.currentCenter = annotation
+            btnDetailCenter.setTitle("Ver mas", for: .normal)
+            btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
             
+            detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
+            view.addSubview(detailCalloutAccessoryView)
+            mapView.setCenter((view.annotation?.coordinate)!, animated: true)
         }) { (error) in
             self.displayOKAlert(title: "Error", message: "Tuvimos un problema al obtener los productos que se necesitan en este centro de acopio. Mostraremos los productos de la ultima actualización recuerda que puede ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con ellos.")
             
         }
-        currentCenter = annotation
-        btnDetailCenter.setTitle("Ver mas", for: .normal)
-        btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
-        button.addTarget(self, action: #selector(JUWMapViewController.call(_:)), for: .touchUpInside)
-        detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
-        view.addSubview(detailCalloutAccessoryView)
-        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
     }
-    
+
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        if view.isKind(of: AnnotationView.self)
-        {
-            for subview in view.subviews
-            {
+        if view.isKind(of: AnnotationView.self) {
+            for subview in view.subviews {
                 subview.removeFromSuperview()
             }
         }

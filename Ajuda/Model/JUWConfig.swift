@@ -16,7 +16,7 @@ class JUWConfig {
         self.items = raw
     }
     
-    private var isAuthRequired: Bool {
+    var isAuthRequired: Bool {
         guard let auth = items["authentication-required"] as? Bool else {
             return false
         }
@@ -44,7 +44,7 @@ class JUWConfig {
             return "\(kDefaultEndpoint)/api/acopios"
         }
         if isAuthRequired, let token = KeychainSwift().get(kTokenKey)  {
-            return "\(centersURL)?access_token=\(token)"
+            return String(format: "\(centersURL)", "?access_token=\(token)")
         } else {
             return String(format:"%@%@", "\(kDefaultEndpoint)/api/acopios", "")
         }
@@ -55,7 +55,7 @@ class JUWConfig {
             return "\(kDefaultEndpoint)/api/acopios/\(collectionCenter)/productos"
         }
         if isAuthRequired, let token = KeychainSwift().get(kTokenKey) {
-            return "\(productsURL)?access_token=\(token)"
+            return String(format: "\(productsURL)", "\(collectionCenter)", "?access_token=\(token)")
         } else {
             return String(format: "%@%@", "\(kDefaultEndpoint)/api/acopios/\(collectionCenter)/productos", "")
         }
@@ -66,19 +66,19 @@ class JUWConfig {
             return "\(kDefaultEndpoint)/api/acopios/\(collectionCenter)/contactos"
         }
         if isAuthRequired, let token = KeychainSwift().get(kTokenKey) {
-            return "\(infoURL)?access_token=\(token)"
+            return String(format: "\(infoURL)", "\(collectionCenter)", "?access_token=\(token)")
         }
         else {
             return String(format: "%@%@", "\(kDefaultEndpoint)/api/acopios/\(collectionCenter)/contactos", "")
         }
     }
 
-    func searhURL(`for` product: String) -> String {
+    func searchURL(`for` product: String) -> String {
         guard let searchURL = items["acopios-search"] as? String else {
             return "\(kDefaultEndpoint)/api/productos?filter={\"where\":{\"nombre\":{\"like\":\"\(product)\"}}}"
         }
         if isAuthRequired, let token = KeychainSwift().get(kTokenKey) {
-            return "\(searchURL)?access_token=\(token)"
+            return String(format: "\(searchURL)", "?access_token=\(token)", "")
         }
         else {
             return String(format: "%@%@", "\(kDefaultEndpoint)/api/productos?filter={\"where\":{\"nombre\":{\"like\":\"\(product)\"}}}", "")

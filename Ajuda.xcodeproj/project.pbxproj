@@ -52,7 +52,6 @@
 		D1644AEF1F7A02C600B4DAB5 /* UIButton+ajuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1644AEE1F7A02C600B4DAB5 /* UIButton+ajuda.swift */; };
 		D1644AF11F7A036B00B4DAB5 /* UITextField+ajuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1644AF01F7A036B00B4DAB5 /* UITextField+ajuda.swift */; };
 		D1E534841F74D65C0000E2A9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E534831F74D65C0000E2A9 /* MapKit.framework */; };
-		D1E5348B1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */; };
 		D1E5348D1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */; };
 		D1F348021F775A74003AB9A2 /* JUWProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F348011F775A74003AB9A2 /* JUWProduct.swift */; };
 		D1F348041F77E43B003AB9A2 /* JUWProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F348031F77E43B003AB9A2 /* JUWProductManager.swift */; };
@@ -140,7 +139,6 @@
 		D1644AEE1F7A02C600B4DAB5 /* UIButton+ajuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ajuda.swift"; sourceTree = "<group>"; };
 		D1644AF01F7A036B00B4DAB5 /* UITextField+ajuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ajuda.swift"; sourceTree = "<group>"; };
 		D1E534831F74D65C0000E2A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JUWDetailCalloutAccessoryView.xib; sourceTree = "<group>"; };
 		D1E5348C1F75ABD50000E2A9 /* JUWMapCollectionCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWMapCollectionCenter.swift; sourceTree = "<group>"; };
 		D1F348011F775A74003AB9A2 /* JUWProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWProduct.swift; sourceTree = "<group>"; };
 		D1F348031F77E43B003AB9A2 /* JUWProductManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JUWProductManager.swift; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 		D1E534871F756BE20000E2A9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D1E5348A1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -467,7 +464,6 @@
 				D13709721F74261200F3B216 /* LaunchScreen.storyboard in Resources */,
 				D137096F1F74261200F3B216 /* Assets.xcassets in Resources */,
 				B9D0C1AA1F762E5D008DB717 /* detailCalloutAccessoryView.xib in Resources */,
-				D1E5348B1F75845E0000E2A9 /* JUWDetailCalloutAccessoryView.xib in Resources */,
 				D137096D1F74261200F3B216 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,13 +16,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-
+    @IBOutlet weak var signInFieldsView: UIView!
+    
+    @IBOutlet weak var signInLabel: UILabel!
     var signUpButton: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        validateSession()
+        disableUserInterface()
         customizeUserInterface()
+        validateSession()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -35,16 +38,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func validateSession() {
-        let keychain = KeychainSwift()
-        let token = keychain.get(kTokenKey)
-        if token != nil {
-            let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
-            navigationController?.pushViewController(mapViewController, animated: false)
+        let configuration = JUWConfigManager.shared.config
+        if let authRequired = configuration?.isAuthRequired {
+            if !authRequired {
+                pushMapViewController()
+            } else {
+                let keychain = KeychainSwift()
+                let token = keychain.get(kTokenKey)
+                if token != nil {
+                    pushMapViewController()
+                }
+                else {
+                    enableUserInterface()
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.signInLabel.alpha = 1
+                        self.signInFieldsView.alpha = 1
+                    })
+                }
+            }
         }
+    }
+
+    func pushMapViewController() {
+        let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+        navigationController?.pushViewController(mapViewController, animated: true)
     }
 
     func customizeUserInterface() {
         customizeNavigationBarColors()
+        signInLabel.alpha = 0
+        signInFieldsView.alpha = 0
         let logo = UIImage(named:"ajuda_logo_white")
         let imageView = UIImageView()
         imageView.image = logo
