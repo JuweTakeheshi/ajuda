@@ -91,7 +91,6 @@ class JUWConfig {
         }
         if isAuthRequired, let token = KeychainSwift().get(kTokenKey) {
             return String(format: "\(addProductURL)", "\(collectionCenter)", "?access_token=\(token)")
-//            return "\(addProductURL)?access_token=\(token)"
         }
         else {
             return String(format: "%@%@", "\(kDefaultEndpoint)/api/acopios/\(collectionCenter)/aceptan", "")
