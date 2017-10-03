@@ -46,8 +46,7 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
 
     func retrieveContacInfotWith(completion: @escaping (_ resultPhone: String) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
-        let token = keychain.get(kTokenKey)
-        let url = String(format: kCollectionCenterContactInfoUrl, self.centerIdentifier, token!)
+        let url = JUWConfigManager.shared.config.infoURL(for: centerIdentifier)
         networkManager.get(url: url, completion: { (result) in
             DispatchQueue.global().async {
                 if let array = result as? [Any] {
@@ -110,8 +109,7 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
 
     func retrieveProductsWith(completion: @escaping (_ result: [Any]) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let networkManager = JUWNetworkManager()
-         let token = keychain.get(kTokenKey)
-        let url = String(format: kCollectionCenterNeedsUrl, self.centerIdentifier, token!)
+        let url = JUWConfigManager.shared.config.productsURL(for: centerIdentifier)
         networkManager.get(url: url, completion: { (result) in
             DispatchQueue.global().async {
                 if let productsArray = result as? [Any] {

@@ -22,11 +22,9 @@ class JUWCollectionCenterManager: NSObject {
         let realm = try! Realm()
         return Array(realm.objects(JUWCollectionCenter.self))
     }
-    
+
     func updateCollectionCenters(completion: @escaping OnUpdateCompletion) {
-        let token = keychain.get(kTokenKey)
-        let url = String(format: kCollectionCentersUrl, token!)
-        networkManager.get(url: url, completion: { result in
+        networkManager.get(url: JUWConfigManager.shared.config.collectionCentersURL(), completion: { result in
             guard let array = result as? [[String: Any]]  else {
                 DispatchQueue.main.async { completion(.failure(nil)) }
                 return
@@ -42,10 +40,9 @@ class JUWCollectionCenterManager: NSObject {
     }
     
     func collectionCenters(whichNeed product: String, completion: @escaping OnSearchResults) {
-        let token = keychain.get(kTokenKey)
         let query = product.lowercased().stripCharacters(in: CharacterSet.alphanumerics.inverted)
         precondition(!query.isEmpty, "Query should not be empty")
-        guard let url = String(format: kCollectionCenterSearchProductUrl, query, token!).encoded() else {
+        guard let url = JUWConfigManager.shared.config.searhURL(for: query).encoded() else {
             DispatchQueue.main.async { completion([]) }
             return
         }
@@ -61,12 +58,11 @@ class JUWCollectionCenterManager: NSObject {
             DispatchQueue.main.async { completion([]) }
         }
     }
-    
+
     func addProduct(to collectionCenter: JUWCollectionCenter,
                                       product: String,
                                       completion: @escaping OnProductAdditionCompletion) {
-        let token = keychain.get(kTokenKey)
-        let url = String(format: kCollectionCenterAddProduct, collectionCenter.centerIdentifier, token!)
+        let url = JUWConfigManager.shared.config.addProductURL(to: collectionCenter.centerIdentifier)
         networkManager.post(url: url, parameters:["nombre":product], completion: { _ in
             DispatchQueue.main.async { completion(.success(nil)) }
         }, failure: { error in
