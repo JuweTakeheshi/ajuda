@@ -78,13 +78,13 @@ class JUWConfig {
             return "\(kDefaultEndpoint)/api/productos?filter={\"where\":{\"nombre\":{\"like\":\"\(product)\"}}}"
         }
         if isAuthRequired, let token = KeychainSwift().get(kTokenKey) {
-            return String(format: "\(searchURL)", "?access_token=\(token)", "")
+            return String(format: "\(searchURL)", "{\"where\":{\"nombre\":{\"like\":\"\(product)\"}}}", "&access_token=\(token)")
         }
         else {
             return String(format: "%@%@", "\(kDefaultEndpoint)/api/productos?filter={\"where\":{\"nombre\":{\"like\":\"\(product)\"}}}", "")
         }
     }
-    
+
     func addProductURL(to collectionCenter: String) -> String {
         guard let addProductURL = items["acopios-aceptan"] as? String else {
             return "\(kDefaultEndpoint)/api/acopios/\(collectionCenter)/aceptan"
