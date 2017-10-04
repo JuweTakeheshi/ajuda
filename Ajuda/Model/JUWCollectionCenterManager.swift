@@ -125,18 +125,21 @@ extension Realm {
             }
         }
     }
-    
+
     func collectionCenters(with results: [[String: Any]]) -> [JUWCollectionCenter] {
-        var collectionCenters: [JUWCollectionCenter] = []
         let ids = results.flatMap { dictionary in
             return dictionary["acopioId"] as? String
         }
+
+        var predicates = [NSPredicate]()
         for id in ids {
             let predicate = NSPredicate(format: "centerIdentifier = %@", id)
-            if let center = self.objects(JUWCollectionCenter.self).filter(predicate).first {
-                collectionCenters.append(center)
-            }
+            predicates.append(predicate)
         }
-        return collectionCenters
+
+        let compoundPredicate = NSCompoundPredicate.init(orPredicateWithSubpredicates: predicates)
+        let centers = self.objects(JUWCollectionCenter.self).filter(compoundPredicate)
+
+        return Array(centers)
     }
 }
