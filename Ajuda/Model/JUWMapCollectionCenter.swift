@@ -102,8 +102,9 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
                 }
             }
         }) { (error) in
-          print("Error")
-            failure(error!)
+            DispatchQueue.main.async {
+                failure(error!)
+            }
         }
     }
 
@@ -154,7 +155,9 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
                 }
             }
         }) { (error) in
-           failure(error!)
+            DispatchQueue.main.async {
+                failure(error!)
+            }
         }
     }
 }

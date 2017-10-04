@@ -197,7 +197,7 @@ extension JUWMapViewController: MKMapViewDelegate {
 
         annotation.retrieveProductsWith(completion: { (products) in
             self.currentCenter = annotation
-            btnDetailCenter.setTitle("Ver mas", for: .normal)
+            btnDetailCenter.setTitle("Ver más", for: .normal)
             btnDetailCenter.addTarget(self, action: #selector(JUWMapViewController.showDetail(_:)), for: .touchUpInside)
             
             detailCalloutAccessoryView.center = CGPoint(x: view.bounds.size.width / 2, y: -detailCalloutAccessoryView.bounds.size.height*0.52)
