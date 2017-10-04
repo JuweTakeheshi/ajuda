@@ -8,7 +8,7 @@
 
 import Foundation
 
-let kDefaultEndpoint = "http://hapi.balterbyte.com"
+let kDefaultEndpoint = "https://hapi.balterbyte.com"
 let kConfigUrl = "http://45.55.26.171/storage/endpoints"
 let kTokenKey = "KeyForToken"
 let kUserNameKey = "KeyForUserName"

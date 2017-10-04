@@ -93,7 +93,7 @@ class JUWConfig {
             return String(format: "\(addProductURL)", "\(collectionCenter)", "?access_token=\(token)")
         }
         else {
-            return String(format: "%@%@", "\(kDefaultEndpoint)/api/acopios/\(collectionCenter)/aceptan", "")
+            return String(format: "%@%@", "\(kDefaultEndpoint)/api/acopios/\(collectionCenter)/productos", "")
         }
     }
 }
