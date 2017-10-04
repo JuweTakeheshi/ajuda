@@ -35,12 +35,12 @@ class JUWMapViewController: UIViewController {
         title = "Centros acopio"
         showRightBarButton()
         self.navigationItem.setHidesBackButton(true, animated:false)
-        let dismissButton = UIButton()
-        dismissButton.setImage(UIImage(named: "infoButtonWhite"), for: .normal)
-        dismissButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        dismissButton.addTarget(self, action: #selector(JUWMapViewController.loadInfoVC), for: .touchUpInside)
+        let infoButton = UIButton()
+        infoButton.setImage(UIImage(named: "infoButtonWhite"), for: .normal)
+        infoButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        infoButton.addTarget(self, action: #selector(JUWMapViewController.presentInfoViewController), for: .touchUpInside)
         
-        let dismissBarButton = UIBarButtonItem(customView: dismissButton)
+        let dismissBarButton = UIBarButtonItem(customView: infoButton)
         navigationItem.leftBarButtonItem = dismissBarButton
         navigationController?.navigationBar.tintColor = .white
     }
@@ -59,7 +59,7 @@ class JUWMapViewController: UIViewController {
     func showCollectionCentersError() {
         self.displayHandlAlert(
             title: "Error",
-            message: "Tuvimos un problema al obtener los centros de acopio. Mostraremos los centros de la última actualización; recuerda que podría ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con estos") { _ in
+            message: "Tuvimos un problema al obtener los centros de acopio. Mostraremos los centros de la última actualización; recuerda que podría ser información desactualizada.\nAnte cualquier duda te recomendamos ponerte en contacto con ellos") { _ in
                 self.createMapAnnotations(with: JUWCollectionCenterManager().collectionCentersFromCache())
         }
     }
@@ -78,7 +78,7 @@ class JUWMapViewController: UIViewController {
         }
         self.startLocationUpdates()
     }
-    
+
     func showRightBarButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Ayudar",
@@ -133,7 +133,7 @@ class JUWMapViewController: UIViewController {
         filterView.isHidden = true
     }
     
-    @objc func loadInfoVC() {
+    @objc func presentInfoViewController() {
         let infoViewController = storyboard?.instantiateViewController(withIdentifier: "JUWInfoViewController") as! JUWInfoViewController
         infoViewController.onSignOut = {
             if self.onSignOut != nil{
@@ -176,14 +176,14 @@ extension JUWMapViewController: MKMapViewDelegate {
         
         //Add Button For calling in XIB
         let button = UIButton()
-        button.frame = CGRect(x: 10, y: 270, width: 260, height: 40)
-        button.backgroundColor = UIColor.darkGray
+        button.frame = CGRect(x: 10, y: 170, width: 260, height: 40)
+        button.backgroundColor = UIColor(red:1.00, green:0.47, blue:0.00, alpha:1.0)
         detailCalloutAccessoryView.addSubview(button)
         //Add button for detail center in XIB
         let btnDetailCenter = UIButton()
         btnDetailCenter.setTitle("Cargando...", for: .normal)
-        btnDetailCenter.frame = CGRect(x: 10, y: 220, width: 260, height: 40)
-        btnDetailCenter.backgroundColor = UIColor.darkGray
+        btnDetailCenter.frame = CGRect(x: 10, y: 120, width: 260, height: 40)
+        btnDetailCenter.backgroundColor = UIColor(red:1.00, green:0.47, blue:0.00, alpha:1.0)
         detailCalloutAccessoryView.addSubview(btnDetailCenter)
         
         annotation.retrieveContacInfotWith(completion: { (resultPhone) in

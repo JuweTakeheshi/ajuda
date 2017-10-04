@@ -51,20 +51,6 @@ class JUWMapCollectionCenter: NSObject, MKAnnotation {
             DispatchQueue.global().async {
                 if let array = result as? [Any] {
                     let realm = try! Realm()
-                    let storedProducts = realm.objects(JUWProduct.self)
-                    for localProduct in storedProducts {
-                        let predicate = NSPredicate(format: "id == %@", localProduct.identifier)
-                        let foundItems = array.filter{ predicate.evaluate(with: $0) }
-                        if foundItems.count == 0 {
-                            #if DEBUG
-                                print("product not anymore in server", localProduct.identifier)
-                            #endif
-                            try! realm.write {
-                                realm.delete(localProduct)
-                            }
-                        }
-                    }
-
                     let predicate = NSPredicate(format: "centerIdentifier = %@", self.centerIdentifier)
                     let center = realm.objects(JUWCollectionCenter.self).filter(predicate).first
 

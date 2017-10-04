@@ -88,7 +88,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVI-pY-GSC">
                                 <rect key="frame" x="0.0" y="526" width="320" height="42"/>
-                                <color key="backgroundColor" red="0.9518701424870466" green="0.53200862897170154" blue="0.0003615644918358581" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="1" green="0.47450980392156861" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="2CQ-vb-oiS"/>
                                 </constraints>
@@ -178,7 +178,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2Y-hd-mpJ">
                                 <rect key="frame" x="0.0" y="269" width="320" height="42"/>
-                                <color key="backgroundColor" red="0.95187014250000002" green="0.53200862900000001" blue="0.00036156449180000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="1" green="0.47450980392156861" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="afK-GQ-xOo"/>
                                 </constraints>
