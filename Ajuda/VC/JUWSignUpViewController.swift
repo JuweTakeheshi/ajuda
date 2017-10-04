@@ -106,12 +106,11 @@ class JUWSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             disableUserInterface()
             let session = JUWSession.sharedInstance
             session.signUpWithUserName(username: userNameTextField.text!, password: passwordTextField.text!, email: userNameTextField.text!, completion: { (result) in
-                self.dismiss(animated: true, completion: {
-                    self.enableUserInterface()
-                    if self.onSignUp != nil {
-                        self.onSignUp!()
-                    }
-                })
+                if self.onSignUp != nil {
+                    self.onSignUp!()
+                }
+
+                self.dismiss(animated: true, completion: nil)
             }, failure: { (error) in
                 self.enableUserInterface()
                 self.displayErrorAlert(title: "Error en Registro", message: "No pudimos registrarte. Por favor intenta más tarde")

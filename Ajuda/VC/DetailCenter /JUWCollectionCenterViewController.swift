@@ -1,5 +1,5 @@
 //
-//  DeatilCenterVC.swift
+//  JUWCollectionCenterViewController.swift
 //  Ajuda
 //
 //  Created by sp4rt4n_0 on 9/23/17.
@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class DetailCenterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class JUWCollectionCenterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -36,6 +36,8 @@ class DetailCenterVC: UIViewController, UITableViewDataSource, UITableViewDelega
         addressLabel.text = collectionCenter().address
         twitterLabel.text = collectionCenter().twitterHandle
         let phoneNumber = collectionCenter().phoneNumber.isEmpty ? "Sin teléfono registrado" : String.localizedStringWithFormat("%@ (llamar)", collectionCenter().phoneNumber)
+        callButton.isEnabled = !collectionCenter().phoneNumber.isEmpty
+        callButton.alpha = collectionCenter().phoneNumber.isEmpty ? 0.7 : 1
         callButton.setTitle(phoneNumber, for: .normal)
     }
 

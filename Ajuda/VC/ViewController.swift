@@ -15,14 +15,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signInTextField: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var signInFieldsView: UIView!
-    
     @IBOutlet weak var signInLabel: UILabel!
+
     var signUpButton: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.signInButton.alpha = 0
+        self.signUpButton?.alpha = 0
+        self.signInFieldsView.alpha = 0
+        self.signInLabel.alpha = 0
         disableUserInterface()
         customizeUserInterface()
         validateSession()
@@ -53,6 +56,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     UIView.animate(withDuration: 0.5, animations: {
                         self.signInLabel.alpha = 1
                         self.signInFieldsView.alpha = 1
+                        self.signUpButton?.alpha = 1
                     })
                 }
             }
@@ -61,6 +65,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func pushMapViewController() {
         let mapViewController = storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
+        mapViewController.onSignOut = {
+            self.enableUserInterface()
+        }
         navigationController?.pushViewController(mapViewController, animated: true)
     }
 
@@ -87,14 +94,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         signUpButton?.setTitleColor(UIColor.white, for: .normal)
         signUpButton?.frame = CGRect(x: 0, y: 0, width: 70, height: 45)
         signUpButton?.addTarget(self, action: #selector(ViewController.pushSignUp), for: .touchUpInside)
+        signUpButton?.alpha = 0
         let signUpBarButton = UIBarButtonItem()
         signUpBarButton.customView = signUpButton
         navigationItem.rightBarButtonItem = signUpBarButton
     }
 
     func disableUserInterface() {
+        UIView.animate(withDuration: 0.5) {
+            self.signInButton.alpha = 0
+            self.signUpButton?.alpha = 0
+            self.signInFieldsView.alpha = 0
+            self.signInLabel.alpha = 0
+        }
         signInButton.isEnabled = false
-        signInButton.alpha = 0.5
         usernameTextField.isUserInteractionEnabled = false
         passwordTextField.isUserInteractionEnabled = false
         signUpButton?.isEnabled = false
@@ -103,8 +116,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func enableUserInterface() {
+        UIView.animate(withDuration: 0.5) {
+            self.signInButton.alpha = 1
+            self.signUpButton?.alpha = 1
+            self.signInFieldsView.alpha = 1
+            self.signInLabel.alpha = 1
+        }
         signInButton.isEnabled = true
-        signInButton.alpha = 1.0
         usernameTextField.isUserInteractionEnabled = true
         passwordTextField.isUserInteractionEnabled = true
         signUpButton?.isEnabled = true
@@ -115,8 +133,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @objc func pushSignUp() {
         let signUpViewController = storyboard?.instantiateViewController(withIdentifier: "JUWSignUpViewController") as! JUWSignUpViewController
         signUpViewController.onSignUp = {
-            let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
-            self.navigationController?.pushViewController(mapViewController, animated: true)
+            self.disableUserInterface()
+            self.pushMapViewController()
         }
         let navigationController = UINavigationController(rootViewController: signUpViewController)
         present(navigationController, animated: true, completion: nil)
@@ -128,8 +146,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let session = JUWSession.sharedInstance
             session.signInWithUserName(username: usernameTextField.text!, password: passwordTextField.text!, completion: {
                 self.enableUserInterface()
-                let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "JUWMapViewController") as! JUWMapViewController
-                self.navigationController?.pushViewController(mapViewController, animated: true)
+                self.pushMapViewController()
                 self.usernameTextField.text = ""
                 self.passwordTextField.text = ""
             }, failure: { (error) in

@@ -10,7 +10,6 @@ import UIKit
 import RealmSwift
 import MapKit
 
-
 class JUWMapViewController: UIViewController {
     // MARK: Properties
     fileprivate var currentCenter:JUWMapCollectionCenter!
@@ -22,7 +21,9 @@ class JUWMapViewController: UIViewController {
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var filterLabel: UILabel!
-    
+
+    var onSignOut: OnSignOut?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocationManager()
@@ -104,9 +105,9 @@ class JUWMapViewController: UIViewController {
     
     @IBAction func showDetail(_ sender: Any) {
         let sb = UIStoryboard(name: "Products", bundle: nil)
-        let detailCenterNC = sb.instantiateViewController(withIdentifier: "DetailCenterNC") as! UINavigationController
-        let detailVC  = detailCenterNC.viewControllers[0] as! DetailCenterVC
-        detailVC.center = currentCenter
+        let detailCenterNC = sb.instantiateViewController(withIdentifier: "JUWCollectionNavigationViewController") as! UINavigationController
+        let collectionCenterViewController  = detailCenterNC.viewControllers[0] as! JUWCollectionCenterViewController
+        collectionCenterViewController.center = currentCenter
         present(detailCenterNC, animated: true, completion: nil)
     }
 
@@ -135,6 +136,9 @@ class JUWMapViewController: UIViewController {
     @objc func loadInfoVC() {
         let infoViewController = storyboard?.instantiateViewController(withIdentifier: "JUWInfoViewController") as! JUWInfoViewController
         infoViewController.onSignOut = {
+            if self.onSignOut != nil{
+                self.onSignOut!()
+            }
             self.navigationController?.popViewController(animated: true)
         }
         let navigationController = UINavigationController(rootViewController: infoViewController)

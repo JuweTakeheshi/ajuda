@@ -597,24 +597,6 @@ En colaboración con:
             </objects>
             <point key="canvasLocation" x="1504" y="-848"/>
         </scene>
-        <!--Collection Center View Controller-->
-        <scene sceneID="bA9-cK-kI0">
-            <objects>
-                <viewController storyboardIdentifier="JUWCollectionCenterViewController" id="Q3U-6n-68M" customClass="JUWCollectionCenterViewController" customModule="Ajuda" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9jr-GO-cOB"/>
-                        <viewControllerLayoutGuide type="bottom" id="dgK-0E-gbd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Sh1-Xc-rzc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.92268179350000001" blue="0.85859954620000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v0W-7h-zHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2494" y="-199"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="dJ2-AE-7z5">
             <objects>
