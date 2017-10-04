@@ -213,7 +213,7 @@
                                     <outlet property="delegate" destination="SAg-O2-6HI" id="Gbn-RM-7wg"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Centro de acopio Deportivo 18 de Marzo" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il0-1J-L9e">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Centro -" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il0-1J-L9e">
                                 <rect key="frame" x="16" y="70" width="288" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="aUp-Di-8ao"/>
@@ -242,6 +242,7 @@
                     </view>
                     <connections>
                         <outlet property="addProductTextField" destination="qfo-GP-Wmx" id="9mU-1l-5AG"/>
+                        <outlet property="centerNameLabel" destination="il0-1J-L9e" id="tfd-Uc-J8r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cA-3m-JKn" userLabel="First Responder" sceneMemberID="firstResponder"/>

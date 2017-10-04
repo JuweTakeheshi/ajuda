@@ -12,6 +12,7 @@ class JUWAddProductViewController: UIViewController {
     // MARK: - Properties
     var currentCenter:JUWCollectionCenter!
     
+    @IBOutlet weak var centerNameLabel: UILabel!
     // MARK: - Outlets
     @IBOutlet weak var addProductTextField: UITextField!
     override func viewDidLoad() {
@@ -33,6 +34,7 @@ class JUWAddProductViewController: UIViewController {
 
     func customizeUserInterface() {
         title = "Agregar producto"
+        centerNameLabel.text = currentCenter.name
         let dismissButton = UIButton()
         dismissButton.setImage(UIImage(named: "backButtonOrange"), for: .normal)
         dismissButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)

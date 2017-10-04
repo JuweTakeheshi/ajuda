@@ -710,7 +710,7 @@
 				INFOPLIST_FILE = Ajuda/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = M83HJ6VTJG.com.juwe.AjudaSismo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juwe.ajudasismo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -731,7 +731,7 @@
 				INFOPLIST_FILE = Ajuda/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = M83HJ6VTJG.com.juwe.AjudaSismo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juwe.ajudasismo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
