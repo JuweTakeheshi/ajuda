@@ -12,7 +12,8 @@ import UIKit
 
 class JUWShelterViewController: UIViewController {
 
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var searchController: UISearchController!
     var productSearch: String?
     var onResultsFound: OnResultsFound?
@@ -59,6 +60,9 @@ extension JUWShelterViewController: UISearchBarDelegate {
             return
         }
 
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+        searchBar.resignFirstResponder()
         JUWCollectionCenterManager().collectionCenters(whichNeed: product) { collectionCenters in
             self.onResultsFound?(collectionCenters, product)
             self.dismiss(animated: true, completion: nil)

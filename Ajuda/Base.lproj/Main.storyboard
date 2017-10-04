@@ -359,14 +359,20 @@
                                     <outlet property="delegate" destination="Jxe-dj-lyo" id="6Sq-gl-q8T"/>
                                 </connections>
                             </searchBar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="p3g-XC-1nQ">
+                                <rect key="frame" x="142" y="266" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="p3g-XC-1nQ" firstAttribute="centerX" secondItem="Jsr-bL-66e" secondAttribute="centerX" id="2BG-vC-P1V"/>
+                            <constraint firstItem="p3g-XC-1nQ" firstAttribute="centerY" secondItem="Jsr-bL-66e" secondAttribute="centerY" id="AEm-dd-xji"/>
                             <constraint firstItem="uQa-ud-4Te" firstAttribute="leading" secondItem="Jsr-bL-66e" secondAttribute="leading" id="Jx0-d2-4vR"/>
                             <constraint firstAttribute="trailing" secondItem="uQa-ud-4Te" secondAttribute="trailing" id="qXQ-sn-Uzq"/>
                             <constraint firstItem="uQa-ud-4Te" firstAttribute="top" secondItem="399-RN-af6" secondAttribute="bottom" id="vjJ-eR-Mlt"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="p3g-XC-1nQ" id="84K-SU-h10"/>
                         <outlet property="searchBar" destination="uQa-ud-4Te" id="TTV-ih-AYI"/>
                     </connections>
                 </viewController>

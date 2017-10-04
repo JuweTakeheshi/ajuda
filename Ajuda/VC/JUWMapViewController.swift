@@ -16,12 +16,12 @@ class JUWMapViewController: UIViewController {
     fileprivate var currentCenter:JUWMapCollectionCenter!
     fileprivate var locationManager: CLLocationManager!
 
-    @IBOutlet var mapView: MKMapView!
-    @IBOutlet var needLabel: UILabel!
-    @IBOutlet var contactLabel: UILabel!
-    @IBOutlet var callButton: UIButton!
-    @IBOutlet var filterView: UIView!
-    @IBOutlet var filterLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var needLabel: UILabel!
+    @IBOutlet weak var contactLabel: UILabel!
+    @IBOutlet weak var callButton: UIButton!
+    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var filterLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
