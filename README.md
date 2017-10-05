@@ -8,9 +8,9 @@ API por el equipo de Codeando MX (gracias el apoyo)
   - xCode 9.
   - Manejo de dependencias con Carthage.
 
-Se aceptan pull requests para refactors y mejoras al código. Para nuevas funcionalidades también, solo que se requeriría platicar primero.
+Se aceptan pull requests para refactors y mejoras al código. Para nuevas funcionalidades también, solo que se requeriría crear el requerimiento primero.
 
-##Screenshots
+#Screenshots
 
 ![alt text](https://raw.githubusercontent.com/juwetakeheshi/Ajuda/master/screenshots/IMG_8612.PNG)
 ![alt text](https://raw.githubusercontent.com/juwetakeheshi/Ajuda/master/screenshots/IMG_8613.PNG)
