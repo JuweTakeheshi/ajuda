@@ -12,4 +12,4 @@ Se aceptan pull requests para refactors y mejoras al código. Para nuevas funcio
 
 ##Screenshots
 
-[[https://github.com/juwetakeheshi/Ajuda/blob/master/screenshots/IMG_8612.PNG|alt=map]]
+![alt text](https://raw.githubusercontent.com/juwetakeheshi/Ajuda/master/screenshots/IMG_8612.PNG)
