@@ -1,13 +1,15 @@
 # Ajuda
 
-Juwe empezó haciendo esta app con la idea de ayudar a coordinar esfuerzos de reparto de donaciones entre ciclistas/motociclistas/camiones y centros de acopio del terremoto del 19/09/2017, y empezó a desarrollar algo con esa idea. Después, el esfuerzo se unió con Codeando MX para apegarse a la API existente.
+iOS app para ayudar a coordinar esfuerzos de reparto de donaciones entre donadoores y centros de acopio del terremoto del 19/09/2017 en el centro de México.
 
-Requerimientos
-  - Swift 4
-  - xCode 9
+API por el equipo de Codeando MX (gracias el apoyo)
 
-Las dependencias se están manejando con Carthage, entonces, el proyecto debe compilar sin problema.
+  - Swift 4.
+  - xCode 9.
+  - Manejo de dependencias con Carthage.
 
-Para organizarnos mejor:
-  - Por cada feature que se trabaje, hacer un branch para poder probarlo
-  - Una vez que se haya probado, se puede hacer merge a develop
+Se aceptan pull requests para refactors y mejoras al código. Para nuevas funcionalidades también, solo que se requeriría platicar primero.
+
+##Screenshots
+
+[[https://github.com/juwetakeheshi/Ajuda/blob/master/screenshots/IMG_8612.PNG|alt=map]]
