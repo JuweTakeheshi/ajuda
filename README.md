@@ -13,3 +13,8 @@ Se aceptan pull requests para refactors y mejoras al código. Para nuevas funcio
 ##Screenshots
 
 ![alt text](https://raw.githubusercontent.com/juwetakeheshi/Ajuda/master/screenshots/IMG_8612.PNG)
+![alt text](https://raw.githubusercontent.com/juwetakeheshi/Ajuda/master/screenshots/IMG_8613.PNG)
+![alt text](https://raw.githubusercontent.com/juwetakeheshi/Ajuda/master/screenshots/IMG_8614.PNG)
+![alt text](https://raw.githubusercontent.com/juwetakeheshi/Ajuda/master/screenshots/IMG_8616.PNG)
+![alt text](https://raw.githubusercontent.com/juwetakeheshi/Ajuda/master/screenshots/IMG_8617.PNG)
+![alt text](https://raw.githubusercontent.com/juwetakeheshi/Ajuda/master/screenshots/IMG_8618.PNG)
